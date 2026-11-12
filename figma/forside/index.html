@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+<html lang="nb">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Heikampen – Bøker, kart, mennesker og historier fra Oslomarka</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#1b1f1c;          /* nesten svart, varm */
+  --muted:#5d625e;
+  --rule:#d9d6cf;
+  --green:#326e41;        /* Heikampens grønne knappefarge */
+  --green-dark:#24502f;
+  --red:#c9231e;          /* Heikampens logorød */
+  --tint:#f6f3ee;         /* varm tone, kun i paneler */
+  --bg:#ffffff;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap:1320px;
+  --gutter:clamp(20px,3vw,40px);
+  --gap:clamp(18px,2vw,28px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+
+/* ---------- Masthead ---------- */
+.masthead{padding-top:34px}
+.masthead__row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding-bottom:20px;border-bottom:1px solid var(--ink)}
+.brand{display:block}
+.brand__name{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.2vw,54px);line-height:.95;letter-spacing:.035em;text-transform:uppercase;color:var(--red);font-variation-settings:"opsz" 72}
+.brand__tag{margin-top:10px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.nav{display:flex;align-items:center;gap:30px;margin-right:6px}
+.nav a{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);padding:4px 0;border-bottom:1px solid transparent;transition:border-color .25s ease,color .25s ease}
+.nav a:hover{border-color:var(--ink)}
+
+/* ---------- Felles kortstil ---------- */
+.label{display:block;font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.media{overflow:hidden;background:#e9e6e0}
+.media img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.card:hover .media img{transform:scale(1.03)}
+.headline{font-family:var(--serif);font-weight:500;color:var(--ink);letter-spacing:-.005em;font-variation-settings:"opsz" 36}
+.card .headline{transition:color .25s ease}
+.card:hover .headline{color:var(--green-dark)}
+.arrow{flex:none;width:22px;height:22px;color:var(--ink);transition:transform .3s ease}
+.card:hover .arrow,.hero:hover .arrow,.teaser:hover .arrow,.list a:hover .arrow{transform:translateX(4px)}
+.card__body{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-top:16px}
+.card__text{min-width:0}
+.card__text .label{margin-bottom:8px}
+.meta{margin-top:8px;font-size:13px;color:var(--muted)}
+
+/* ---------- Toppseksjon ---------- */
+/* Rad 1: hovedsak (bilde + tekst side om side) | Mest lest
+   Rad 2: to saker                               | Utforsk-teaser */
+.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.62fr);gap:var(--gap) var(--gap);margin-top:36px;align-items:stretch}
+.hero{grid-column:1 / span 2;grid-row:1;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:0;color:var(--ink)}
+.hero__figure{margin:0;display:flex;flex-direction:column}
+.hero__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#e9e6e0}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 40%);transition:transform .9s cubic-bezier(.2,.6,.2,1)}
+.hero:hover .hero__media img{transform:scale(1.025)}
+/* Kart, bokomslag og skannede objekter: hele bildet vises på varm flate */
+.hero--contain .hero__media{background:var(--tint)}
+.hero--contain .hero__media img{object-fit:contain;padding:5% 8%;filter:drop-shadow(0 10px 22px rgba(40,30,20,.18))}
+.hero--contain:hover .hero__media img{transform:none}
+.hero__credit{margin-top:8px;font-size:12px;color:var(--muted)}
+.hero__body{display:flex;flex-direction:column;padding:0 0 0 clamp(24px,2.6vw,40px)}
+.hero__body .label{margin-bottom:18px;padding-top:2px}
+.hero h1{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(28px,2.5vw,38px);line-height:1.1;letter-spacing:-.012em;font-variation-settings:"opsz" 72;transition:color .25s}
+.hero:hover h1{color:var(--green-dark)}
+.hero__dek{margin:16px 0 0;font-size:16px;line-height:1.6;color:#3d423e}
+.hero__foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--rule)}
+.hero__by{font-size:13px;color:var(--muted)}
+.hero__by strong{color:var(--ink);font-weight:600}
+.hero .arrow{width:26px;height:26px}
+.hero__spacer{height:22px}
+
+.stack{display:contents}
+.stack .card{grid-row:2}
+.stack .media{aspect-ratio:3/2}
+.stack .headline{margin:0;font-size:24px;line-height:1.18}
+
+.side{display:contents}
+.side .panel{grid-column:3;grid-row:1}
+.side .teaser{grid-column:3;grid-row:2;display:flex;flex-direction:column}
+.side .teaser .media{aspect-ratio:auto;flex:1;min-height:200px}
+.panel{background:var(--tint);padding:26px 24px}
+.panel__title{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.toplist{list-style:none;margin:0;padding:0}
+.toplist li{border-top:1px solid var(--rule)}
+.toplist li:first-child{border-top:0}
+.toplist a{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:16px 0}
+.toplist .num{font-family:var(--serif);font-size:38px;line-height:.9;color:var(--green);font-variation-settings:"opsz" 72}
+.toplist .t{font-family:var(--serif);font-size:18px;line-height:1.25;font-weight:500;transition:color .25s}
+.toplist a:hover .t{color:var(--green-dark)}
+.panel__note{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.teaser{display:block;background:var(--tint)}
+.teaser .media{aspect-ratio:4/3}
+.teaser:hover .media img{transform:scale(1.03)}
+.teaser__body{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:16px 20px 20px}
+.teaser .headline{margin:0;font-size:19px;line-height:1.2}
+
+/* ---------- Kortrader ---------- */
+.row{display:grid;gap:var(--gap);margin-top:clamp(48px,5vw,72px)}
+.row--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.row--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.row--3 .media{aspect-ratio:4/3}
+.row--4 .media{aspect-ratio:4/5}
+.row--3 .headline{margin:0;font-size:25px;line-height:1.16}
+.row--4 .headline{margin:0;font-size:21px;line-height:1.2}
+.media--object{background:var(--tint);display:flex;align-items:center;justify-content:center;padding:11% 16%}
+.media--object img{width:auto;height:auto;max-height:100%;max-width:100%;object-fit:contain;box-shadow:0 1px 2px rgba(0,0,0,.12),0 10px 24px rgba(40,30,20,.18)}
+.section-rule{border:0;border-top:1px solid var(--rule);margin:clamp(48px,5vw,72px) 0 0}
+
+/* ---------- Bunnbånd ---------- */
+.band{margin-top:clamp(56px,6vw,88px);background:var(--tint);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.band__col{padding:34px 36px 38px}
+.band__col + .band__col{border-left:1px solid var(--rule)}
+.band__head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.band__head a{font-size:13px;font-weight:600;color:var(--ink);display:inline-flex;gap:6px;align-items:center}
+.band__head a:hover{color:var(--green-dark)}
+.list{list-style:none;margin:0;padding:0}
+.list li{border-top:1px solid var(--rule)}
+.list a{display:grid;grid-template-columns:92px 1fr 22px;gap:14px;align-items:baseline;padding:13px 0}
+.list time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.list .t{font-family:var(--serif);font-size:18.5px;line-height:1.3;font-weight:500;transition:color .25s}
+.list .by{display:block;font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400;margin-top:2px}
+.list a:hover .t{color:var(--green-dark)}
+.list .arrow{width:18px;height:18px;align-self:center;color:var(--muted)}
+.archive{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.archive .media{aspect-ratio:3/2}
+.archive .headline{margin:8px 0 0;font-size:24px;line-height:1.2}
+.archive p{margin:10px 0 0;font-size:14px;color:var(--muted)}
+.archive__foot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+
+.footer{margin-top:56px;padding:28px 0 40px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:20px;font-size:13px;color:var(--muted)}
+.footer strong{color:var(--ink);font-weight:600}
+
+/* ---------- Responsivt ---------- */
+@media (max-width:1180px){
+  .top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hero{grid-column:1/-1}
+  .side .panel{grid-column:1;grid-row:3}
+  .side .teaser{grid-column:2;grid-row:3}
+  .row--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:820px){
+  .masthead{padding-top:22px}
+  .masthead__row{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:14px}
+  .brand__tag{font-size:10.5px;letter-spacing:.12em}
+  .top{grid-template-columns:1fr;margin-top:20px}
+  .hero{grid-template-columns:1fr}
+  .hero__body{padding:18px 0 0}
+  .hero__body .label{margin-bottom:12px}
+  .hero h1{font-size:31px}
+  .hero__dek{font-size:15.5px;margin-top:12px}
+  .hero__foot{margin-top:18px;padding-top:16px}
+  .stack .card,.side .panel,.side .teaser{grid-column:1;grid-row:auto}
+  .side .teaser .media{aspect-ratio:4/3;flex:none;min-height:0}
+  .top{row-gap:40px}
+  .row--3{grid-template-columns:1fr;gap:36px}
+  .row--4{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+  .row--4 .headline{font-size:18px}
+  .row--4 .arrow{display:none}
+  .row--4 .label{font-size:10.5px;letter-spacing:.1em}
+  .band{grid-template-columns:1fr;margin-left:calc(var(--gutter)*-1);margin-right:calc(var(--gutter)*-1)}
+  .band__col{padding:28px var(--gutter)}
+  .band__col + .band__col{border-left:0;border-top:1px solid var(--rule)}
+  .list a{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  .list .arrow{display:none}
+  .footer{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- Header-verktøy + megameny ---------- */
+.masthead{position:sticky;top:0;z-index:60;background:#fff}
+.tools{display:flex;align-items:center;gap:26px;padding-bottom:2px}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;color:var(--ink);border-radius:50%;transition:background-color .25s ease}
+.icon-btn:hover{background:var(--tint)}
+.icon-btn svg{width:21px;height:21px}
+.menu-btn{display:inline-flex;align-items:center;gap:12px;height:42px;padding:0 4px 0 14px;margin-left:-14px;border:0;background:none;color:var(--ink);font:600 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.menu-btn__label{display:grid;overflow:hidden;height:14px}
+.menu-btn__label span{grid-area:1/1;transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .3s ease;text-align:right}
+.menu-btn__label span:last-child{transform:translateY(110%);opacity:0}
+.menu-open .menu-btn__label span:first-child{transform:translateY(-110%);opacity:0}
+.menu-open .menu-btn__label span:last-child{transform:none;opacity:1}
+.burger{position:relative;width:26px;height:14px;display:block}
+.burger i{position:absolute;left:0;height:1.6px;width:100%;background:currentColor;border-radius:2px;transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .25s ease,width .42s cubic-bezier(.22,1,.36,1)}
+.burger i:nth-child(1){top:0}
+.burger i:nth-child(2){top:6.2px;width:70%;left:auto;right:0}
+.burger i:nth-child(3){top:12.4px}
+.menu-btn:hover .burger i:nth-child(2){width:100%}
+.menu-open .burger i:nth-child(1){transform:translateY(6.2px) rotate(45deg)}
+.menu-open .burger i:nth-child(2){opacity:0;transform:scaleX(.2)}
+.menu-open .burger i:nth-child(3){transform:translateY(-6.2px) rotate(-45deg)}
+.menu-btn:focus-visible,.icon-btn:focus-visible,.mega a:focus-visible,.mega button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body.scroll-lock{overflow:hidden}
+.mm-backdrop{position:fixed;inset:0;z-index:40;background:rgba(24,27,24,.28);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s}
+.menu-open .mm-backdrop{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.mega{position:fixed;left:0;right:0;top:var(--hdr,120px);z-index:50;background:#fff;max-height:calc(100vh - var(--hdr,120px));overflow:auto;overscroll-behavior:contain;
+  box-shadow:0 40px 60px -40px rgba(30,25,20,.22);
+  opacity:0;visibility:hidden;transform:translateY(-14px);
+  transition:opacity .3s ease,transform .35s cubic-bezier(.4,0,.2,1),visibility 0s linear .35s}
+.menu-open .mega{opacity:1;visibility:visible;transform:none;transition:opacity .4s ease,transform .45s cubic-bezier(.22,1,.36,1),visibility 0s}
+.mega__inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,.7fr);gap:clamp(32px,4.5vw,72px);padding-top:clamp(32px,3.4vw,48px);padding-bottom:clamp(36px,4vw,56px)}
+.mm-i{opacity:0;transform:translateY(10px);transition:opacity .2s ease,transform .2s ease}
+.menu-open .mm-i{opacity:1;transform:none;transition:opacity .5s ease,transform .6s cubic-bezier(.22,1,.36,1);transition-delay:calc(80ms + var(--i,0) * 45ms)}
+
+.mm-primary ul{list-style:none;margin:0;padding:0}
+.mm-main{display:block;padding:12px 0 14px}
+.mm-primary li + li .mm-main{border-top:1px solid var(--rule)}
+.mm-main__t{display:block;font:500 clamp(22px,1.85vw,27px)/1.15 var(--serif);letter-spacing:-.005em;color:var(--ink);font-variation-settings:"opsz" 72;transition:color .3s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+.mm-main__d{display:block;margin-top:3px;font-size:13.5px;color:var(--muted);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.mm-main:hover .mm-main__t,.mm-main:focus-visible .mm-main__t{color:var(--green-dark);transform:translateX(6px)}
+.mm-main:hover .mm-main__d,.mm-main:focus-visible .mm-main__d{transform:translateX(6px)}
+.mm-main:focus-visible{outline:none}
+
+.mm-visual{position:relative;align-self:start;aspect-ratio:1/1;margin-top:12px}
+.mm-fig{position:absolute;inset:0;margin:0;display:flex;flex-direction:column;opacity:0;transition:opacity .6s ease}
+.mm-fig.is-on{opacity:1}
+.mm-fig__img{flex:1;min-height:0;overflow:hidden;background:#ece9e3}
+.mm-fig__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.mm-fig.is-on .mm-fig__img img{transform:none}
+.mm-fig--contain .mm-fig__img{background:var(--tint);padding:12% 16%}
+.mm-fig--contain .mm-fig__img img{object-fit:contain;filter:drop-shadow(0 10px 20px rgba(40,30,20,.2))}
+.mm-fig figcaption{margin-top:10px;font-size:12px;color:var(--muted);min-height:2.6em}
+
+.mm-side{padding-top:20px}
+.mm-search{display:flex;align-items:center;border-bottom:1px solid var(--rule);transition:border-color .3s}
+.mm-search:focus-within{border-color:var(--ink)}
+.mm-search input{flex:1;min-width:0;border:0;outline:0;background:none;font:400 15px/1.4 var(--sans);color:var(--ink);padding:10px 0}
+.mm-search input::placeholder{color:#8d918d}
+.mm-search button{border:0;background:none;padding:6px;color:var(--muted);cursor:pointer;display:inline-flex;transition:color .25s}
+.mm-search button:hover{color:var(--ink)}
+.mm-search svg{width:19px;height:19px}
+.mm-label{display:block;margin:40px 0 10px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.mm-sec{list-style:none;margin:0;padding:0}
+.mm-sec a{display:inline-block;padding:7px 0;font-size:15px;color:var(--ink);background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s cubic-bezier(.22,1,.36,1),color .25s}
+.mm-sec a:hover{background-size:100% 1px;color:var(--green-dark)}
+.mega a:focus-visible,.mega button:focus-visible,.menu-btn:focus-visible,.icon-btn:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.mm-main:focus-visible{outline:none!important}
+
+@media (max-width:900px){.nav{display:none}}
+@media (max-width:1180px){
+  .mega__inner{grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr)}
+  .mm-visual{display:none}
+}
+@media (max-width:820px){
+  .masthead__row{flex-direction:row!important;align-items:center!important;gap:12px!important}
+  .brand{min-width:0}
+  .brand__name{font-size:28px}
+  .brand__tag{font-size:9.5px!important;letter-spacing:.1em!important;margin-top:7px;max-width:190px;line-height:1.45}
+  .tools{gap:2px;padding:0}
+  .icon-btn{width:38px;height:38px}
+  .menu-btn{gap:10px;padding-left:10px;margin-left:0;font-size:12px}
+  .mega{bottom:0;max-height:none}
+  .mega__inner{display:flex;flex-direction:column;gap:0;padding-top:8px;padding-bottom:48px}
+  .mm-side{display:contents}
+  .mm-search{order:-1;margin-bottom:14px}
+  .mm-search input{font-size:16px;padding:14px 0}
+  .mm-main{padding:15px 0 16px}
+  .mm-main__t{font-size:24px}
+  .mm-main__d{font-size:13.5px}
+  .mm-label{margin-top:34px}
+  .mm-sec{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  .mm-sec a{display:block;padding:12px 0;font-size:15.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mega,.menu-open .mega,.mm-i,.menu-open .mm-i,.mm-backdrop,.mm-fig,.mm-fig__img img,.mm-main__t,.mm-main__d,.burger i,.menu-btn__label span{transition:opacity .15s linear!important;transform:none!important;transition-delay:0s!important}
+}
+</style>
+<link href="../assets/import.css" rel="stylesheet"/><style id="fx-page">
+/* Genererte, målte verdier: eksplisitte høyder i stedet for aspect-ratio, heltalls linjehøyde, ekstra tekstbredde */
+@media (max-width:1180px){br.fx-bd{display:none}}
+@media (min-width:601px){br.fx-bm{display:none}}
+@media (min-width:1181px){
+[data-fx="54"]{aspect-ratio:auto!important;height:448.0625px!important}
+[data-fx="169"]{aspect-ratio:auto!important;height:407.65625px!important}
+[data-fx="198"]{aspect-ratio:auto!important;height:301.265625px!important}
+[data-fx="208"]{aspect-ratio:auto!important;height:301.265625px!important}
+[data-fx="283"]{aspect-ratio:auto!important;height:295.984375px!important}
+[data-fx="293"]{aspect-ratio:auto!important;height:296px!important}
+[data-fx="303"]{aspect-ratio:auto!important;height:295.984375px!important}
+[data-fx="314"]{aspect-ratio:auto!important;height:361.25px!important}
+[data-fx="324"]{aspect-ratio:auto!important;height:361.25px!important}
+[data-fx="334"]{aspect-ratio:auto!important;height:361.25px!important}
+[data-fx="344"]{aspect-ratio:auto!important;height:361.25px!important}
+[data-fx="400"]{aspect-ratio:auto!important;height:269.28125px!important}
+[data-fx="5"]{margin-right:-4px!important}
+[data-fx="171"]{margin-right:-4px!important}
+[data-fx="173"]{margin-right:-4px!important}
+[data-fx="174"]{margin-right:-2px!important}
+[data-fx="175"]{margin-right:-4px!important}
+[data-fx="182"]{margin-right:-4px!important}
+[data-fx="202"]{margin-right:-4px!important}
+[data-fx="203"]{margin-right:-4px!important}
+[data-fx="204"]{margin-right:-4px!important}
+[data-fx="212"]{margin-right:-4px!important}
+[data-fx="213"]{margin-right:-4px!important}
+[data-fx="214"]{margin-right:-4px!important}
+[data-fx="287"]{margin-right:-4px!important}
+[data-fx="288"]{margin-right:-4px!important}
+[data-fx="289"]{margin-right:-4px!important}
+[data-fx="297"]{margin-right:-4px!important}
+[data-fx="299"]{margin-right:-4px!important}
+[data-fx="307"]{margin-right:-4px!important}
+[data-fx="308"]{margin-right:-4px!important}
+[data-fx="309"]{margin-right:-4px!important}
+[data-fx="318"]{margin-right:-4px!important}
+[data-fx="319"]{margin-right:-4px!important}
+[data-fx="320"]{margin-right:-4px!important}
+[data-fx="328"]{margin-right:-4px!important}
+[data-fx="330"]{margin-right:-4px!important}
+[data-fx="338"]{margin-right:-4px!important}
+[data-fx="340"]{margin-right:-4px!important}
+[data-fx="348"]{margin-right:-4px!important}
+[data-fx="349"]{margin-right:-4px!important}
+[data-fx="350"]{margin-right:-4px!important}
+[data-fx="365"]{margin-right:-4px!important}
+[data-fx="372"]{margin-right:-4px!important}
+[data-fx="379"]{margin-right:-4px!important}
+[data-fx="386"]{margin-right:-4px!important}
+[data-fx="393"]{margin-right:-4px!important}
+[data-fx="404"]{margin-right:-4px!important}
+[data-fx="405"]{margin-right:-4px!important}
+[data-fx="406"]{margin-right:-4px!important}
+
+}
+@media (max-width:600px){
+[data-fx="227"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="240"]{aspect-ratio:auto!important;height:233.328125px!important}
+[data-fx="250"]{aspect-ratio:auto!important;height:233.328125px!important}
+[data-fx="275"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="283"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="293"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="303"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="314"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="324"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="334"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="344"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="400"]{aspect-ratio:auto!important;height:233.328125px!important}
+[data-fx="6"]{margin-right:-4px!important;max-width:194px!important}
+[data-fx="229"]{margin-right:-4px!important}
+[data-fx="231"]{margin-right:-4px!important}
+[data-fx="232"]{margin-right:-4px!important}
+[data-fx="233"]{margin-right:-3px!important}
+[data-fx="244"]{margin-right:-4px!important}
+[data-fx="245"]{margin-right:-4px!important}
+[data-fx="246"]{margin-right:-4px!important}
+[data-fx="254"]{margin-right:-4px!important}
+[data-fx="255"]{margin-right:-4px!important}
+[data-fx="256"]{margin-right:-4px!important}
+[data-fx="260"]{margin-right:-4px!important}
+[data-fx="287"]{margin-right:-4px!important}
+[data-fx="288"]{margin-right:-4px!important}
+[data-fx="289"]{margin-right:-4px!important}
+[data-fx="297"]{margin-right:-4px!important}
+[data-fx="298"]{margin-right:-4px!important}
+[data-fx="299"]{margin-right:-4px!important}
+[data-fx="307"]{margin-right:-4px!important}
+[data-fx="308"]{margin-right:-4px!important}
+[data-fx="309"]{margin-right:-4px!important}
+[data-fx="318"]{margin-right:-4px!important}
+[data-fx="319"]{margin-right:-4px!important}
+[data-fx="320"]{margin-right:-4px!important}
+[data-fx="328"]{margin-right:-4px!important}
+[data-fx="330"]{margin-right:-4px!important}
+[data-fx="338"]{margin-right:-4px!important}
+[data-fx="339"]{margin-right:-4px!important}
+[data-fx="340"]{margin-right:-4px!important}
+[data-fx="348"]{margin-right:-4px!important}
+[data-fx="349"]{margin-right:-3px!important}
+[data-fx="350"]{margin-right:-4px!important}
+[data-fx="365"]{margin-right:-4px!important}
+[data-fx="372"]{margin-right:-4px!important}
+[data-fx="379"]{margin-right:-4px!important}
+[data-fx="386"]{margin-right:-4px!important}
+[data-fx="393"]{margin-right:-4px!important}
+[data-fx="404"]{margin-right:-4px!important}
+[data-fx="405"]{margin-right:-4px!important}
+[data-fx="406"]{margin-right:-4px!important}
+[data-fx="410"]{margin-right:-4px!important}
+[data-fx="412"]{margin-right:-4px!important}
+}
+</style></head>
+<body data-fx="0">
+<header class="masthead" data-fx="1">
+<div class="wrap" data-fx="2">
+<div class="masthead__row" data-fx="3">
+<a class="brand" data-fx="4" href="https://heikampen.no/">
+<div class="brand__name" data-fx="5">Heikampen</div>
+<div class="brand__tag" data-fx="6">Bøker, kart, mennesker og historier fra Oslomarka</div>
+</a>
+<div class="tools" data-fx="7">
+<nav aria-label="Snarveier" class="nav" data-fx="8">
+<a data-fx="9" href="https://heikampen.no/tidligere-artikler/">Artikler</a>
+<a data-fx="10" href="https://heikampen.no/boker/">Bøker</a>
+<a data-fx="11" href="https://heikampen.no/kart/">Kart</a>
+<a data-fx="12" href="https://heikampen.no/markaminner/">Markaminner</a>
+</nav>
+<a aria-label="Søk" class="icon-btn" data-fx="13" data-open-search="" href="https://heikampen.no/sokeresultat/">
+<svg data-fx="14" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="15" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="16" stroke-linecap="round"></path></svg>
+</a>
+<button aria-controls="megameny" aria-expanded="false" aria-label="Åpne meny" class="menu-btn" data-fx="17" type="button">
+<span aria-hidden="true" class="menu-btn__label" data-fx="18"><span data-fx="19">Meny</span><span data-fx="20">Lukk</span></span>
+<span aria-hidden="true" class="burger" data-fx="21"><i data-fx="22"></i><i data-fx="23"></i><i data-fx="24"></i></span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="mm-backdrop" data-close="" data-fx="25"></div>
+<div aria-hidden="true" aria-label="Meny" aria-modal="true" class="mega" data-fx="26" id="megameny" role="dialog">
+<div class="wrap mega__inner" data-fx="27">
+<nav aria-label="Hovedsider" class="mm-primary" data-fx="28">
+<ul data-fx="29">
+<li class="mm-i" data-fx="30"><a class="mm-main" data-fx="31" data-img="0" href="https://heikampen.no/tidligere-artikler/"><span class="mm-main__t" data-fx="32">Artikler</span><span class="mm-main__d" data-fx="33">Historier, intervjuer og minneord fra marka</span></a></li>
+<li class="mm-i" data-fx="34"><a class="mm-main" data-fx="35" data-img="1" href="https://heikampen.no/boker/"><span class="mm-main__t" data-fx="36">Bøker</span><span class="mm-main__d" data-fx="37">889 bøker om Oslomarka</span></a></li>
+<li class="mm-i" data-fx="38"><a class="mm-main" data-fx="39" data-img="2" href="https://heikampen.no/kart/"><span class="mm-main__t" data-fx="40">Kart</span><span class="mm-main__d" data-fx="41">71 historiske kart fra 1790 til i dag</span></a></li>
+<li class="mm-i" data-fx="42"><a class="mm-main" data-fx="43" data-img="3" href="https://heikampen.no/markaminner/"><span class="mm-main__t" data-fx="44">Markaminner</span><span class="mm-main__d" data-fx="45">106 postkort, programmer og fotografier</span></a></li>
+<li class="mm-i" data-fx="46"><a class="mm-main" data-fx="47" data-img="4" href="https://heikampen.no/organisasjoner/"><span class="mm-main__t" data-fx="48">Foreninger og lag</span><span class="mm-main__d" data-fx="49">33 foreninger og lag i Oslomarka</span></a></li>
+<li class="mm-i" data-fx="50"><a class="mm-main" data-fx="51" data-img="5" href="https://heikampen.no/om-oss/"><span class="mm-main__t" data-fx="52">Om oss</span><span class="mm-main__d" data-fx="53">Om nettstedet og menneskene bak</span></a></li>
+</ul>
+</nav>
+<div aria-hidden="true" class="mm-visual mm-i" data-fx="54">
+<figure class="mm-fig is-on mm-fig--cover" data-fx="55" data-i="0"><div class="mm-fig__img" data-fx="56"><img alt="" data-fx="57" loading="lazy" src="../../forside/img/pa-vandring-i-oslomarka.jpg"/></div><figcaption data-fx="58">Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+<figure class="mm-fig mm-fig--contain" data-fx="59" data-i="1"><div class="mm-fig__img" data-fx="60"><img alt="" data-fx="61" loading="lazy" src="../../forside/img/bok-pa-gamle-veier.jpg"/></div><figcaption data-fx="62">H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+<figure class="mm-fig mm-fig--cover" data-fx="63" data-i="2"><div class="mm-fig__img" data-fx="64"><img alt="" data-fx="65" loading="lazy" src="../../forside/img/kart-plan-af-egnen-1790.jpg"/></div><figcaption data-fx="66">Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+<figure class="mm-fig mm-fig--cover" data-fx="67" data-i="3"><div class="mm-fig__img" data-fx="68"><img alt="" data-fx="69" loading="lazy" src="../../forside/img/minne-prospektkort-katnosa-1909.jpg"/></div><figcaption data-fx="70">Prospektkort fra Katnosa, 1909</figcaption></figure>
+<figure class="mm-fig mm-fig--cover" data-fx="71" data-i="4"><div class="mm-fig__img" data-fx="72"><img alt="" data-fx="73" loading="lazy" src="../../forside/img/mix-klubben.jpg"/></div><figcaption data-fx="74">Fra artikkelen om Mix-klubben</figcaption></figure>
+<figure class="mm-fig mm-fig--cover" data-fx="75" data-i="5"><div class="mm-fig__img" data-fx="76"><img alt="" data-fx="77" loading="lazy" src="../../forside/img/utsikten.jpg"/></div><figcaption data-fx="78">Markaskilt i Nordmarka</figcaption></figure>
+</div>
+<div class="mm-side" data-fx="79">
+<form action="https://heikampen.no/" class="mm-search mm-i" data-fx="80" method="get" role="search">
+<label class="visually-hidden" data-fx="81" for="mm-q">Søk på Heikampen</label>
+<input autocomplete="off" data-fx="82" id="mm-q" name="s" placeholder="Søk på Heikampen" type="search"/>
+<button aria-label="Søk" data-fx="83" type="submit"><svg data-fx="84" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="85" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="86" stroke-linecap="round"></path></svg></button>
+</form>
+<nav aria-label="Nyttig" data-fx="87">
+<span class="mm-label mm-i" data-fx="88">Nyttig</span>
+<ul class="mm-sec" data-fx="89">
+<li class="mm-i" data-fx="90"><a data-fx="91" href="https://heikampen.no/leseguide/">Leseguide</a></li>
+<li class="mm-i" data-fx="92"><a data-fx="93" href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+<li class="mm-i" data-fx="94"><a data-fx="95" href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+<li class="mm-i" data-fx="96"><a data-fx="97" href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+<li class="mm-i" data-fx="98"><a data-fx="99" href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+<li class="mm-i" data-fx="100"><a data-fx="101" href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<svg aria-hidden="true" data-fx="102" height="0" style="position:absolute" width="0">
+<symbol data-fx="103" id="arr" viewbox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" data-fx="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></symbol>
+</svg>
+<main class="wrap" data-fx="105">
+<!-- Toppseksjon: hovedsak + to saker + Mest lest -->
+<section class="top" data-fx="106">
+<!--HERO-->
+<a class="hero hero--cover" data-fx="107" href="https://heikampen.no/pa-vandring-i-oslomarka/" style="--focus:50% 35%">
+<figure class="hero__figure" data-fx="108">
+<div class="hero__media" data-fx="109"><img alt="Kvinne og mann i bil med en stor bærbar radio, 1950-tallet" data-fx="110" src="../../forside/img/pa-vandring-i-oslomarka.jpg"/></div>
+<figcaption class="hero__credit" data-fx="111">Foto: Ragge Strand / Nasjonalarkivet</figcaption>
+</figure>
+<div class="hero__body" data-fx="112">
+<span class="label" data-fx="113">Hovedsak</span>
+<h1 data-fx="114">På vandring i Oslomarka i 1951 – et fantastisk radioprogram</h1>
+<p class="hero__dek" data-fx="115">Tenk å kunne reise tilbake i tid – til Oslomarka for omtrent 75 år siden. Oppleve våren, høre fuglesangen, lytte til fisken som vaker – og ikke minst møte menneskene som levde og arbeidet i marka.</p>
+<div class="hero__foot" data-fx="116">
+<span class="hero__by" data-fx="117"><strong data-fx="118">NRK Radio, 1951</strong> · 25. juni 2026</span>
+<svg class="arrow" data-fx="119"><use data-fx="120" href="#arr"></use></svg>
+</div>
+</div>
+</a>
+<!--/HERO-->
+<div class="stack" data-fx="121">
+<a class="card" data-fx="122" href="https://heikampen.no/ernst-bjerknes-ingenioren-som-tegnet-verdens-forste-skikart/">
+<div class="media" data-fx="123"><img alt="Ernst Bjerknes foran sitt skikart over Nordmarken" data-fx="124" src="../../forside/img/ernst-bjerknes.jpg" style="object-position:50% 72%"/></div>
+<div class="card__body" data-fx="125">
+<div class="card__text" data-fx="126">
+<span class="label" data-fx="127">Mennesker</span>
+<h2 class="headline" data-fx="128">Ernst Bjerknes – ingeniøren som tegnet verdens første skikart</h2>
+<div class="meta" data-fx="129">Arne Henrik Frogh</div>
+</div>
+<svg class="arrow" data-fx="130"><use data-fx="131" href="#arr"></use></svg>
+</div>
+</a>
+<a class="card" data-fx="132" href="https://heikampen.no/korpas-olsen-eneboer-og-preparant-i-ostmarka/">
+<div class="media" data-fx="133"><img alt="Korpås-Olsen utenfor hytta si i Østmarka" data-fx="134" src="../../forside/img/korpas-olsen.jpg" style="object-position:50% 40%"/></div>
+<div class="card__body" data-fx="135">
+<div class="card__text" data-fx="136">
+<span class="label" data-fx="137">Historie</span>
+<h2 class="headline" data-fx="138">Korpås-Olsen: Eneboer og preparant i Østmarka</h2>
+<div class="meta" data-fx="139">Even Saugstad</div>
+</div>
+<svg class="arrow" data-fx="140"><use data-fx="141" href="#arr"></use></svg>
+</div>
+</a>
+</div>
+<aside class="side" data-fx="142">
+<div class="panel" data-fx="143">
+<h2 class="panel__title" data-fx="144">Mest lest</h2>
+<ol class="toplist" data-fx="145">
+<li data-fx="146"><a data-fx="147" href="https://heikampen.no/nils-houge-markagrensens-arkitekt-og-adjutant/"><span class="num" data-fx="148">1</span><span class="t" data-fx="149">Nils Houge – Markagrensens arkitekt og adjutant</span></a></li>
+<li data-fx="150"><a data-fx="151" href="https://heikampen.no/nordmarkas-eneste-klosterhage/"><span class="num" data-fx="152">2</span><span class="t" data-fx="153">Nordmarkas eneste klosterhage</span></a></li>
+<li data-fx="154"><a data-fx="155" href="https://heikampen.no/solan-gundersen-pa-rustadsaga/"><span class="num" data-fx="156">3</span><span class="t" data-fx="157">Solan Gundersen på Rustadsaga</span></a></li>
+</ol>
+</div>
+<a class="teaser" data-fx="158" href="https://heikampen.no/tidligere-artikler/">
+<div class="media" data-fx="159"><img alt="Markaskilt i snøen" data-fx="160" src="../../forside/img/utsikten.jpg"/></div>
+<div class="teaser__body" data-fx="161">
+<h2 class="headline" data-fx="162">Utforsk flere artikler fra Oslomarka</h2>
+<svg class="arrow" data-fx="163"><use data-fx="164" href="#arr"></use></svg>
+</div>
+</a>
+</aside>
+</section><section class="fx-top-d" data-fx="165"><div class="fx-r1 side" data-fx="166"><a class="hero hero--cover" data-fx="167" href="https://heikampen.no/pa-vandring-i-oslomarka/" style="--focus:50% 35%">
+<figure class="hero__figure" data-fx="168">
+<div class="hero__media" data-fx="169"><img alt="Kvinne og mann i bil med en stor bærbar radio, 1950-tallet" data-fx="170" src="../../forside/img/pa-vandring-i-oslomarka.jpg"/></div>
+<figcaption class="hero__credit" data-fx="171">Foto: Ragge Strand / Nasjonalarkivet</figcaption>
+</figure>
+<div class="hero__body" data-fx="172">
+<span class="label" data-fx="173">Hovedsak</span>
+<h1 data-fx="174">På vandring i Oslomarka i 1951 – et fantastisk radioprogram</h1>
+<p class="hero__dek" data-fx="175">Tenk å kunne reise tilbake i tid – til Oslomarka for omtrent 75 år siden. Oppleve våren, høre fuglesangen, lytte til fisken som vaker – og ikke minst møte menneskene som levde og arbeidet i marka.</p>
+<div class="hero__foot" data-fx="176">
+<span class="hero__by" data-fx="177"><strong data-fx="178">NRK Radio, 1951</strong> · 25. juni 2026</span>
+<svg class="arrow" data-fx="179"><use data-fx="180" href="#arr"></use></svg>
+</div>
+</div>
+</a><div class="panel" data-fx="181">
+<h2 class="panel__title" data-fx="182">Mest lest</h2>
+<ol class="toplist" data-fx="183">
+<li data-fx="184"><a data-fx="185" href="https://heikampen.no/nils-houge-markagrensens-arkitekt-og-adjutant/"><span class="num" data-fx="186">1</span><span class="t" data-fx="187">Nils Houge – Markagrensens arkitekt og adjutant</span></a></li>
+<li data-fx="188"><a data-fx="189" href="https://heikampen.no/nordmarkas-eneste-klosterhage/"><span class="num" data-fx="190">2</span><span class="t" data-fx="191">Nordmarkas eneste klosterhage</span></a></li>
+<li data-fx="192"><a data-fx="193" href="https://heikampen.no/solan-gundersen-pa-rustadsaga/"><span class="num" data-fx="194">3</span><span class="t" data-fx="195">Solan Gundersen på Rustadsaga</span></a></li>
+</ol>
+</div></div><div class="fx-r2 stack side" data-fx="196"><a class="card" data-fx="197" href="https://heikampen.no/ernst-bjerknes-ingenioren-som-tegnet-verdens-forste-skikart/">
+<div class="media" data-fx="198"><img alt="Ernst Bjerknes foran sitt skikart over Nordmarken" data-fx="199" src="../../forside/img/ernst-bjerknes.jpg" style="object-position:50% 72%"/></div>
+<div class="card__body" data-fx="200">
+<div class="card__text" data-fx="201">
+<span class="label" data-fx="202">Mennesker</span>
+<h2 class="headline" data-fx="203">Ernst Bjerknes – ingeniøren som tegnet verdens første skikart</h2>
+<div class="meta" data-fx="204">Arne Henrik Frogh</div>
+</div>
+<svg class="arrow" data-fx="205"><use data-fx="206" href="#arr"></use></svg>
+</div>
+</a><a class="card" data-fx="207" href="https://heikampen.no/korpas-olsen-eneboer-og-preparant-i-ostmarka/">
+<div class="media" data-fx="208"><img alt="Korpås-Olsen utenfor hytta si i Østmarka" data-fx="209" src="../../forside/img/korpas-olsen.jpg" style="object-position:50% 40%"/></div>
+<div class="card__body" data-fx="210">
+<div class="card__text" data-fx="211">
+<span class="label" data-fx="212">Historie</span>
+<h2 class="headline" data-fx="213">Korpås-Olsen: Eneboer og preparant i Østmarka</h2>
+<div class="meta" data-fx="214">Even Saugstad</div>
+</div>
+<svg class="arrow" data-fx="215"><use data-fx="216" href="#arr"></use></svg>
+</div>
+</a><a class="teaser" data-fx="217" href="https://heikampen.no/tidligere-artikler/">
+<div class="media" data-fx="218"><img alt="Markaskilt i snøen" data-fx="219" src="../../forside/img/utsikten.jpg"/></div>
+<div class="teaser__body" data-fx="220">
+<h2 class="headline" data-fx="221">Utforsk flere artikler fra Oslomarka</h2>
+<svg class="arrow" data-fx="222"><use data-fx="223" href="#arr"></use></svg>
+</div>
+</a></div></section><section class="fx-top-m stack side" data-fx="224"><a class="hero hero--cover" data-fx="225" href="https://heikampen.no/pa-vandring-i-oslomarka/" style="--focus:50% 35%">
+<figure class="hero__figure" data-fx="226">
+<div class="hero__media" data-fx="227"><img alt="Kvinne og mann i bil med en stor bærbar radio, 1950-tallet" data-fx="228" src="../../forside/img/pa-vandring-i-oslomarka.jpg"/></div>
+<figcaption class="hero__credit" data-fx="229">Foto: Ragge Strand / Nasjonalarkivet</figcaption>
+</figure>
+<div class="hero__body" data-fx="230">
+<span class="label" data-fx="231">Hovedsak</span>
+<h1 data-fx="232">På vandring i Oslomarka i 1951 – et fantastisk radioprogram</h1>
+<p class="hero__dek" data-fx="233">Tenk å kunne reise tilbake i tid – til Oslomarka for omtrent 75 år siden. Oppleve våren, høre fuglesangen, lytte til fisken som vaker – og ikke minst møte menneskene som levde og arbeidet i marka.</p>
+<div class="hero__foot" data-fx="234">
+<span class="hero__by" data-fx="235"><strong data-fx="236">NRK Radio, 1951</strong> · 25. juni 2026</span>
+<svg class="arrow" data-fx="237"><use data-fx="238" href="#arr"></use></svg>
+</div>
+</div>
+</a><a class="card" data-fx="239" href="https://heikampen.no/ernst-bjerknes-ingenioren-som-tegnet-verdens-forste-skikart/">
+<div class="media" data-fx="240"><img alt="Ernst Bjerknes foran sitt skikart over Nordmarken" data-fx="241" src="../../forside/img/ernst-bjerknes.jpg" style="object-position:50% 72%"/></div>
+<div class="card__body" data-fx="242">
+<div class="card__text" data-fx="243">
+<span class="label" data-fx="244">Mennesker</span>
+<h2 class="headline" data-fx="245">Ernst Bjerknes – ingeniøren som tegnet verdens første skikart</h2>
+<div class="meta" data-fx="246">Arne Henrik Frogh</div>
+</div>
+<svg class="arrow" data-fx="247"><use data-fx="248" href="#arr"></use></svg>
+</div>
+</a><a class="card" data-fx="249" href="https://heikampen.no/korpas-olsen-eneboer-og-preparant-i-ostmarka/">
+<div class="media" data-fx="250"><img alt="Korpås-Olsen utenfor hytta si i Østmarka" data-fx="251" src="../../forside/img/korpas-olsen.jpg" style="object-position:50% 40%"/></div>
+<div class="card__body" data-fx="252">
+<div class="card__text" data-fx="253">
+<span class="label" data-fx="254">Historie</span>
+<h2 class="headline" data-fx="255">Korpås-Olsen: Eneboer og preparant i Østmarka</h2>
+<div class="meta" data-fx="256">Even Saugstad</div>
+</div>
+<svg class="arrow" data-fx="257"><use data-fx="258" href="#arr"></use></svg>
+</div>
+</a><div class="panel" data-fx="259">
+<h2 class="panel__title" data-fx="260">Mest lest</h2>
+<ol class="toplist" data-fx="261">
+<li data-fx="262"><a data-fx="263" href="https://heikampen.no/nils-houge-markagrensens-arkitekt-og-adjutant/"><span class="num" data-fx="264">1</span><span class="t" data-fx="265">Nils Houge – Markagrensens arkitekt og adjutant</span></a></li>
+<li data-fx="266"><a data-fx="267" href="https://heikampen.no/nordmarkas-eneste-klosterhage/"><span class="num" data-fx="268">2</span><span class="t" data-fx="269">Nordmarkas eneste klosterhage</span></a></li>
+<li data-fx="270"><a data-fx="271" href="https://heikampen.no/solan-gundersen-pa-rustadsaga/"><span class="num" data-fx="272">3</span><span class="t" data-fx="273">Solan Gundersen på Rustadsaga</span></a></li>
+</ol>
+</div><a class="teaser" data-fx="274" href="https://heikampen.no/tidligere-artikler/">
+<div class="media" data-fx="275"><img alt="Markaskilt i snøen" data-fx="276" src="../../forside/img/utsikten.jpg"/></div>
+<div class="teaser__body" data-fx="277">
+<h2 class="headline" data-fx="278">Utforsk flere artikler fra Oslomarka</h2>
+<svg class="arrow" data-fx="279"><use data-fx="280" href="#arr"></use></svg>
+</div>
+</a></section>
+<!-- Rad med tre -->
+<section class="row row--3" data-fx="281">
+<a class="card" data-fx="282" href="https://heikampen.no/mix-klubben/">
+<div class="media" data-fx="283"><img alt="Thorleif Haug og Johan Grøttumsbråten på ski" data-fx="284" src="../../forside/img/mix-klubben.jpg" style="object-position:50% 30%"/></div>
+<div class="card__body" data-fx="285">
+<div class="card__text" data-fx="286"><span class="label" data-fx="287">Markahistorie</span><h2 class="headline" data-fx="288">Mix-klubben – der klubbmesterskapet var tøffere enn OL</h2><div class="meta" data-fx="289">Thor Gotaas</div></div>
+<svg class="arrow" data-fx="290"><use data-fx="291" href="#arr"></use></svg>
+</div>
+</a>
+<a class="card" data-fx="292" href="https://heikampen.no/nordmarkas-eneste-klosterhage/">
+<div class="media" data-fx="293"><img alt="Tjern med svaberg i Nordmarka" data-fx="294" src="../../forside/img/klosterhage.jpg" style="object-position:40% 50%"/></div>
+<div class="card__body" data-fx="295">
+<div class="card__text" data-fx="296"><span class="label" data-fx="297">Natur</span><h2 class="headline" data-fx="298">Nordmarkas eneste klosterhage</h2><div class="meta" data-fx="299">Carl-Erik Grimstad</div></div>
+<svg class="arrow" data-fx="300"><use data-fx="301" href="#arr"></use></svg>
+</div>
+</a>
+<a class="card" data-fx="302" href="https://heikampen.no/kart/">
+<div class="media" data-fx="303"><img alt="Håndtegnet kart: Plan af Egnen omkring Christiania, 1790" data-fx="304" src="../../forside/img/kart-plan-af-egnen-1790.jpg" style="object-position:50% 45%"/></div>
+<div class="card__body" data-fx="305">
+<div class="card__text" data-fx="306"><span class="label" data-fx="307">Kartarkivet</span><h2 class="headline" data-fx="308">Plan af Egnen omkring Christiania, 1790</h2><div class="meta" data-fx="309">Det eldste kartet i samlingen av 71 markakart</div></div>
+<svg class="arrow" data-fx="310"><use data-fx="311" href="#arr"></use></svg>
+</div>
+</a>
+</section>
+<!-- Rad med fire -->
+<section class="row row--4" data-fx="312">
+<a class="card" data-fx="313" href="https://heikampen.no/bok/pa-gamle-veier-og-nye-stier-i-oslomarka/">
+<div class="media media--object" data-fx="314"><img alt="Bokomslag: På gamle veier og nye stier i Oslomarka" data-fx="315" src="../../forside/img/bok-pa-gamle-veier.jpg"/></div>
+<div class="card__body" data-fx="316">
+<div class="card__text" data-fx="317"><span class="label" data-fx="318">Bokhyllen</span><h2 class="headline" data-fx="319">På gamle veier og nye stier i Oslomarka</h2><div class="meta" data-fx="320">H.O. Christophersen, 1956</div></div>
+<svg class="arrow" data-fx="321"><use data-fx="322" href="#arr"></use></svg>
+</div>
+</a>
+<a class="card" data-fx="323" href="https://heikampen.no/den-fine-runden/">
+<div class="media" data-fx="324"><img alt="Thor Gotaas på ski i Nordmarka" data-fx="325" src="../../forside/img/den-fine-runden.jpg" style="object-position:62% 40%"/></div>
+<div class="card__body" data-fx="326">
+<div class="card__text" data-fx="327"><span class="label" data-fx="328">Turtips</span><h2 class="headline" data-fx="329">Den fine runden</h2><div class="meta" data-fx="330">Thor Gotaas</div></div>
+<svg class="arrow" data-fx="331"><use data-fx="332" href="#arr"></use></svg>
+</div>
+</a>
+<a class="card" data-fx="333" href="https://heikampen.no/en-julaften-pa-krokskogen/">
+<div class="media" data-fx="334"><img alt="Snødekte hus på Krokskogen" data-fx="335" src="../../forside/img/julaften-krokskogen.jpg" style="object-position:58% 50%"/></div>
+<div class="card__body" data-fx="336">
+<div class="card__text" data-fx="337"><span class="label" data-fx="338">Årstidene</span><h2 class="headline" data-fx="339">En juleaften på Krokskogen</h2><div class="meta" data-fx="340">Eva Huseby</div></div>
+<svg class="arrow" data-fx="341"><use data-fx="342" href="#arr"></use></svg>
+</div>
+</a>
+<a class="card" data-fx="343" href="https://heikampen.no/markaminne/fotografi-ovre-frognersaeteren/">
+<div class="media" data-fx="344"><img alt="Fotografi av utsiktstårnet ved Øvre Frognersæteren, 1878" data-fx="345" src="../../forside/img/minne-ovre-frognersaeteren-1878.jpg" style="object-position:50% 40%"/></div>
+<div class="card__body" data-fx="346">
+<div class="card__text" data-fx="347"><span class="label" data-fx="348">Kulturminner</span><h2 class="headline" data-fx="349">Fotografi fra Øvre Frognersæteren, 1878</h2><div class="meta" data-fx="350">Markaminne</div></div>
+<svg class="arrow" data-fx="351"><use data-fx="352" href="#arr"></use></svg>
+</div>
+</a>
+</section>
+<!-- Bunnbånd -->
+<section class="band" data-fx="353">
+<div class="band__col" data-fx="354">
+<div class="band__head" data-fx="355">
+<h2 class="panel__title" data-fx="356">Siste artikler</h2>
+<a data-fx="357" href="https://heikampen.no/tidligere-artikler/">Se alle <svg class="arrow" data-fx="358" style="width:16px;height:16px"><use data-fx="359" href="#arr"></use></svg></a>
+</div>
+<ul class="list" data-fx="360">
+<li data-fx="361"><a data-fx="362" href="https://heikampen.no/ernst-bjerknes-ingenioren-som-tegnet-verdens-forste-skikart/"><time data-fx="363" datetime="2026-09-10">10. sep. 2026</time><span class="t" data-fx="364">Ernst Bjerknes – ingeniøren som tegnet verdens første skikart<span class="by" data-fx="365">Arne Henrik Frogh</span></span><svg class="arrow" data-fx="366"><use data-fx="367" href="#arr"></use></svg></a></li>
+<li data-fx="368"><a data-fx="369" href="https://heikampen.no/pa-vandring-i-oslomarka/"><time data-fx="370" datetime="2026-06-25">25. jun. 2026</time><span class="t" data-fx="371">På vandring i Oslomarka i 1951<span class="by" data-fx="372">Radioprogram fra NRK</span></span><svg class="arrow" data-fx="373"><use data-fx="374" href="#arr"></use></svg></a></li>
+<li data-fx="375"><a data-fx="376" href="https://heikampen.no/nils-houge-markagrensens-arkitekt-og-adjutant/"><time data-fx="377" datetime="2026-06-04">4. jun. 2026</time><span class="t" data-fx="378">Nils Houge – Markagrensens arkitekt og adjutant<span class="by" data-fx="379">Arne Henrik Frogh</span></span><svg class="arrow" data-fx="380"><use data-fx="381" href="#arr"></use></svg></a></li>
+<li data-fx="382"><a data-fx="383" href="https://heikampen.no/nordmarkas-eneste-klosterhage/"><time data-fx="384" datetime="2026-05-22">22. mai 2026</time><span class="t" data-fx="385">Nordmarkas eneste klosterhage<span class="by" data-fx="386">Carl-Erik Grimstad</span></span><svg class="arrow" data-fx="387"><use data-fx="388" href="#arr"></use></svg></a></li>
+<li data-fx="389"><a data-fx="390" href="https://heikampen.no/familien-pa-katnosa/"><time data-fx="391" datetime="2026-05-06">6. mai 2026</time><span class="t" data-fx="392">Familien på Katnosa<span class="by" data-fx="393">Bjørn Katnosa</span></span><svg class="arrow" data-fx="394"><use data-fx="395" href="#arr"></use></svg></a></li>
+</ul>
+</div>
+<div class="band__col" data-fx="396">
+<div class="band__head" data-fx="397"><h2 class="panel__title" data-fx="398">Fra arkivet</h2></div>
+<a class="card archive" data-fx="399" href="https://heikampen.no/markaminne/prospektkort-katnosa/">
+<div class="media" data-fx="400"><img alt="Prospektkort fra Katnosa, 1909" data-fx="401" src="../../forside/img/minne-prospektkort-katnosa-1909.jpg"/></div>
+<div class="archive__foot" data-fx="402">
+<div data-fx="403">
+<span class="label" data-fx="404">Prospektkort · 1909</span>
+<h3 class="headline" data-fx="405">Katnosa</h3>
+<p data-fx="406">Prospektkort fra en av Nordmarkas mest kjente plasser. Ett av 106 markaminner i samlingen.</p>
+</div>
+<svg class="arrow" data-fx="407"><use data-fx="408" href="#arr"></use></svg>
+</div>
+</a>
+</div>
+</section>
+<footer class="footer" data-fx="409">
+<div data-fx="410"><strong data-fx="411">Heikampen AS</strong> · Oslomarka mellom to permer</div>
+<div data-fx="412">Bøker · Kart · Markaminner · Foreninger og lag</div>
+</footer>
+</main>
+<script data-fx="413">
+(()=>{
+  const root=document.documentElement, body=document.body;
+  const btn=document.querySelector('.menu-btn'), mega=document.getElementById('megameny');
+  const header=document.querySelector('.masthead'), backdrop=document.querySelector('.mm-backdrop');
+  mega.querySelectorAll('.mm-i').forEach((el,i)=>el.style.setProperty('--i',i));
+  const setHdr=()=>root.style.setProperty('--hdr',Math.round(header.getBoundingClientRect().bottom)+'px');
+  const focusables=()=>[btn,...mega.querySelectorAll('a[href],button:not([disabled]),input')].filter(el=>el.offsetParent!==null||el===btn);
+  let open=false;
+  function setOpen(v,{focus=true}={}){
+    open=v; setHdr();
+    root.classList.toggle('menu-open',v); body.classList.toggle('scroll-lock',v);
+    btn.setAttribute('aria-expanded',v); btn.setAttribute('aria-label',v?'Lukk meny':'Åpne meny');
+    mega.setAttribute('aria-hidden',!v); mega.inert=!v;
+    if(v&&focus) setTimeout(()=>mega.querySelector('.mm-main').focus({preventScroll:true}),120);
+    if(!v&&focus) btn.focus({preventScroll:true});
+  }
+  mega.inert=true;
+  btn.addEventListener('click',()=>setOpen(!open));
+  backdrop.addEventListener('click',()=>setOpen(false));
+  document.querySelector('[data-open-search]').addEventListener('click',e=>{e.preventDefault();setOpen(true,{focus:false});setTimeout(()=>mega.querySelector('#mm-q').focus({preventScroll:true}),120)});
+  document.addEventListener('keydown',e=>{
+    if(!open) return;
+    if(e.key==='Escape'){e.preventDefault();setOpen(false);return}
+    if(e.key==='Tab'){const f=focusables(),first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
+  });
+  // ett rolig bilde som skifter med hovedsiden man peker på
+  const figs=[...mega.querySelectorAll('.mm-fig')];
+  const show=i=>figs.forEach(f=>f.classList.toggle('is-on',f.dataset.i==i));
+  mega.querySelectorAll('.mm-main').forEach(a=>{const i=a.dataset.img;a.addEventListener('mouseenter',()=>show(i));a.addEventListener('focus',()=>show(i))});
+  addEventListener('resize',setHdr,{passive:true}); addEventListener('scroll',setHdr,{passive:true}); setHdr();
+  window.__menu={setOpen,show};
+})();
+</script>
+</body>
+</html>

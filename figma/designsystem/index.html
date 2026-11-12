@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+<html lang="nb">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Designsystem – Heikampen</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../../designsystem/../assets/site.css" rel="stylesheet"/>
+<style>
+/* Kun layout for designsystem-siden. Komponentene bruker klassene fra site.css. */
+.ds-page .masthead{position:relative}
+.ds-intro{max-width:62ch;margin:36px 0 0;font-size:17px;line-height:1.6;color:#3d423e}
+.ds-intro p{margin:0 0 1em}
+.ds-section{margin-top:80px;padding-top:8px}
+.ds-section>h2{margin:0 0 28px;padding-bottom:14px;border-bottom:1px solid var(--ink);font:500 36px/1.08 var(--serif);letter-spacing:-.01em}
+.ds-lead{margin:-8px 0 32px;max-width:62ch;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.ds-block{margin-top:56px}
+.ds-block>h2{margin:0 0 22px;font:500 28px/1.12 var(--serif);letter-spacing:-.008em}
+.ds-note{margin:12px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch}
+
+.ds-swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 24px}
+.ds-swatch__chip{height:96px;border:1px solid var(--rule)}
+.ds-swatch__name{margin:12px 0 0;font-weight:600;font-size:15px}
+.ds-swatch__meta{margin:3px 0 0;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ds-swatch__use{margin:6px 0 0;font-size:13.5px;line-height:1.45;color:#3d423e}
+
+.ds-type{display:flex;flex-direction:column;gap:0}
+.ds-type__item{padding:26px 0;border-bottom:1px solid var(--rule)}
+.ds-type__item:first-child{padding-top:0}
+.ds-type__name{margin:0 0 12px;font:600 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ds-type__spec{margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--muted)}
+.ds-type .intro,.ds-type .hero,.ds-type .lead,.ds-type .art-head,.ds-type .item__body,.ds-type .about-hero,.ds-type .section-h,.ds-type .cta,.ds-type .also,.ds-type .sf__head,.ds-type .prose{display:block;margin:0;padding:0;max-width:none;border:0;background:none;position:static;grid:none}
+.ds-type .hero h1,.ds-type .intro h1,.ds-type .art-head h1,.ds-type .item__body h1,.ds-type .about-hero h1{font-size:38px}
+.ds-type .intro h1,.ds-type .about-hero h1{font-size:60px}
+.ds-type .art-head h1{font-size:62px}
+.ds-type .item__body h1{font-size:48px}
+.ds-type .lead__body h2{font-size:40px}
+.ds-type .mm-main__t{font-size:27px}
+.ds-type .nav{display:flex;gap:30px}
+
+.ds-space{display:flex;flex-direction:column;gap:10px;max-width:640px}
+.ds-space__row{display:grid;grid-template-columns:72px 1fr 1fr;align-items:center;gap:16px;font-size:13.5px}
+.ds-space__bar{height:10px;background:var(--ink);justify-self:start}
+.ds-space__name{color:var(--muted);font-variant-numeric:tabular-nums}
+.ds-measures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.ds-measure{padding:18px 20px;border:1px solid var(--rule)}
+.ds-measure strong{display:block;font-size:15px}
+.ds-measure span{display:block;margin-top:4px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.ds-griddemo{margin-top:28px}
+.ds-griddemo .row,.ds-griddemo .grid{margin-top:0}
+.ds-griddemo__label{margin:0 0 12px;font-size:13.5px;color:var(--muted)}
+.ds-ph{background:var(--tint);min-height:72px;border:1px solid var(--rule)}
+
+/* Åpen megameny i dokumentflyt, uten fast posisjon eller skjult tilstand */
+.ds-mega{border:1px solid var(--rule);background:#fff}
+.ds-mega .masthead{position:relative;z-index:2}
+.ds-mega .mega{position:relative;left:auto;right:auto;top:auto;z-index:1;max-height:none;overflow:visible;opacity:1;visibility:visible;transform:none;box-shadow:none}
+.ds-mega .mm-i{opacity:1;transform:none;transition:none}
+.ds-mega .mm-backdrop{display:none}
+
+/* Desktop filterkolonne i dokumentflyt */
+.ds-arch{display:grid;grid-template-columns:250px minmax(0,1fr);gap:56px;align-items:start;border-top:1px solid var(--ink);padding-top:26px}
+.ds-arch .sf{position:relative;top:auto;max-height:none;overflow:visible}
+.ds-arch .sf__foot,.ds-arch .sf__close,.ds-arch .sf-open,.ds-arch .sf-bg{display:none}
+
+/* Mobilfilterpanel vist statisk, uavhengig av skjermbredde */
+.ds-sf-mobile{width:min(400px,100%);background:#fff;border:1px solid var(--rule);box-shadow:24px 0 48px -24px rgba(20,20,20,.25)}
+.ds-sf-mobile .sf{position:relative;top:auto;left:auto;bottom:auto;width:100%;max-height:none;display:flex;flex-direction:column;overflow:hidden;transform:none;visibility:visible;box-shadow:none}
+.ds-sf-mobile .sf__head{margin:0;padding:18px 22px;border-bottom:1px solid var(--rule)}
+.ds-sf-mobile .sf__close{display:grid;place-items:center;width:40px;height:40px;border:0;background:none;border-radius:50%;cursor:pointer}
+.ds-sf-mobile .sf__body{flex:1;overflow:visible;padding:18px 22px}
+.ds-sf-mobile .sf__foot{display:flex;gap:12px;align-items:center;padding:16px 22px;border-top:1px solid var(--rule)}
+
+.ds-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.ds-links{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.ds-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.ds-cards--2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:880px}
+.ds-cards .grid,.ds-cards .row{margin-top:0}
+.ds-cta{max-width:100%}
+.ds-panel{max-width:380px}
+.ds-forms{display:grid;grid-template-columns:minmax(0,320px) minmax(0,280px);gap:40px;align-items:start}
+
+/* Desktop-filteret skal ikke arve sidens faste mobilpanel (translateX -100%). */
+@media (max-width:900px){
+  .ds-swatches,.ds-measures,.ds-cards,.ds-cards--2,.ds-forms,.ds-arch{grid-template-columns:1fr}
+  .ds-section>h2{font-size:30px}
+  .ds-type .intro h1,.ds-type .about-hero h1{font-size:40px}
+  .ds-type .art-head h1{font-size:clamp(38px,8vw,48px)}
+  .ds-type .item__body h1{font-size:34px}
+  .ds-type .hero h1{font-size:31px}
+  .ds-type .lead__body h2{font-size:30px}
+  .ds-type .mm-main__t{font-size:24px}
+  .ds-arch .sf{position:relative!important;top:auto!important;left:auto!important;bottom:auto!important;width:auto!important;max-height:none!important;transform:none!important;visibility:visible!important;display:block!important;overflow:visible!important;box-shadow:none!important}
+  .ds-arch .sf__head{margin:0 0 16px;padding:0;border:0}
+  .ds-arch .sf__close,.ds-arch .sf__foot{display:none!important}
+  .ds-arch .sf__body{padding:0;overflow:visible;flex:none}
+  .ds-sf-mobile .sf{position:relative!important;top:auto!important;left:auto!important;bottom:auto!important;width:100%!important;max-height:none!important;transform:none!important;visibility:visible!important;display:flex!important;overflow:hidden!important;box-shadow:none!important}
+  .ds-type .nav{display:flex!important}
+}
+</style>
+<link href="../assets/import.css" rel="stylesheet"/><style id="fx-page">
+/* Genererte, målte verdier: eksplisitte høyder i stedet for aspect-ratio, heltalls linjehøyde, ekstra tekstbredde */
+@media (max-width:1180px){br.fx-bd{display:none}}
+@media (min-width:601px){br.fx-bm{display:none}}
+@media (min-width:1181px){
+[data-fx="348"]{aspect-ratio:auto!important;height:414.96875px!important}
+[data-fx="419"]{aspect-ratio:auto!important;height:295.984375px!important}
+[data-fx="427"]{aspect-ratio:auto!important;height:296px!important}
+[data-fx="435"]{aspect-ratio:auto!important;height:295.984375px!important}
+[data-fx="445"]{aspect-ratio:auto!important;height:542.484375px!important}
+[data-fx="460"]{aspect-ratio:auto!important;height:360px!important}
+[data-fx="466"]{aspect-ratio:auto!important;height:360px!important}
+[data-fx="472"]{aspect-ratio:auto!important;height:360px!important}
+[data-fx="483"]{aspect-ratio:auto!important;height:384px!important}
+[data-fx="490"]{aspect-ratio:auto!important;height:384px!important}
+[data-fx="500"]{aspect-ratio:auto!important;height:360px!important}
+[data-fx="507"]{aspect-ratio:auto!important;height:360px!important}
+[data-fx="680"]{aspect-ratio:auto!important;height:365.8125px!important}
+[data-fx="686"]{aspect-ratio:auto!important;height:365.828125px!important}
+[data-fx="521"]{line-height:27px!important;padding-bottom:0.6px!important}
+[data-fx="522"]{line-height:20px!important;padding-bottom:0.15px!important}
+[data-fx="523"]{line-height:23px!important;padding-bottom:0.5px!important}
+[data-fx="531"]{line-height:27px!important;padding-bottom:0.6px!important}
+[data-fx="532"]{line-height:20px!important;padding-bottom:0.15px!important}
+[data-fx="533"]{line-height:23px!important;padding-bottom:0.5px!important}
+[data-fx="7"]{margin-right:-4px!important}
+[data-fx="8"]{margin-right:-4px!important}
+[data-fx="12"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="16"]{margin-right:-4px!important}
+[data-fx="17"]{margin-right:-4px!important}
+[data-fx="18"]{margin-right:-4px!important}
+[data-fx="21"]{margin-right:-4px!important}
+[data-fx="22"]{margin-right:-4px!important}
+[data-fx="23"]{margin-right:-4px!important}
+[data-fx="26"]{margin-right:-4px!important}
+[data-fx="27"]{margin-right:-4px!important}
+[data-fx="28"]{margin-right:-4px!important}
+[data-fx="31"]{margin-right:-4px!important}
+[data-fx="32"]{margin-right:-4px!important}
+[data-fx="33"]{margin-right:-4px!important}
+[data-fx="36"]{margin-right:-4px!important}
+[data-fx="37"]{margin-right:-4px!important}
+[data-fx="38"]{margin-right:-4px!important}
+[data-fx="41"]{margin-right:-4px!important}
+[data-fx="42"]{margin-right:-4px!important}
+[data-fx="43"]{margin-right:-4px!important}
+[data-fx="46"]{margin-right:-4px!important}
+[data-fx="47"]{margin-right:-4px!important}
+[data-fx="48"]{margin-right:-4px!important}
+[data-fx="51"]{margin-right:-4px!important}
+[data-fx="52"]{margin-right:-4px!important}
+[data-fx="53"]{margin-right:-4px!important}
+[data-fx="56"]{margin-right:-4px!important}
+[data-fx="57"]{margin-right:-4px!important}
+[data-fx="58"]{margin-right:-4px!important}
+[data-fx="61"]{margin-right:-4px!important}
+[data-fx="62"]{margin-right:-4px!important}
+[data-fx="63"]{margin-right:-4px!important}
+[data-fx="66"]{margin-right:-4px!important}
+[data-fx="67"]{margin-right:-4px!important}
+[data-fx="68"]{margin-right:-4px!important}
+[data-fx="71"]{margin-right:-4px!important}
+[data-fx="72"]{margin-right:-4px!important}
+[data-fx="73"]{margin-right:-4px!important}
+[data-fx="76"]{margin-right:-4px!important}
+[data-fx="77"]{margin-right:-4px!important}
+[data-fx="78"]{margin-right:-4px!important}
+[data-fx="81"]{margin-right:-4px!important}
+[data-fx="82"]{margin-right:-4px!important}
+[data-fx="83"]{margin-right:-4px!important}
+[data-fx="86"]{margin-right:-4px!important}
+[data-fx="87"]{margin-right:-4px!important}
+[data-fx="88"]{margin-right:-4px!important}
+[data-fx="91"]{margin-right:-4px!important}
+[data-fx="92"]{margin-right:-4px!important}
+[data-fx="93"]{margin-right:-4px!important}
+[data-fx="96"]{margin-right:-4px!important}
+[data-fx="97"]{margin-right:-4px!important}
+[data-fx="98"]{margin-right:-4px!important}
+[data-fx="101"]{margin-right:-4px!important}
+[data-fx="102"]{margin-right:-4px!important}
+[data-fx="103"]{margin-right:-4px!important}
+[data-fx="106"]{margin-right:-4px!important}
+[data-fx="107"]{margin-right:-4px!important}
+[data-fx="108"]{margin-right:-4px!important}
+[data-fx="111"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="114"]{margin-right:-4px!important}
+[data-fx="115"]{margin-right:-4px!important}
+[data-fx="116"]{margin-right:-4px!important}
+[data-fx="118"]{margin-right:-4px!important}
+[data-fx="119"]{margin-right:-4px!important}
+[data-fx="120"]{margin-right:-4px!important}
+[data-fx="122"]{margin-right:-4px!important}
+[data-fx="124"]{margin-right:-4px!important}
+[data-fx="125"]{margin-right:-4px!important}
+[data-fx="127"]{margin-right:-4px!important}
+[data-fx="129"]{margin-right:-4px!important}
+[data-fx="130"]{margin-right:-4px!important}
+[data-fx="132"]{margin-right:-4px!important}
+[data-fx="134"]{margin-right:-4px!important}
+[data-fx="135"]{margin-right:-4px!important}
+[data-fx="137"]{margin-right:-4px!important}
+[data-fx="139"]{margin-right:-4px!important}
+[data-fx="140"]{margin-right:-4px!important}
+[data-fx="142"]{margin-right:-4px!important}
+[data-fx="144"]{margin-right:-4px!important}
+[data-fx="145"]{margin-right:-4px!important}
+[data-fx="147"]{margin-right:-4px!important}
+[data-fx="148"]{margin-right:-4px!important}
+[data-fx="149"]{margin-right:-4px!important}
+[data-fx="151"]{margin-right:-4px!important}
+[data-fx="152"]{margin-right:-4px!important}
+[data-fx="153"]{margin-right:-4px!important}
+[data-fx="155"]{margin-right:-4px!important}
+[data-fx="157"]{margin-right:-4px!important}
+[data-fx="158"]{margin-right:-4px!important}
+[data-fx="160"]{margin-right:-4px!important}
+[data-fx="162"]{margin-right:-4px!important}
+[data-fx="163"]{margin-right:-4px!important}
+[data-fx="165"]{margin-right:-4px!important}
+[data-fx="166"]{margin-right:-4px!important}
+[data-fx="167"]{margin-right:-4px!important}
+[data-fx="169"]{margin-right:-4px!important}
+[data-fx="170"]{margin-right:-4px!important}
+[data-fx="171"]{margin-right:-4px!important}
+[data-fx="173"]{margin-right:-4px!important}
+[data-fx="179"]{margin-right:-4px!important}
+[data-fx="181"]{margin-right:-4px!important}
+[data-fx="183"]{margin-right:-4px!important}
+[data-fx="186"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="189"]{margin-right:-4px!important}
+[data-fx="190"]{margin-right:-4px!important}
+[data-fx="192"]{margin-right:-4px!important}
+[data-fx="193"]{margin-right:-4px!important}
+[data-fx="195"]{margin-right:-4px!important}
+[data-fx="196"]{margin-right:-4px!important}
+[data-fx="198"]{margin-right:-4px!important}
+[data-fx="199"]{margin-right:-4px!important}
+[data-fx="201"]{margin-right:-4px!important}
+[data-fx="202"]{margin-right:-4px!important}
+[data-fx="204"]{margin-right:-4px!important}
+[data-fx="205"]{margin-right:-4px!important}
+[data-fx="207"]{margin-right:-4px!important}
+[data-fx="250"]{margin-right:-4px!important}
+[data-fx="251"]{margin-right:-4px!important}
+[data-fx="257"]{margin-right:-4px!important}
+[data-fx="258"]{margin-right:-4px!important}
+[data-fx="266"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="268"]{margin-right:-4px!important}
+[data-fx="273"]{margin-right:-4px!important}
+[data-fx="294"]{margin-right:-4px!important}
+[data-fx="300"]{margin-right:-4px!important}
+[data-fx="377"]{margin-right:-4px!important}
+[data-fx="383"]{margin-right:-4px!important}
+[data-fx="397"]{margin-right:-4px!important}
+[data-fx="410"]{margin-right:-4px!important}
+[data-fx="416"]{margin-right:-4px!important}
+[data-fx="422"]{margin-right:-4px!important}
+[data-fx="423"]{margin-right:-4px!important}
+[data-fx="425"]{margin-right:-4px!important}
+[data-fx="430"]{margin-right:-4px!important}
+[data-fx="431"]{margin-right:-4px!important}
+[data-fx="432"]{margin-right:-4px!important}
+[data-fx="433"]{margin-right:-4px!important}
+[data-fx="438"]{margin-right:-4px!important}
+[data-fx="439"]{margin-right:-4px!important}
+[data-fx="440"]{margin-right:-4px!important}
+[data-fx="441"]{margin-right:-4px!important}
+[data-fx="443"]{margin-right:-4px!important}
+[data-fx="448"]{margin-right:-4px!important}
+[data-fx="449"]{margin-right:-4px!important}
+[data-fx="450"]{margin-right:-4px!important}
+[data-fx="457"]{margin-right:-4px!important}
+[data-fx="463"]{margin-right:-4px!important}
+[data-fx="464"]{margin-right:-4px!important}
+[data-fx="469"]{margin-right:-4px!important}
+[data-fx="470"]{margin-right:-4px!important}
+[data-fx="477"]{margin-right:-4px!important}
+[data-fx="478"]{margin-right:-4px!important}
+[data-fx="480"]{margin-right:-4px!important}
+[data-fx="486"]{margin-right:-4px!important}
+[data-fx="488"]{margin-right:-4px!important}
+[data-fx="493"]{margin-right:-4px!important}
+[data-fx="494"]{margin-right:-4px!important}
+[data-fx="495"]{margin-right:-4px!important}
+[data-fx="497"]{margin-right:-4px!important}
+[data-fx="503"]{margin-right:-4px!important}
+[data-fx="504"]{margin-right:-4px!important}
+[data-fx="505"]{margin-right:-4px!important}
+[data-fx="510"]{margin-right:-4px!important}
+[data-fx="511"]{margin-right:-4px!important}
+[data-fx="512"]{margin-right:-4px!important}
+[data-fx="514"]{margin-right:-4px!important}
+[data-fx="521"]{margin-right:-4px!important}
+[data-fx="522"]{margin-right:-4px!important}
+[data-fx="531"]{margin-right:-4px!important}
+[data-fx="532"]{margin-right:-4px!important}
+[data-fx="537"]{margin-right:-4px!important}
+[data-fx="548"]{margin-right:-4px!important}
+[data-fx="549"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="683"]{margin-right:-4px!important}
+[data-fx="684"]{margin-right:-4px!important}
+[data-fx="689"]{margin-right:-4px!important}
+[data-fx="690"]{margin-right:-4px!important}
+[data-fx="692"]{margin-right:-4px!important}
+[data-fx="693"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="766"]{margin-right:-4px!important}
+[data-fx="767"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="772"]{margin-right:-4px!important}
+[data-fx="775"]{margin-right:-4px!important}
+[data-fx="790"]{margin-right:-4px!important}
+[data-fx="794"]{margin-right:-4px!important}
+[data-fx="799"]{margin-right:-4px!important}
+[data-fx="800"]{margin-right:-4px!important;max-width:616.683px!important}
+
+}
+@media (max-width:600px){
+[data-fx="419"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="427"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="435"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="445"]{aspect-ratio:auto!important;height:262.5px!important}
+[data-fx="460"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="466"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="472"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="483"]{aspect-ratio:auto!important;height:222.65625px!important}
+[data-fx="490"]{aspect-ratio:auto!important;height:222.65625px!important}
+[data-fx="500"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="507"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="680"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="686"]{aspect-ratio:auto!important;height:208.75px!important}
+[data-fx="522"]{line-height:20px!important;padding-bottom:0.15px!important}
+[data-fx="523"]{line-height:23px!important;padding-bottom:0.5px!important}
+[data-fx="532"]{line-height:20px!important;padding-bottom:0.15px!important}
+[data-fx="533"]{line-height:23px!important;padding-bottom:0.5px!important}
+[data-fx="7"]{margin-right:-4px!important}
+[data-fx="8"]{margin-right:-4px!important}
+[data-fx="12"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="16"]{margin-right:-4px!important}
+[data-fx="17"]{margin-right:-4px!important}
+[data-fx="18"]{margin-right:-4px!important}
+[data-fx="21"]{margin-right:-4px!important}
+[data-fx="22"]{margin-right:-4px!important}
+[data-fx="23"]{margin-right:-4px!important}
+[data-fx="26"]{margin-right:-4px!important}
+[data-fx="27"]{margin-right:-4px!important}
+[data-fx="28"]{margin-right:-4px!important}
+[data-fx="31"]{margin-right:-4px!important}
+[data-fx="32"]{margin-right:-4px!important}
+[data-fx="33"]{margin-right:-4px!important}
+[data-fx="36"]{margin-right:-4px!important}
+[data-fx="37"]{margin-right:-4px!important}
+[data-fx="38"]{margin-right:-4px!important}
+[data-fx="41"]{margin-right:-4px!important}
+[data-fx="42"]{margin-right:-4px!important}
+[data-fx="43"]{margin-right:-4px!important}
+[data-fx="46"]{margin-right:-4px!important}
+[data-fx="47"]{margin-right:-4px!important}
+[data-fx="48"]{margin-right:-4px!important}
+[data-fx="51"]{margin-right:-4px!important}
+[data-fx="52"]{margin-right:-4px!important}
+[data-fx="53"]{margin-right:-4px!important}
+[data-fx="56"]{margin-right:-4px!important}
+[data-fx="57"]{margin-right:-4px!important}
+[data-fx="58"]{margin-right:-4px!important}
+[data-fx="61"]{margin-right:-4px!important}
+[data-fx="62"]{margin-right:-4px!important}
+[data-fx="63"]{margin-right:-4px!important}
+[data-fx="66"]{margin-right:-4px!important}
+[data-fx="67"]{margin-right:-4px!important}
+[data-fx="68"]{margin-right:-4px!important}
+[data-fx="71"]{margin-right:-4px!important}
+[data-fx="72"]{margin-right:-4px!important}
+[data-fx="73"]{margin-right:-4px!important}
+[data-fx="76"]{margin-right:-4px!important}
+[data-fx="77"]{margin-right:-4px!important}
+[data-fx="78"]{margin-right:-4px!important}
+[data-fx="81"]{margin-right:-4px!important}
+[data-fx="82"]{margin-right:-4px!important}
+[data-fx="83"]{margin-right:-4px!important}
+[data-fx="86"]{margin-right:-4px!important}
+[data-fx="87"]{margin-right:-4px!important}
+[data-fx="88"]{margin-right:-4px!important}
+[data-fx="91"]{margin-right:-4px!important}
+[data-fx="92"]{margin-right:-4px!important}
+[data-fx="93"]{margin-right:-4px!important}
+[data-fx="96"]{margin-right:-4px!important}
+[data-fx="97"]{margin-right:-4px!important}
+[data-fx="98"]{margin-right:-4px!important}
+[data-fx="101"]{margin-right:-4px!important}
+[data-fx="102"]{margin-right:-4px!important}
+[data-fx="103"]{margin-right:-4px!important}
+[data-fx="106"]{margin-right:-4px!important}
+[data-fx="107"]{margin-right:-4px!important}
+[data-fx="108"]{margin-right:-4px!important}
+[data-fx="111"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="114"]{margin-right:-4px!important}
+[data-fx="115"]{margin-right:-4px!important}
+[data-fx="116"]{margin-right:-2px!important}
+[data-fx="118"]{margin-right:-4px!important}
+[data-fx="119"]{margin-right:-4px!important;max-width:194px!important}
+[data-fx="120"]{margin-right:-4px!important}
+[data-fx="122"]{margin-right:-4px!important}
+[data-fx="124"]{margin-right:-4px!important}
+[data-fx="125"]{margin-right:-4px!important}
+[data-fx="127"]{margin-right:-4px!important}
+[data-fx="129"]{margin-right:-4px!important}
+[data-fx="130"]{margin-right:-4px!important}
+[data-fx="132"]{margin-right:-4px!important}
+[data-fx="134"]{margin-right:-4px!important}
+[data-fx="135"]{margin-right:-4px!important}
+[data-fx="137"]{margin-right:-4px!important}
+[data-fx="139"]{margin-right:-4px!important}
+[data-fx="140"]{margin-right:-4px!important}
+[data-fx="142"]{margin-right:-4px!important}
+[data-fx="144"]{margin-right:-4px!important}
+[data-fx="145"]{margin-right:-4px!important}
+[data-fx="147"]{margin-right:-4px!important}
+[data-fx="148"]{margin-right:-4px!important}
+[data-fx="149"]{margin-right:-4px!important}
+[data-fx="151"]{margin-right:-4px!important}
+[data-fx="152"]{margin-right:-4px!important}
+[data-fx="153"]{margin-right:-4px!important}
+[data-fx="155"]{margin-right:-4px!important}
+[data-fx="157"]{margin-right:-4px!important}
+[data-fx="158"]{margin-right:-4px!important}
+[data-fx="160"]{margin-right:-4px!important}
+[data-fx="162"]{margin-right:-4px!important}
+[data-fx="163"]{margin-right:-4px!important}
+[data-fx="165"]{margin-right:-4px!important}
+[data-fx="166"]{margin-right:-4px!important}
+[data-fx="167"]{margin-right:-4px!important}
+[data-fx="169"]{margin-right:-4px!important}
+[data-fx="170"]{margin-right:-4px!important}
+[data-fx="171"]{margin-right:-4px!important}
+[data-fx="173"]{margin-right:-4px!important}
+[data-fx="179"]{margin-right:-4px!important}
+[data-fx="181"]{margin-right:-4px!important}
+[data-fx="183"]{margin-right:-4px!important}
+[data-fx="186"]{margin-right:-4px!important;max-width:707.455px!important}
+[data-fx="189"]{margin-right:-4px!important}
+[data-fx="190"]{margin-right:-4px!important}
+[data-fx="192"]{margin-right:-4px!important}
+[data-fx="193"]{margin-right:-4px!important}
+[data-fx="195"]{margin-right:-4px!important}
+[data-fx="196"]{margin-right:-4px!important}
+[data-fx="198"]{margin-right:-4px!important}
+[data-fx="199"]{margin-right:-4px!important}
+[data-fx="201"]{margin-right:-4px!important}
+[data-fx="202"]{margin-right:-4px!important}
+[data-fx="204"]{margin-right:-4px!important}
+[data-fx="205"]{margin-right:-4px!important}
+[data-fx="207"]{margin-right:-4px!important}
+[data-fx="250"]{margin-right:-4px!important}
+[data-fx="251"]{margin-right:-4px!important}
+[data-fx="257"]{margin-right:-4px!important}
+[data-fx="258"]{margin-right:-3px!important}
+[data-fx="266"]{margin-right:-2px!important;max-width:705.455px!important}
+[data-fx="268"]{margin-right:-4px!important}
+[data-fx="274"]{margin-right:-4px!important;max-width:194px!important}
+[data-fx="294"]{margin-right:-4px!important}
+[data-fx="300"]{margin-right:-4px!important}
+[data-fx="301"]{margin-right:-4px!important;max-width:194px!important}
+[data-fx="377"]{margin-right:-4px!important}
+[data-fx="379"]{margin-right:-4px!important}
+[data-fx="381"]{margin-right:-4px!important}
+[data-fx="383"]{margin-right:-4px!important}
+[data-fx="397"]{margin-right:-4px!important}
+[data-fx="410"]{margin-right:-4px!important}
+[data-fx="416"]{margin-right:-4px!important}
+[data-fx="422"]{margin-right:-4px!important}
+[data-fx="423"]{margin-right:-4px!important}
+[data-fx="425"]{margin-right:-4px!important}
+[data-fx="430"]{margin-right:-4px!important}
+[data-fx="431"]{margin-right:-4px!important}
+[data-fx="432"]{margin-right:-4px!important}
+[data-fx="433"]{margin-right:-4px!important}
+[data-fx="438"]{margin-right:-4px!important}
+[data-fx="439"]{margin-right:-4px!important}
+[data-fx="440"]{margin-right:-4px!important}
+[data-fx="441"]{margin-right:-4px!important}
+[data-fx="443"]{margin-right:-4px!important}
+[data-fx="448"]{margin-right:-4px!important}
+[data-fx="449"]{margin-right:-4px!important}
+[data-fx="450"]{margin-right:-4px!important}
+[data-fx="457"]{margin-right:-4px!important}
+[data-fx="463"]{margin-right:-4px!important}
+[data-fx="464"]{margin-right:-4px!important}
+[data-fx="469"]{margin-right:-4px!important}
+[data-fx="470"]{margin-right:-4px!important}
+[data-fx="477"]{margin-right:-4px!important}
+[data-fx="478"]{margin-right:-4px!important}
+[data-fx="480"]{margin-right:-4px!important}
+[data-fx="486"]{margin-right:-4px!important}
+[data-fx="488"]{margin-right:-4px!important}
+[data-fx="493"]{margin-right:-4px!important}
+[data-fx="494"]{margin-right:-4px!important}
+[data-fx="495"]{margin-right:-4px!important}
+[data-fx="497"]{margin-right:-4px!important}
+[data-fx="503"]{margin-right:-4px!important}
+[data-fx="504"]{margin-right:-4px!important}
+[data-fx="505"]{margin-right:-4px!important}
+[data-fx="510"]{margin-right:-4px!important}
+[data-fx="511"]{margin-right:-4px!important}
+[data-fx="512"]{margin-right:-4px!important}
+[data-fx="514"]{margin-right:-4px!important}
+[data-fx="521"]{margin-right:-4px!important}
+[data-fx="522"]{margin-right:-4px!important}
+[data-fx="531"]{margin-right:-4px!important}
+[data-fx="532"]{margin-right:-4px!important}
+[data-fx="537"]{margin-right:-4px!important}
+[data-fx="548"]{margin-right:-4px!important}
+[data-fx="549"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="683"]{margin-right:-4px!important}
+[data-fx="684"]{margin-right:-4px!important}
+[data-fx="689"]{margin-right:-4px!important}
+[data-fx="690"]{margin-right:-4px!important}
+[data-fx="692"]{margin-right:-4px!important}
+[data-fx="693"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="766"]{margin-right:-4px!important}
+[data-fx="767"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="772"]{margin-right:-4px!important}
+[data-fx="775"]{margin-right:-4px!important}
+[data-fx="790"]{margin-right:-4px!important}
+[data-fx="793"]{margin-right:-4px!important}
+[data-fx="794"]{margin-right:-4px!important}
+[data-fx="799"]{margin-right:-4px!important}
+[data-fx="800"]{margin-right:-4px!important;max-width:616.683px!important}
+[data-fx="838"]{margin-right:-4px!important}
+[data-fx="840"]{margin-right:-4px!important}
+}
+</style></head>
+<body class="ds-page" data-fx="0">
+<svg aria-hidden="true" data-fx="1" height="0" style="position:absolute" width="0">
+<symbol data-fx="2" id="arr" viewbox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" data-fx="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></symbol>
+</svg>
+<main class="wrap" data-fx="4">
+<header class="intro" data-fx="5">
+<div data-fx="6">
+<span class="label" data-fx="7">Heikampen.no</span>
+<h1 data-fx="8">Designsystem</h1>
+</div>
+<p data-fx="9">Farger, typografi, avstand og komponenter fra skissene, slik at de kan importeres som stiler og komponenter i Figma.</p>
+</header>
+<!-- =========================================================
+     Farger
+     ========================================================= -->
+<section class="ds-section" data-fx="10" id="farger">
+<h2 data-fx="11">Farger</h2>
+<p class="ds-lead" data-fx="12">Navngitte token fra :root i site.css, og øvrige farger som faktisk er i bruk. Sidebakgrunnen er hvit. Den varme tonen brukes bare inne i paneler og på objektflater.</p>
+<div class="ds-swatches" data-fx="13">
+<div class="ds-swatch" data-fx="14">
+<div class="ds-swatch__chip" data-fx="15" style="background:var(--ink)"></div>
+<div class="ds-swatch__name" data-fx="16">Ink</div>
+<div class="ds-swatch__meta" data-fx="17">--ink · #1B1F1C</div>
+<div class="ds-swatch__use" data-fx="18">Brødtekst, overskrifter og rammer i toppen og bunnen.</div>
+</div>
+<div class="ds-swatch" data-fx="19">
+<div class="ds-swatch__chip" data-fx="20" style="background:var(--muted)"></div>
+<div class="ds-swatch__name" data-fx="21">Dempet</div>
+<div class="ds-swatch__meta" data-fx="22">--muted · #5D625E</div>
+<div class="ds-swatch__use" data-fx="23">Metadata, hjelpetekst, bunntekst og sekundære ledetekster.</div>
+</div>
+<div class="ds-swatch" data-fx="24">
+<div class="ds-swatch__chip" data-fx="25" style="background:var(--rule)"></div>
+<div class="ds-swatch__name" data-fx="26">Linje</div>
+<div class="ds-swatch__meta" data-fx="27">--rule · #D9D6CF</div>
+<div class="ds-swatch__use" data-fx="28">Skillelinjer, kortkanter og rammer på felt og menyer.</div>
+</div>
+<div class="ds-swatch" data-fx="29">
+<div class="ds-swatch__chip" data-fx="30" style="background:var(--green)"></div>
+<div class="ds-swatch__name" data-fx="31">Grønn</div>
+<div class="ds-swatch__meta" data-fx="32">--green · #326E41</div>
+<div class="ds-swatch__use" data-fx="33">Hovedknapp, etiketter, topplistetall og aktiv avkrysning.</div>
+</div>
+<div class="ds-swatch" data-fx="34">
+<div class="ds-swatch__chip" data-fx="35" style="background:var(--green-dark)"></div>
+<div class="ds-swatch__name" data-fx="36">Grønn mørk</div>
+<div class="ds-swatch__meta" data-fx="37">--green-dark · #24502F</div>
+<div class="ds-swatch__use" data-fx="38">Hover på knapper, korttitler og lenker.</div>
+</div>
+<div class="ds-swatch" data-fx="39">
+<div class="ds-swatch__chip" data-fx="40" style="background:var(--red)"></div>
+<div class="ds-swatch__name" data-fx="41">Rød</div>
+<div class="ds-swatch__meta" data-fx="42">--red · #C9231E</div>
+<div class="ds-swatch__use" data-fx="43">Bare i ordmerket Heikampen. Ikke til knapper eller brødtekst.</div>
+</div>
+<div class="ds-swatch" data-fx="44">
+<div class="ds-swatch__chip" data-fx="45" style="background:var(--tint)"></div>
+<div class="ds-swatch__name" data-fx="46">Tone</div>
+<div class="ds-swatch__meta" data-fx="47">--tint · #F6F3EE</div>
+<div class="ds-swatch__use" data-fx="48">Bare i paneler, teaserflater og bakgrunn for bok- og kartomslag.</div>
+</div>
+<div class="ds-swatch" data-fx="49">
+<div class="ds-swatch__chip" data-fx="50" style="background:var(--bg)"></div>
+<div class="ds-swatch__name" data-fx="51">Bakgrunn</div>
+<div class="ds-swatch__meta" data-fx="52">--bg · #FFFFFF</div>
+<div class="ds-swatch__use" data-fx="53">Sidebakgrunn. Brukes også på åpne menyer og felt.</div>
+</div>
+<div class="ds-swatch" data-fx="54">
+<div class="ds-swatch__chip" data-fx="55" style="background:#E9E6E0"></div>
+<div class="ds-swatch__name" data-fx="56">Mediaflate</div>
+<div class="ds-swatch__meta" data-fx="57">#E9E6E0</div>
+<div class="ds-swatch__use" data-fx="58">Bakgrunn i bildefelt før bildet er lastet, og i hero.</div>
+</div>
+<div class="ds-swatch" data-fx="59">
+<div class="ds-swatch__chip" data-fx="60" style="background:#ECE9E3"></div>
+<div class="ds-swatch__name" data-fx="61">Menyflate</div>
+<div class="ds-swatch__meta" data-fx="62">#ECE9E3</div>
+<div class="ds-swatch__use" data-fx="63">Bakgrunn bak hoverbildet i megamenyen.</div>
+</div>
+<div class="ds-swatch" data-fx="64">
+<div class="ds-swatch__chip" data-fx="65" style="background:#3D423E"></div>
+<div class="ds-swatch__name" data-fx="66">Ingress</div>
+<div class="ds-swatch__meta" data-fx="67">#3D423E</div>
+<div class="ds-swatch__use" data-fx="68">Ingress, hero-dek og introtekst på undersidene.</div>
+</div>
+<div class="ds-swatch" data-fx="69">
+<div class="ds-swatch__chip" data-fx="70" style="background:#202421"></div>
+<div class="ds-swatch__name" data-fx="71">Artikkeltekst</div>
+<div class="ds-swatch__meta" data-fx="72">#202421</div>
+<div class="ds-swatch__use" data-fx="73">Brødtekst i artikkelkroppen (.prose).</div>
+</div>
+<div class="ds-swatch" data-fx="74">
+<div class="ds-swatch__chip" data-fx="75" style="background:#4A4F4B"></div>
+<div class="ds-swatch__name" data-fx="76">Korttekst</div>
+<div class="ds-swatch__meta" data-fx="77">#4A4F4B</div>
+<div class="ds-swatch__use" data-fx="78">Ingress i artikkelkort og organisasjonskort.</div>
+</div>
+<div class="ds-swatch" data-fx="79">
+<div class="ds-swatch__chip" data-fx="80" style="background:#2C302D"></div>
+<div class="ds-swatch__name" data-fx="81">Ingress forening</div>
+<div class="ds-swatch__meta" data-fx="82">#2C302D</div>
+<div class="ds-swatch__use" data-fx="83">Lede på siden til en forening (.lede).</div>
+</div>
+<div class="ds-swatch" data-fx="84">
+<div class="ds-swatch__chip" data-fx="85" style="background:#868A86"></div>
+<div class="ds-swatch__name" data-fx="86">Plassholder</div>
+<div class="ds-swatch__meta" data-fx="87">#868A86</div>
+<div class="ds-swatch__use" data-fx="88">Plassholdertekst i søkefelt. I megamenyen brukes #8D918D.</div>
+</div>
+<div class="ds-swatch" data-fx="89">
+<div class="ds-swatch__chip" data-fx="90" style="background:#8F938F"></div>
+<div class="ds-swatch__name" data-fx="91">Avkrysningsramme</div>
+<div class="ds-swatch__meta" data-fx="92">#8F938F</div>
+<div class="ds-swatch__use" data-fx="93">Ramme på avmerkingsboks før den er huket av.</div>
+</div>
+<div class="ds-swatch" data-fx="94">
+<div class="ds-swatch__chip" data-fx="95" style="background:#A9A69F"></div>
+<div class="ds-swatch__name" data-fx="96">Kant, hover</div>
+<div class="ds-swatch__meta" data-fx="97">#A9A69F</div>
+<div class="ds-swatch__use" data-fx="98">Hoverkant på filterknapper.</div>
+</div>
+<div class="ds-swatch" data-fx="99">
+<div class="ds-swatch__chip" data-fx="100" style="background:#B5B2AB"></div>
+<div class="ds-swatch__name" data-fx="101">Brødsmuleskille</div>
+<div class="ds-swatch__meta" data-fx="102">#B5B2AB</div>
+<div class="ds-swatch__use" data-fx="103">Skråstrek mellom ledd i brødsmulene.</div>
+</div>
+<div class="ds-swatch" data-fx="104">
+<div class="ds-swatch__chip" data-fx="105" style="background:#C4C1BA"></div>
+<div class="ds-swatch__name" data-fx="106">Inaktiv bokstav</div>
+<div class="ds-swatch__meta" data-fx="107">#C4C1BA</div>
+<div class="ds-swatch__use" data-fx="108">Bokstaver uten treff i A–Å-listen på foreningssiden.</div>
+</div>
+</div>
+</section>
+<!-- =========================================================
+     Typografi
+     ========================================================= -->
+<section class="ds-section" data-fx="109" id="typografi">
+<h2 data-fx="110">Typografi</h2>
+<p class="ds-lead" data-fx="111">Overskrifter settes i Newsreader 500. Brødtekst, menyer og knapper settes i Plus Jakarta Sans. Prøvene bruker de ekte klassene. Der mobilstørrelsen er en annen, står den etter skråstrek.</p>
+<div class="ds-type" data-fx="112">
+<div class="ds-type__item" data-fx="113">
+<h3 class="ds-type__name" data-fx="114">Ordmerke</h3>
+<div class="brand__name" data-fx="115">Heikampen</div>
+<p class="ds-type__spec" data-fx="116">Newsreader 500 · 34–54 px / 28 px mobil · linjehøyde 0,95 · bokstavmellomrom 0,035 em · versaler · farge --red</p>
+</div>
+<div class="ds-type__item" data-fx="117">
+<h3 class="ds-type__name" data-fx="118">Slagord under logo</h3>
+<div class="brand__tag" data-fx="119">Bøker, kart, mennesker og historier fra Oslomarka</div>
+<p class="ds-type__spec" data-fx="120">Plus Jakarta Sans 600 · 11,5 px / 9,5 px mobil · bokstavmellomrom 0,16 em / 0,10 em mobil · versaler · farge --muted</p>
+</div>
+<div class="ds-type__item" data-fx="121">
+<h3 class="ds-type__name" data-fx="122">Overskrift 1 · Underside</h3>
+<header class="intro" data-fx="123"><h1 data-fx="124">Bøkene om Oslomarka</h1></header>
+<p class="ds-type__spec" data-fx="125">.intro h1 · Newsreader 500 · 40–60 px / 40 px mobil · linjehøyde 1,02 · bokstavmellomrom −0,015 em. Samme stil på .about-hero h1.</p>
+</div>
+<div class="ds-type__item" data-fx="126">
+<h3 class="ds-type__name" data-fx="127">Overskrift 1 · Artikkel</h3>
+<header class="art-head" data-fx="128"><h1 data-fx="129">Korpås-Olsen: Eneboer og preparant i Østmarka</h1></header>
+<p class="ds-type__spec" data-fx="130">.art-head h1 · Newsreader 500 · 38–62 px · linjehøyde 1,03 · bokstavmellomrom −0,015 em</p>
+</div>
+<div class="ds-type__item" data-fx="131">
+<h3 class="ds-type__name" data-fx="132">Overskrift 1 · Objektside</h3>
+<div class="item__body" data-fx="133"><h1 data-fx="134">På gamle veier og nye stier i Oslomarka</h1></div>
+<p class="ds-type__spec" data-fx="135">.item__body h1 · Newsreader 500 · 34–48 px · linjehøyde 1,06 · bokstavmellomrom −0,012 em</p>
+</div>
+<div class="ds-type__item" data-fx="136">
+<h3 class="ds-type__name" data-fx="137">Overskrift 1 · Hero</h3>
+<div class="hero" data-fx="138"><h1 data-fx="139">På vandring i Oslomarka i 1951</h1></div>
+<p class="ds-type__spec" data-fx="140">.hero h1 · Newsreader 500 · 28–38 px / 31 px mobil · linjehøyde 1,10 · bokstavmellomrom −0,012 em</p>
+</div>
+<div class="ds-type__item" data-fx="141">
+<h3 class="ds-type__name" data-fx="142">Overskrift 2</h3>
+<div class="section-h" data-fx="143"><h2 data-fx="144">Flere bøker fra samme forfatter</h2></div>
+<p class="ds-type__spec" data-fx="145">.section-h h2 · Newsreader 500 · 28 px / 24 px mobil · linjehøyde 1,10. .prose h2 er 30 px / 26 px mobil. .about h2 er 34 px. .year h2 er 30 px.</p>
+</div>
+<div class="ds-type__item" data-fx="146">
+<h3 class="ds-type__name" data-fx="147">Overskrift 3 · Korttittel</h3>
+<h3 class="headline obj__t" data-fx="148" data-fxc="">På gamle veier og nye stier i Oslomarka</h3>
+<p class="ds-type__spec" data-fx="149">.obj__t · Newsreader 500 · 19 px / 16,5 px mobil · linjehøyde 1,22. Artikkelkort .acard .headline er 23 px / <br class="fx-bm"/>1,18. Rad med tre .row--3 .headline er 25 px / 1,16. Rad <br class="fx-bm"/>med fire .row--4 .headline er 21 px / 18 px mobil.</p>
+</div>
+<div class="ds-type__item" data-fx="150">
+<h3 class="ds-type__name" data-fx="151">Tittel i megameny</h3>
+<span class="mm-main__t" data-fx="152">Foreninger og lag</span>
+<p class="ds-type__spec" data-fx="153">.mm-main__t · Newsreader 500 · 22–27 px / 24 px mobil · linjehøyde 1,15</p>
+</div>
+<div class="ds-type__item" data-fx="154">
+<h3 class="ds-type__name" data-fx="155">Ingress</h3>
+<div class="art-head" data-fx="156"><p class="dek" data-fx="157">Olaf Olsen (1874–1952) gikk under navnet Korpås-Olsen og hadde sin anonyme tilværelse ikke mange hundre meter fra der mengder av hovedstadens turfolk nå legger sin søndagstur.</p></div>
+<p class="ds-type__spec" data-fx="158">.art-head .dek · Plus Jakarta Sans 400 · 20 px / 18 px mobil · linjehøyde 1,55 · farge #3D423E. .intro p er 17 px / 16 px mobil. .hero__dek er 16 px / 15,5 px mobil.</p>
+</div>
+<div class="ds-type__item" data-fx="159">
+<h3 class="ds-type__name" data-fx="160">Brødtekst</h3>
+<div class="prose" data-fx="161"><p data-fx="162">Heikampen samler bøker, kart, <br class="fx-bm"/>markaminner og historier fra Oslomarka. Teksten settes i Plus Jakarta Sans, med jevn linjelengde og god linjeavstand slik at <br class="fx-bm"/>lengre artikler er behagelige å lese.</p></div>
+<p class="ds-type__spec" data-fx="163">.prose · Plus Jakarta Sans 400 · 18 px / 17 px mobil · linjehøyde 1,72 · farge #202421. Vanlig brødtekst på <br class="fx-bm"/>siden er 16 px / linjehøyde 1,55 · farge --ink.</p>
+</div>
+<div class="ds-type__item" data-fx="164">
+<h3 class="ds-type__name" data-fx="165">Liten tekst / metadata</h3>
+<div class="meta" data-fx="166">Arne Henrik Frogh · 10. september 2026</div>
+<p class="ds-type__spec" data-fx="167">.meta · Plus Jakarta Sans 400 · 13 px · farge --muted. .obj__m er 13,5 px / 12,5 px mobil. .hero__credit og bildetekst er 12–13 px.</p>
+</div>
+<div class="ds-type__item" data-fx="168">
+<h3 class="ds-type__name" data-fx="169">Etikett / kicker</h3>
+<span class="label" data-fx="170">Markahistorie</span>
+<p class="ds-type__spec" data-fx="171">.label · Plus Jakarta Sans 700 · 11,5 px / 10,5 px i trange rader · bokstavmellomrom 0,14 em · versaler · farge --green. .panel__title og .mm-label er 11–12 px, 700, bokstavmellomrom 0,16 em.</p>
+</div>
+<div class="ds-type__item" data-fx="172">
+<h3 class="ds-type__name" data-fx="173">Menylenker</h3>
+<nav aria-label="Eksempel på snarveier" class="nav" data-fx="174">
+<a data-fx="175" href="../../designsystem/../artikler/index.html">Artikler</a>
+<a data-fx="176" href="../../designsystem/../boker/index.html">Bøker</a>
+<a data-fx="177" href="../../designsystem/../kart/index.html">Kart</a>
+<a data-fx="178" href="../../designsystem/../markaminner/index.html">Markaminner</a>
+</nav>
+<p class="ds-type__spec" data-fx="179">.nav a · Plus Jakarta Sans 600 · 13 px · bokstavmellomrom 0,12 em · versaler. Skjules under 900 px. .menu-btn er samme typografi, 12 px på mobil.</p>
+</div>
+<div class="ds-type__item" data-fx="180">
+<h3 class="ds-type__name" data-fx="181">Knappetekst</h3>
+<button class="btn" data-fx="182" type="button">Vis 889 bøker</button>
+<p class="ds-type__spec" data-fx="183">.btn · Plus Jakarta Sans 600 · 14 px · linjehøyde 1 · bokstavmellomrom 0,02 em · farge hvit på --green. .f-reset er 13 px 600 i --green-dark.</p>
+</div>
+</div>
+</section>
+<!-- =========================================================
+     Avstand og grid
+     ========================================================= -->
+<section class="ds-section" data-fx="184" id="avstand">
+<h2 data-fx="185">Avstand og grid</h2>
+<p class="ds-lead" data-fx="186">Skalaen er hentet fra de verdiene som faktisk brukes i site.css. Beholderen er 1320 piksler bred, med fleksibel ramme og mellomrom.</p>
+<div class="ds-measures" data-fx="187">
+<div class="ds-measure" data-fx="188"><strong data-fx="189">Beholder</strong><span data-fx="190">--wrap · 1320 px</span></div>
+<div class="ds-measure" data-fx="191"><strong data-fx="192">Sidemarg</strong><span data-fx="193">--gutter · 20–40 px (clamp 3 vw)</span></div>
+<div class="ds-measure" data-fx="194"><strong data-fx="195">Kolonnemellomrom</strong><span data-fx="196">--gap · 18–28 px (clamp 2 vw)</span></div>
+<div class="ds-measure" data-fx="197"><strong data-fx="198">Filterkolonne</strong><span data-fx="199">250 px, klebrig under toppen</span></div>
+<div class="ds-measure" data-fx="200"><strong data-fx="201">Rutenett, arkiv</strong><span data-fx="202">.grid--3 og .grid--4</span></div>
+<div class="ds-measure" data-fx="203"><strong data-fx="204">Rader på forsiden</strong><span data-fx="205">.row--3 og .row--4</span></div>
+</div>
+<div class="ds-block" data-fx="206">
+<h2 data-fx="207">Avstandsskala</h2>
+<div class="ds-space" data-fx="208">
+<div class="ds-space__row" data-fx="209"><span class="ds-space__name" data-fx="210">8 px</span><span class="ds-space__bar" data-fx="211" style="width:8px"></span><span data-fx="212">Etikettmarg, metadata</span></div>
+<div class="ds-space__row" data-fx="213"><span class="ds-space__name" data-fx="214">12 px</span><span class="ds-space__bar" data-fx="215" style="width:12px"></span><span data-fx="216">Liten indre avstand</span></div>
+<div class="ds-space__row" data-fx="217"><span class="ds-space__name" data-fx="218">16 px</span><span class="ds-space__bar" data-fx="219" style="width:16px"></span><span data-fx="220">Kortkropp, felt og lister</span></div>
+<div class="ds-space__row" data-fx="221"><span class="ds-space__name" data-fx="222">24 px</span><span class="ds-space__bar" data-fx="223" style="width:24px"></span><span data-fx="224">Seksjonsinner, handlinger</span></div>
+<div class="ds-space__row" data-fx="225"><span class="ds-space__name" data-fx="226">28 px</span><span class="ds-space__bar" data-fx="227" style="width:28px"></span><span data-fx="228">Brødsmuler, objektmarg</span></div>
+<div class="ds-space__row" data-fx="229"><span class="ds-space__name" data-fx="230">34 px</span><span class="ds-space__bar" data-fx="231" style="width:34px"></span><span data-fx="232">Topp i sidetopp og rutenett</span></div>
+<div class="ds-space__row" data-fx="233"><span class="ds-space__name" data-fx="234">36 px</span><span class="ds-space__bar" data-fx="235" style="width:36px"></span><span data-fx="236">Toppseksjon på forsiden</span></div>
+<div class="ds-space__row" data-fx="237"><span class="ds-space__name" data-fx="238">48 px</span><span class="ds-space__bar" data-fx="239" style="width:48px"></span><span data-fx="240">Seksjonsstart (min)</span></div>
+<div class="ds-space__row" data-fx="241"><span class="ds-space__name" data-fx="242">56 px</span><span class="ds-space__bar" data-fx="243" style="width:56px"></span><span data-fx="244">Bunntekst og «vis flere»</span></div>
+<div class="ds-space__row" data-fx="245"><span class="ds-space__name" data-fx="246">72 px</span><span class="ds-space__bar" data-fx="247" style="width:72px"></span><span data-fx="248">Seksjonsstart (maks)</span></div>
+</div>
+</div>
+<div class="ds-block ds-griddemo" data-fx="249">
+<h2 data-fx="250">Rutenett, tre kolonner</h2>
+<p class="ds-griddemo__label" data-fx="251">.grid.grid--3 · brukes i bøker, kart og markaminner</p>
+<div class="grid grid--3" data-fx="252">
+<div class="ds-ph" data-fx="253"></div>
+<div class="ds-ph" data-fx="254"></div>
+<div class="ds-ph" data-fx="255"></div>
+</div>
+</div>
+<div class="ds-block ds-griddemo" data-fx="256">
+<h2 data-fx="257">Rutenett, fire kolonner</h2>
+<p class="ds-griddemo__label" data-fx="258">.grid.grid--4 · blir tre kolonner under 1100 px og to under 820 px</p>
+<div class="grid grid--4" data-fx="259">
+<div class="ds-ph" data-fx="260"></div>
+<div class="ds-ph" data-fx="261"></div>
+<div class="ds-ph" data-fx="262"></div>
+<div class="ds-ph" data-fx="263"></div>
+</div>
+</div>
+</section>
+<!-- =========================================================
+     Komponenter
+     ========================================================= -->
+<section class="ds-section" data-fx="264" id="komponenter">
+<h2 data-fx="265">Komponenter</h2>
+<p class="ds-lead" data-fx="266">Markup og klasser er kopiert fra skissene. Interaktive flater som megameny og mobilfilter vises statisk i åpen tilstand, uten at man trenger å klikke.</p>
+</section>
+<section class="ds-block" data-fx="267" id="toppmeny">
+<h2 data-fx="268">Komponent / Toppmeny</h2>
+<header class="masthead" data-fx="269">
+<div class="wrap" data-fx="270" style="padding-left:0;padding-right:0;max-width:none">
+<div class="masthead__row" data-fx="271">
+<a class="brand" data-fx="272" href="../../designsystem/../forside/index.html">
+<div class="brand__name" data-fx="273">Heikampen</div>
+<div class="brand__tag" data-fx="274">Bøker, kart, mennesker og historier fra Oslomarka</div>
+</a>
+<div class="tools" data-fx="275">
+<nav aria-label="Snarveier" class="nav" data-fx="276">
+<a data-fx="277" href="../../designsystem/../artikler/index.html">Artikler</a>
+<a data-fx="278" href="../../designsystem/../boker/index.html">Bøker</a>
+<a data-fx="279" href="../../designsystem/../kart/index.html">Kart</a>
+<a data-fx="280" href="../../designsystem/../markaminner/index.html">Markaminner</a>
+</nav>
+<a aria-label="Søk" class="icon-btn" data-fx="281" href="../../designsystem/../forside/index.html">
+<svg data-fx="282" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="283" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="284" stroke-linecap="round"></path></svg>
+</a>
+<button aria-expanded="false" aria-label="Åpne meny" class="menu-btn" data-fx="285" type="button">
+<span aria-hidden="true" class="menu-btn__label" data-fx="286"><span data-fx="287">Meny</span><span data-fx="288">Lukk</span></span>
+<span aria-hidden="true" class="burger" data-fx="289"><i data-fx="290"></i><i data-fx="291"></i><i data-fx="292"></i></span>
+</button>
+</div>
+</div>
+</div>
+</header>
+</section>
+<section class="ds-block" data-fx="293" id="ds-megameny">
+<h2 data-fx="294">Komponent / Megameny</h2>
+<div class="ds-mega menu-open" data-fx="295">
+<header class="masthead" data-fx="296">
+<div class="wrap" data-fx="297">
+<div class="masthead__row" data-fx="298">
+<a class="brand" data-fx="299" href="../../designsystem/../forside/index.html">
+<div class="brand__name" data-fx="300">Heikampen</div>
+<div class="brand__tag" data-fx="301">Bøker, kart, mennesker <br class="fx-bm"/>og historier fra Oslomarka</div>
+</a>
+<div class="tools" data-fx="302">
+<nav aria-label="Snarveier i åpen meny" class="nav" data-fx="303">
+<a data-fx="304" href="../../designsystem/../artikler/index.html">Artikler</a>
+<a data-fx="305" href="../../designsystem/../boker/index.html">Bøker</a>
+<a data-fx="306" href="../../designsystem/../kart/index.html">Kart</a>
+<a data-fx="307" href="../../designsystem/../markaminner/index.html">Markaminner</a>
+</nav>
+<a aria-label="Søk" class="icon-btn" data-fx="308" href="../../designsystem/../forside/index.html">
+<svg data-fx="309" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="310" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="311" stroke-linecap="round"></path></svg>
+</a>
+<button aria-controls="megameny" aria-expanded="true" aria-label="Lukk meny" class="menu-btn" data-fx="312" type="button">
+<span aria-hidden="true" class="menu-btn__label" data-fx="313"><span data-fx="314">Meny</span><span data-fx="315">Lukk</span></span>
+<span aria-hidden="true" class="burger" data-fx="316"><i data-fx="317"></i><i data-fx="318"></i><i data-fx="319"></i></span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="false" aria-label="Meny" class="mega" data-fx="320" id="megameny" role="region">
+<div class="wrap mega__inner" data-fx="321">
+<nav aria-label="Hovedsider" class="mm-primary" data-fx="322">
+<ul data-fx="323">
+<li class="mm-i" data-fx="324"><a class="mm-main" data-fx="325" data-img="0" href="../../designsystem/../artikler/index.html"><span class="mm-main__t" data-fx="326">Artikler</span><span class="mm-main__d" data-fx="327">Historier, intervjuer og minneord fra marka</span></a></li>
+<li class="mm-i" data-fx="328"><a class="mm-main" data-fx="329" data-img="1" href="../../designsystem/../boker/index.html"><span class="mm-main__t" data-fx="330">Bøker</span><span class="mm-main__d" data-fx="331">889 bøker om Oslomarka</span></a></li>
+<li class="mm-i" data-fx="332"><a class="mm-main" data-fx="333" data-img="2" href="../../designsystem/../kart/index.html"><span class="mm-main__t" data-fx="334">Kart</span><span class="mm-main__d" data-fx="335">71 historiske kart fra 1790 til i dag</span></a></li>
+<li class="mm-i" data-fx="336"><a class="mm-main" data-fx="337" data-img="3" href="../../designsystem/../markaminner/index.html"><span class="mm-main__t" data-fx="338">Markaminner</span><span class="mm-main__d" data-fx="339">106 postkort, programmer og fotografier</span></a></li>
+<li class="mm-i" data-fx="340"><a class="mm-main" data-fx="341" data-img="4" href="../../designsystem/../organisasjoner/index.html"><span class="mm-main__t" data-fx="342">Foreninger og lag</span><span class="mm-main__d" data-fx="343">33 foreninger og lag i Oslomarka</span></a></li>
+<li class="mm-i" data-fx="344"><a class="mm-main" data-fx="345" data-img="5" href="../../designsystem/../om-oss/index.html"><span class="mm-main__t" data-fx="346">Om oss</span><span class="mm-main__d" data-fx="347">Om nettstedet og menneskene bak</span></a></li>
+</ul>
+</nav>
+<div aria-hidden="true" class="mm-visual mm-i" data-fx="348">
+<figure class="mm-fig is-on mm-fig--cover" data-fx="349" data-i="0"><div class="mm-fig__img" data-fx="350"><img alt="" data-fx="351" src="../../designsystem/../forside/img/pa-vandring-i-oslomarka.jpg"/></div><figcaption data-fx="352">Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+</div>
+<div class="mm-side" data-fx="353">
+<form action="../forside/index.html" class="mm-search mm-i" data-fx="354" method="get" role="search">
+<label class="visually-hidden" data-fx="355" for="mm-q">Søk på Heikampen</label>
+<input autocomplete="off" data-fx="356" id="mm-q" name="s" placeholder="Søk på Heikampen" type="search"/>
+<button aria-label="Søk" data-fx="357" type="submit"><svg data-fx="358" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="359" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="360" stroke-linecap="round"></path></svg></button>
+</form>
+<nav aria-label="Nyttig" data-fx="361">
+<span class="mm-label mm-i" data-fx="362">Nyttig</span>
+<ul class="mm-sec" data-fx="363">
+<li class="mm-i" data-fx="364"><a data-fx="365" href="#">Leseguide</a></li>
+<li class="mm-i" data-fx="366"><a data-fx="367" href="#">Om markalitteraturen</a></li>
+<li class="mm-i" data-fx="368"><a data-fx="369" href="#">Kart over Oslomarka</a></li>
+<li class="mm-i" data-fx="370"><a data-fx="371" href="#">Bildegalleri</a></li>
+<li class="mm-i" data-fx="372"><a data-fx="373" href="#">Sosiale medier</a></li>
+<li class="mm-i" data-fx="374"><a data-fx="375" href="#">Kontakt oss</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="ds-block" data-fx="376" id="bunntekst">
+<h2 data-fx="377">Komponent / Bunntekst</h2>
+<footer class="footer" data-fx="378" style="margin-top:0">
+<div data-fx="379"><strong data-fx="380">Heikampen AS</strong> · Oslomarka mellom to permer</div>
+<div data-fx="381">Bøker · Kart · Markaminner · Foreninger og lag</div>
+</footer>
+</section>
+<section class="ds-block" data-fx="382" id="knapper">
+<h2 data-fx="383">Komponent / Knapper</h2>
+<div class="ds-btns" data-fx="384">
+<button class="btn" data-fx="385" type="button">Vis 889 bøker</button>
+<a class="btn" data-fx="386" href="#">Kontakt oss <svg aria-hidden="true" class="arrow" data-fx="387"><use data-fx="388" href="#arr"></use></svg></a>
+<button class="btn btn--line" data-fx="389" type="button">Vis flere bøker</button>
+<button class="f-reset" data-fx="390" type="button">Nullstill</button>
+<button class="sf-open" data-fx="391" style="display:inline-flex" type="button"><svg aria-hidden="true" data-fx="392" fill="none" height="15" stroke="currentColor" stroke-width="1.5" viewbox="0 0 16 16" width="15"><path d="M2 4h12M4.5 8h7M7 12h2" data-fx="393" stroke-linecap="round"></path></svg> Søk og filter</button>
+<button class="chip" data-fx="394" type="button">Årbok <i aria-hidden="true" data-fx="395">×</i></button>
+</div>
+</section>
+<section class="ds-block" data-fx="396" id="lenker">
+<h2 data-fx="397">Komponent / Lenker</h2>
+<div class="ds-links" data-fx="398">
+<nav aria-label="Brødsmuler" class="crumbs" data-fx="399" style="margin-top:0"><a data-fx="400" href="../../designsystem/../forside/index.html">Forside</a><span aria-hidden="true" data-fx="401">/</span><a data-fx="402" href="../../designsystem/../boker/index.html">Bøker</a><span aria-hidden="true" data-fx="403">/</span><span aria-current="page" data-fx="404" style="margin:0;color:var(--ink)">På gamle veier og nye stier i Oslomarka</span></nav>
+<p class="byline" data-fx="405" style="margin-top:0">Av <a data-fx="406" href="#">H.O. Christophersen</a></p>
+<button class="f-more" data-fx="407" type="button">Vis alle 27</button>
+<p class="ds-note" data-fx="408" style="margin:0">Vanlige lenker arver tekstfarge og har ingen understrek. I byline og faktaruter markeres lenken med en linje under. «Vis alle» og hover på titler bruker mørk grønn.</p>
+</div>
+</section>
+<section class="ds-block" data-fx="409" id="brodsmuler">
+<h2 data-fx="410">Komponent / Brødsmuler</h2>
+<nav aria-label="Brødsmuler" class="crumbs" data-fx="411" style="margin-top:0"><a data-fx="412" href="../../designsystem/../forside/index.html">Forside</a><span aria-hidden="true" data-fx="413">/</span><span aria-current="page" data-fx="414" style="margin:0;color:var(--ink)">Bøker</span></nav>
+</section>
+<section class="ds-block" data-fx="415" id="artikkelkort">
+<h2 data-fx="416">Komponent / Artikkelkort</h2>
+<div class="ds-cards" data-fx="417">
+<a class="card acard" data-fx="418" href="../../designsystem/../artikkel/korpas-olsen/index.html"><div class="media" data-fx="419"><img alt="Korpås-Olsen i Østmarka" data-fx="420" src="../../designsystem/../assets/img/art-korpas-olsen-eneboer-og-preparant-i-ostm.jpg"/></div><div class="card__body" data-fx="421" style="display:block"><span class="label" data-fx="422" style="margin-bottom:8px">Historie</span><h3 class="headline" data-fx="423">Korpås-Olsen: Eneboer og preparant i Østmarka</h3><p data-fx="424" data-fxc=""><span class="fx-d">Olaf Olsen (1874-1952) gikk under navnet Korpås-Olsen og hadde sin anonyme tilværelse ikke mange hundre meter fra der mengder av hovedstadens turfolk nå…</span><span class="fx-m">Olaf Olsen (1874-1952) gikk under navnet Korpås-Olsen og hadde sin anonyme tilværelse ikke mange hundre meter fra der mengder av…</span></p><div class="meta" data-fx="425">Even Saugstad · 27. mars 2026</div></div></a>
+<a class="card acard" data-fx="426" href="#"><div class="media" data-fx="427"><img alt="Thorleif Haug og Johan Grøttumsbråten på ski" data-fx="428" src="../../designsystem/../assets/img/art-mix-klubben.jpg"/></div><div class="card__body" data-fx="429" style="display:block"><span class="label" data-fx="430" style="margin-bottom:8px">Markahistorie</span><h3 class="headline" data-fx="431">Mix-klubben</h3><p data-fx="432" data-fxc="">For hundre år siden ble det sagt at det var lettere <br class="fx-bm"/>å vinne OL-gull på ski, enn å vinne klubbmesterskapet i Mix-klubben.</p><div class="meta" data-fx="433">Thor Gotaas · 27. februar 2026</div></div></a>
+<a class="card acard" data-fx="434" href="#"><div class="media" data-fx="435"><img alt="Tjern i Nordmarka" data-fx="436" src="../../designsystem/../assets/img/art-nordmarkas-eneste-klosterhage.jpg"/></div><div class="card__body" data-fx="437" style="display:block"><span class="label" data-fx="438" style="margin-bottom:8px">Natur</span><h3 class="headline" data-fx="439">Nordmarkas eneste klosterhage</h3><p data-fx="440" data-fxc="">Allemannsretten er mer enn felleseie. Ofte er den et ensomt forhold mellom enkeltmennesker og små naturperler.</p><div class="meta" data-fx="441">Carl-Erik Grimstad · 22. mai 2026</div></div></a>
+</div>
+</section>
+<section class="ds-block" data-fx="442" id="fremhevet-artikkel">
+<h2 data-fx="443">Komponent / Fremhevet artikkel</h2>
+<a class="lead" data-fx="444" href="#"><div class="media" data-fx="445"><img alt="Ernst Bjerknes" data-fx="446" src="../../designsystem/../assets/img/art-ernst-bjerknes-ingenioren-som-tegnet-ver.jpg" style="object-position:50% 25%"/></div>
+<div class="lead__body" data-fx="447"><span class="label" data-fx="448" style="margin-bottom:16px">Siste artikkel · Mennesker</span><h2 data-fx="449">Ernst Bjerknes – ingeniøren som tegnet verdens første skikart</h2><p data-fx="450">Ernst Bjerknes var en allsidig og viljesterk mann som satte spor etter seg på mange områder. Gjennom et langt liv satte han spor i Nordmarka, Kristiania og en rekke andre steder i Norge.</p>
+<div class="lead__foot" data-fx="451"><span data-fx="452"><strong data-fx="453">Arne Henrik Frogh</strong> · 10. september 2026</span><svg aria-hidden="true" class="arrow" data-fx="454"><use data-fx="455" href="#arr"></use></svg></div></div></a>
+</section>
+<section class="ds-block" data-fx="456" id="bokkort">
+<h2 data-fx="457">Komponent / Bokkort</h2>
+<div class="grid grid--3" data-fx="458" style="margin-top:0;max-width:920px">
+<a class="obj" data-fx="459" href="../../designsystem/../bok/pa-gamle-veier-og-nye-stier-i-oslomarka/index.html"><div class="obj__img" data-fx="460"><img alt="Omslag: Kristiania, Nordmarken, Ringerike" data-fx="461" src="../../designsystem/../assets/img/m2633.jpg"/></div><div class="obj__body" data-fx="462"><h3 class="obj__t" data-fx="463" data-fxc="">Kristiania, Nordmarken, Ringerike</h3><div class="obj__m" data-fx="464">Abels Kunstforlag · 1914</div></div></a>
+<a class="obj" data-fx="465" href="#"><div class="obj__img" data-fx="466"><img alt="Omslag: Historien – DNT Årbok 2017" data-fx="467" src="../../designsystem/../assets/img/m2820.jpg"/></div><div class="obj__body" data-fx="468"><h3 class="obj__t" data-fx="469" data-fxc="">Historien – DNT <br class="fx-bm"/>Årbok 2017</h3><div class="obj__m" data-fx="470">Alnæs, Karsten · 2017</div></div></a>
+<a class="obj" data-fx="471" href="#"><div class="obj__img" data-fx="472"><div aria-hidden="true" class="typecover" data-fx="473"><b data-fx="474" data-fxc="">Oslos kommuneplan 1980-1990</b><small data-fx="475">Admistrasjonen</small></div></div><div class="obj__body" data-fx="476"><h3 class="obj__t" data-fx="477" data-fxc="">Oslos kommuneplan 1980-1990</h3><div class="obj__m" data-fx="478">Admistrasjonen · 1980</div></div></a>
+</div>
+</section>
+<section class="ds-block" data-fx="479" id="kartkort">
+<h2 data-fx="480">Komponent / Kartkort</h2>
+<div class="grid grid--3" data-fx="481" style="margin-top:0;max-width:920px">
+<a class="obj" data-fx="482" href="../../designsystem/../kart/kart-over-nordmarken-og-sorkedalen/index.html"><div class="obj__img obj__img--photo" data-fx="483"><img alt="Voksenkolen-Holmenkollen-Slemdal-Vettakollen-Sognsvand" data-fx="484" src="../../designsystem/../assets/img/m3996.jpg"/></div><div class="obj__body" data-fx="485"><span class="label" data-fx="486">1907</span><h3 class="obj__t" data-fx="487" data-fxc=""><span class="fx-d">Voksenkolen-Holmenkollen-Slemdal-Vettakollen-Sognsvand</span><span class="fx-m">Voksenkolen-Holmenkollen-Slemdal-Vettakollen-…</span></h3><div class="obj__m" data-fx="488">Abrahamson, Alfred, Qvale, Finn · Cammermeyers Boghandel</div></div></a>
+<a class="obj" data-fx="489" href="#"><div class="obj__img obj__img--photo" data-fx="490"><img alt="Østafor Sol Vestafor Måne (sommerturer, skiturer, 2 kart)" data-fx="491" src="../../designsystem/../assets/img/m4111.jpg"/></div><div class="obj__body" data-fx="492"><span class="label" data-fx="493">1940</span><h3 class="obj__t" data-fx="494" data-fxc="">Østafor Sol Vestafor Måne (sommerturer, skiturer, 2 kart)</h3><div class="obj__m" data-fx="495">Atelier E.O. (Ovrum) · A/S Bærumsbanen</div></div></a>
+</div>
+</section>
+<section class="ds-block" data-fx="496" id="markaminnekort">
+<h2 data-fx="497">Komponent / Markaminnekort</h2>
+<div class="grid grid--3" data-fx="498" style="margin-top:0;max-width:920px">
+<a class="obj" data-fx="499" href="../../designsystem/../markaminne/fotografi-ovre-frognersaeteren/index.html"><div class="obj__img obj__img--flat" data-fx="500"><img alt="Fotografi – Frognersæteren" data-fx="501" src="../../designsystem/../assets/img/minne50690.jpg"/></div><div class="obj__body" data-fx="502"><span class="label" data-fx="503">Fotografi · 1878</span><h3 class="obj__t" data-fx="504" data-fxc="">Frognersæteren</h3><div class="obj__m" data-fx="505">Fotografiske Atelier. P.A. Thorén</div></div></a>
+<a class="obj" data-fx="506" href="#"><div class="obj__img obj__img--flat" data-fx="507"><img alt="Fotografi – Frognersæteren" data-fx="508" src="../../designsystem/../assets/img/minne50680.jpg"/></div><div class="obj__body" data-fx="509"><span class="label" data-fx="510">Fotografi · 1878</span><h3 class="obj__t" data-fx="511" data-fxc="">Frognersæteren</h3><div class="obj__m" data-fx="512">Fotografiske Atelier. P.A. Thorén</div></div></a>
+</div>
+</section>
+<section class="ds-block" data-fx="513" id="organisasjonskort">
+<h2 data-fx="514">Komponent / Organisasjonskort</h2>
+<ul class="orgs" data-fx="515" style="margin-top:0">
+<li data-fx="516"><a class="org" data-fx="517" href="../../designsystem/../organisasjon/maridalens-venner/index.html"><div class="org__logo" data-fx="518"><img alt="" data-fx="519" src="../../designsystem/../assets/img/m6788.jpg"/></div><div data-fx="520"><h2 data-fx="521">Maridalens Venner</h2><div class="yr" data-fx="522">Etablert 1970</div><p data-fx="523" data-fxc=""><span class="fx-d">Maridalens Venner ble stiftet i 1970 for å hindre at dalens gårder skulle bli revet. På 1980- og 90-tallet var det arbeidet for vern av Maridalen og kampen mot golfbaneanlegg som fikk mest oppmerksomhet.</span><span class="fx-m">Maridalens Venner ble stiftet i 1970 for å hindre at dalens gårder skulle bli…</span></p></div><svg aria-hidden="true" class="arrow" data-fx="524"><use data-fx="525" href="#arr"></use></svg></a></li>
+<li data-fx="526"><a class="org" data-fx="527" href="#"><div class="org__logo" data-fx="528"><img alt="" data-fx="529" src="../../designsystem/../assets/img/m6767.jpg"/></div><div data-fx="530"><h2 data-fx="531">Skiforeningen</h2><div class="yr" data-fx="532">Etablert 1883</div><p data-fx="533" data-fxc=""><span class="fx-d">Skiforeningen (Foreningen til Ski-Idrettens Fremme) ble stiftet i 1883, og er en av Norges eldste friluftsorganisasjoner. Skiforeningen arbeider for å fremme skiidrett og friluftsliv, særlig i Oslomarka.</span><span class="fx-m">Skiforeningen (Foreningen til Ski-Idrettens Fremme) ble stiftet i 1883,…</span></p></div><svg aria-hidden="true" class="arrow" data-fx="534"><use data-fx="535" href="#arr"></use></svg></a></li>
+</ul>
+</section>
+<section class="ds-block" data-fx="536" id="kategorifaner">
+<h2 data-fx="537">Komponent / Kategorifaner</h2>
+<nav aria-label="Filtrer artikler etter kategori" class="cat-tabs" data-fx="538" style="margin-bottom:0"><button aria-pressed="true" data-cat="" data-fx="539" type="button">Alle</button><button aria-pressed="false" data-cat="Mennesker" data-fx="540" type="button">Mennesker</button><button aria-pressed="false" data-cat="Historie" data-fx="541" type="button">Historie</button><button aria-pressed="false" data-cat="Markahistorie" data-fx="542" type="button">Markahistorie</button><button aria-pressed="false" data-cat="Natur" data-fx="543" type="button">Natur</button><button aria-pressed="false" data-cat="Kulturminner" data-fx="544" type="button">Kulturminner</button><button aria-pressed="false" data-cat="Turtips" data-fx="545" type="button">Turtips</button><button aria-pressed="false" data-cat="Årstidene" data-fx="546" type="button">Årstidene</button></nav>
+</section>
+<section class="ds-block" data-fx="547" id="filter">
+<h2 data-fx="548">Komponent / Søk og filter</h2>
+<p class="ds-note" data-fx="549" style="margin-bottom:22px">Venstre kolonne slik den vises på desktop. De to første gruppene er åpne, de øvrige lukket. Ett valg er huket av, så avkrysning med antall vises.</p>
+<div class="ds-arch filters-scope" data-fx="550">
+<aside aria-label="Søk og filter" class="sf" data-fx="551" id="sokfilter">
+<div class="sf__head" data-fx="552"><h2 data-fx="553">Søk og filter</h2><button aria-label="Lukk søk og filter" class="sf__close" data-fx="554" type="button"><svg aria-hidden="true" data-fx="555" fill="none" height="20" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="M5 5l14 14M19 5 5 19" data-fx="556" stroke-linecap="round"></path></svg></button></div>
+<div class="sf__body" data-fx="557">
+<label class="sf-search" data-fx="558"><span class="visually-hidden" data-fx="559">Søk i bøkene</span><svg aria-hidden="true" data-fx="560" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="561" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="562" stroke-linecap="round"></path></svg><input data-fx="563" placeholder="Søk i bøkene" type="search"/></label>
+<label class="sf-sort" data-fx="564"><span data-fx="565">Sorter</span><span class="fx-sel" data-fx="566"><select data-fx="567"><option data-fx="568">Forfatter A–Å</option><option data-fx="569">Tittel A–Å</option><option data-fx="570">Nyeste utgivelser</option><option data-fx="571">Eldste utgivelser</option></select><svg aria-hidden="true" class="fx-chev" data-fx="572" fill="none" height="7" stroke="currentColor" stroke-width="2.2" viewbox="0 0 10 7" width="10"><path d="M1 1l4 4 4-4" data-fx="573"></path></svg></span></label>
+<div class="sf-groups" data-fx="574">
+<details class="sf-g" data-fx="575" open=""><summary data-fx="576">Kategori</summary><ul class="checks" data-fx="577"><li data-fx="578"><label data-fx="579"><input checked="" data-fx="580" data-v="Årbok" type="checkbox"/> Årbok<span class="c" data-fx="581">322</span></label></li><li data-fx="582"><label data-fx="583"><input data-fx="584" data-v="Historie" type="checkbox"/> Historie<span class="c" data-fx="585">259</span></label></li><li data-fx="586"><label data-fx="587"><input data-fx="588" data-v="Turguide" type="checkbox"/> Turguide<span class="c" data-fx="589">87</span></label></li><li data-fx="590"><label data-fx="591"><input data-fx="592" data-v="Saksunderlag" type="checkbox"/> Saksunderlag<span class="c" data-fx="593">62</span></label></li><li data-fx="594"><label data-fx="595"><input data-fx="596" data-v="Natur" type="checkbox"/> Natur<span class="c" data-fx="597">36</span></label></li><li data-fx="598"><label data-fx="599"><input data-fx="600" data-v="Fortellinger" type="checkbox"/> Fortellinger<span class="c" data-fx="601">18</span></label></li></ul><button class="f-more" data-fx="602" type="button">Vis alle 27</button></details>
+<details class="sf-g" data-fx="603" open=""><summary data-fx="604">Område</summary><ul class="checks" data-fx="605"><li data-fx="606"><label data-fx="607"><input data-fx="608" data-v="Nordmarka" type="checkbox"/> Nordmarka<span class="c" data-fx="609">145</span></label></li><li data-fx="610"><label data-fx="611"><input data-fx="612" data-v="Maridalen" type="checkbox"/> Maridalen<span class="c" data-fx="613">67</span></label></li><li data-fx="614"><label data-fx="615"><input data-fx="616" data-v="Østmarka" type="checkbox"/> Østmarka<span class="c" data-fx="617">29</span></label></li><li data-fx="618"><label data-fx="619"><input data-fx="620" data-v="Krokskogen" type="checkbox"/> Krokskogen<span class="c" data-fx="621">24</span></label></li><li data-fx="622"><label data-fx="623"><input data-fx="624" data-v="Sørkedalen" type="checkbox"/> Sørkedalen<span class="c" data-fx="625">21</span></label></li><li data-fx="626"><label data-fx="627"><input data-fx="628" data-v="Oslomarka" type="checkbox"/> Oslomarka<span class="c" data-fx="629">18</span></label></li></ul><button class="f-more" data-fx="630" type="button">Vis alle 78</button></details>
+<details class="sf-g" data-fx="631"><summary data-fx="632">Tema</summary><ul class="checks" data-fx="633"><li data-fx="634"><label data-fx="635"><input data-fx="636" data-v="Krokskogen" type="checkbox"/> Krokskogen<span class="c" data-fx="637">36</span></label></li><li data-fx="638"><label data-fx="639"><input data-fx="640" data-v="Historien" type="checkbox"/> Historien<span class="c" data-fx="641">22</span></label></li></ul></details>
+<details class="sf-g" data-fx="642"><summary data-fx="643">Format</summary><ul class="checks" data-fx="644"><li data-fx="645"><label data-fx="646"><input data-fx="647" data-v="Innbundet" type="checkbox"/> Innbundet<span class="c" data-fx="648">131</span></label></li><li data-fx="649"><label data-fx="650"><input data-fx="651" data-v="Heftet" type="checkbox"/> Heftet<span class="c" data-fx="652">130</span></label></li><li data-fx="653"><label data-fx="654"><input data-fx="655" data-v="Kart" type="checkbox"/> Kart<span class="c" data-fx="656">62</span></label></li></ul></details>
+<details class="sf-g" data-fx="657"><summary data-fx="658">Forfatter</summary><ul class="checks" data-fx="659"><li data-fx="660"><label data-fx="661"><input data-fx="662" data-v="Amundsen, K. Vilh." type="checkbox"/> Amundsen, K. Vilh.<span class="c" data-fx="663">28</span></label></li></ul></details>
+<details class="sf-g" data-fx="664"><summary data-fx="665">Utgiver</summary><ul class="checks" data-fx="666"><li data-fx="667"><label data-fx="668"><input data-fx="669" data-v="Foreningen til ski-idrettens fremme" type="checkbox"/> Foreningen til ski-idrettens fremme<span class="c" data-fx="670">272</span></label></li></ul></details>
+</div>
+</div>
+</aside>
+<div data-fx="671">
+<div class="f-status" data-fx="672" style="padding-top:0"><span data-fx="673"><strong data-fx="674">322 bøker</strong></span><button class="chip" data-fx="675" type="button">Årbok <i aria-hidden="true" data-fx="676">×</i></button><button class="f-reset" data-fx="677" type="button">Nullstill</button></div>
+<div class="grid grid--3" data-fx="678" style="margin-top:22px">
+<a class="obj" data-fx="679" href="#"><div class="obj__img" data-fx="680"><img alt="Omslag: Skiforeningens – årbok 1911" data-fx="681" src="../../designsystem/../assets/img/m11117.jpg"/></div><div class="obj__body" data-fx="682"><h3 class="obj__t" data-fx="683" data-fxc="">Skiforeningens – årbok 1911</h3><div class="obj__m" data-fx="684">Amundsen, K. Vilh. · 1911</div></div></a>
+<a class="obj" data-fx="685" href="#"><div class="obj__img" data-fx="686"><img alt="Omslag: Historien – DNT Årbok 2017" data-fx="687" src="../../designsystem/../assets/img/m2820.jpg"/></div><div class="obj__body" data-fx="688"><h3 class="obj__t" data-fx="689" data-fxc="">Historien – DNT <br class="fx-bm"/>Årbok 2017</h3><div class="obj__m" data-fx="690">Alnæs, Karsten · 2017</div></div></a>
+</div>
+</div>
+</div>
+</section>
+<section class="ds-block" data-fx="691" id="filter-mobil">
+<h2 data-fx="692">Komponent / Søk og filter, mobil</h2>
+<p class="ds-note" data-fx="693" style="margin-bottom:22px">Panelet som glir inn fra venstre under 900 px, vist åpent og i dokumentflyt. Fotlinjen med «Vis N bøker» og «Nullstill» er synlig.</p>
+<div class="ds-sf-mobile" data-fx="694">
+<aside aria-label="Søk og filter på mobil" class="sf" data-fx="695" id="sokfilter-mobil">
+<div class="sf__head" data-fx="696"><h2 data-fx="697">Søk og filter</h2><button aria-label="Lukk søk og filter" class="sf__close" data-fx="698" type="button"><svg aria-hidden="true" data-fx="699" fill="none" height="20" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="20"><path d="M5 5l14 14M19 5 5 19" data-fx="700" stroke-linecap="round"></path></svg></button></div>
+<div class="sf__body" data-fx="701">
+<label class="sf-search" data-fx="702"><span class="visually-hidden" data-fx="703">Søk i bøkene</span><svg aria-hidden="true" data-fx="704" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="705" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="706" stroke-linecap="round"></path></svg><input data-fx="707" id="sf-q-mobil" placeholder="Søk i bøkene" type="search"/></label>
+<label class="sf-sort" data-fx="708"><span data-fx="709">Sorter</span><span class="fx-sel" data-fx="710"><select data-fx="711"><option data-fx="712">Forfatter A–Å</option><option data-fx="713">Tittel A–Å</option><option data-fx="714">Nyeste utgivelser</option><option data-fx="715">Eldste utgivelser</option></select><svg aria-hidden="true" class="fx-chev" data-fx="716" fill="none" height="7" stroke="currentColor" stroke-width="2.2" viewbox="0 0 10 7" width="10"><path d="M1 1l4 4 4-4" data-fx="717"></path></svg></span></label>
+<div class="sf-groups" data-fx="718">
+<details class="sf-g" data-fx="719" open=""><summary data-fx="720">Kategori</summary><ul class="checks" data-fx="721"><li data-fx="722"><label data-fx="723"><input checked="" data-fx="724" type="checkbox"/> Årbok<span class="c" data-fx="725">322</span></label></li><li data-fx="726"><label data-fx="727"><input data-fx="728" type="checkbox"/> Historie<span class="c" data-fx="729">259</span></label></li><li data-fx="730"><label data-fx="731"><input data-fx="732" type="checkbox"/> Turguide<span class="c" data-fx="733">87</span></label></li></ul><button class="f-more" data-fx="734" type="button">Vis alle 27</button></details>
+<details class="sf-g" data-fx="735" open=""><summary data-fx="736">Område</summary><ul class="checks" data-fx="737"><li data-fx="738"><label data-fx="739"><input data-fx="740" type="checkbox"/> Nordmarka<span class="c" data-fx="741">145</span></label></li><li data-fx="742"><label data-fx="743"><input data-fx="744" type="checkbox"/> Maridalen<span class="c" data-fx="745">67</span></label></li></ul><button class="f-more" data-fx="746" type="button">Vis alle 78</button></details>
+<details class="sf-g" data-fx="747"><summary data-fx="748">Format</summary><ul class="checks" data-fx="749"><li data-fx="750"><label data-fx="751"><input data-fx="752" type="checkbox"/> Innbundet<span class="c" data-fx="753">131</span></label></li><li data-fx="754"><label data-fx="755"><input data-fx="756" type="checkbox"/> Heftet<span class="c" data-fx="757">130</span></label></li><li data-fx="758"><label data-fx="759"><input data-fx="760" type="checkbox"/> Kart<span class="c" data-fx="761">62</span></label></li></ul></details>
+</div>
+</div>
+<div class="sf__foot" data-fx="762"><button class="btn" data-fx="763" type="button">Vis 889 bøker</button><button class="f-reset" data-fx="764" type="button">Nullstill</button></div>
+</aside>
+</div>
+</section>
+<section class="ds-block" data-fx="765" id="vis-flere">
+<h2 data-fx="766">Komponent / Vis flere</h2>
+<p class="ds-note" data-fx="767" style="margin-bottom:22px">Skissene har ikke sidetall. Arkivsidene bruker denne fotlinjen i stedet for paginering.</p>
+<div class="more" data-fx="768" style="margin-top:0"><span data-fx="769">Viser 24 av 889</span><button class="btn btn--line" data-fx="770" type="button">Vis flere bøker</button></div>
+</section>
+<section class="ds-block" data-fx="771" id="mest-lest">
+<h2 data-fx="772">Komponent / Mest lest</h2>
+<div class="ds-panel" data-fx="773">
+<div class="panel" data-fx="774">
+<h2 class="panel__title" data-fx="775">Mest lest</h2>
+<ol class="toplist" data-fx="776">
+<li data-fx="777"><a data-fx="778" href="#"><span class="num" data-fx="779">1</span><span class="t" data-fx="780">Nils Houge – Markagrensens arkitekt og adjutant</span></a></li>
+<li data-fx="781"><a data-fx="782" href="#"><span class="num" data-fx="783">2</span><span class="t" data-fx="784">Nordmarkas eneste klosterhage</span></a></li>
+<li data-fx="785"><a data-fx="786" href="#"><span class="num" data-fx="787">3</span><span class="t" data-fx="788">Solan Gundersen på Rustadsaga</span></a></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="ds-block" data-fx="789" id="handlingsfelt">
+<h2 data-fx="790">Komponent / Handlingsfelt</h2>
+<aside class="cta ds-cta" data-fx="791" style="margin-top:0"><div data-fx="792"><h2 data-fx="793">Har du en bok, et kart eller et minne vi mangler?</h2><p data-fx="794">Tips oss, eller gi en tilbakemelding på nettstedet.</p></div><a class="btn" data-fx="795" href="#">Kontakt oss <svg aria-hidden="true" class="arrow" data-fx="796"><use data-fx="797" href="#arr"></use></svg></a></aside>
+</section>
+<section class="ds-block" data-fx="798" id="skjemafelt">
+<h2 data-fx="799">Komponent / Skjemafelt</h2>
+<p class="ds-note" data-fx="800" style="margin-bottom:22px">Skissene har ikke et kontaktskjema. Feltene under er søk, sortering og avkrysning slik de brukes i meny og filter.</p>
+<div class="ds-forms" data-fx="801">
+<div data-fx="802">
+<form action="../forside/index.html" class="mm-search" data-fx="803" method="get" role="search">
+<label class="visually-hidden" data-fx="804" for="ds-q">Søk på Heikampen</label>
+<input autocomplete="off" data-fx="805" id="ds-q" name="s" placeholder="Søk på Heikampen" type="search"/>
+<button aria-label="Søk" data-fx="806" type="submit"><svg data-fx="807" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="808" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="809" stroke-linecap="round"></path></svg></button>
+</form>
+<label class="sf-search" data-fx="810" style="margin-top:20px"><span class="visually-hidden" data-fx="811">Søk i bøkene</span><svg aria-hidden="true" data-fx="812" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" data-fx="813" r="6.5"></circle><path d="M15.5 15.5 21 21" data-fx="814" stroke-linecap="round"></path></svg><input data-fx="815" placeholder="Søk i bøkene" type="search"/></label>
+<label class="sf-sort" data-fx="816" style="margin-top:12px"><span data-fx="817">Sorter</span><span class="fx-sel" data-fx="818"><select data-fx="819"><option data-fx="820">Forfatter A–Å</option><option data-fx="821">Tittel A–Å</option></select><svg aria-hidden="true" class="fx-chev" data-fx="822" fill="none" height="7" stroke="currentColor" stroke-width="2.2" viewbox="0 0 10 7" width="10"><path d="M1 1l4 4 4-4" data-fx="823"></path></svg></span></label>
+</div>
+<ul class="checks" data-fx="824">
+<li data-fx="825"><label data-fx="826"><input checked="" data-fx="827" type="checkbox"/> Årbok<span class="c" data-fx="828">322</span></label></li>
+<li data-fx="829"><label data-fx="830"><input data-fx="831" type="checkbox"/> Historie<span class="c" data-fx="832">259</span></label></li>
+<li data-fx="833"><label data-fx="834"><input data-fx="835" type="checkbox"/> Turguide<span class="c" data-fx="836">87</span></label></li>
+</ul>
+</div>
+</section>
+<footer class="footer" data-fx="837">
+<div data-fx="838"><strong data-fx="839">Heikampen AS</strong> · Oslomarka mellom to permer</div>
+<div data-fx="840">Designsystem til skissene</div>
+</footer>
+</main>
+</body>
+</html>

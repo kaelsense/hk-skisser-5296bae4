@@ -1,0 +1,21 @@
+/* Importvennlige justeringer for html.to.design. Lastes etter site.css. Skal ikke endre utseendet. */
+/* Sorteringsvalg: egen SVG-pil i DOM i stedet for nettleserens innebygde pil */
+.fx-sel{position:relative;display:flex;flex:none}
+.fx-sel select{max-width:none;-webkit-appearance:none;appearance:none;height:36px;padding:8px 18px 8px 6px;line-height:normal}
+.fx-sel .fx-chev{position:absolute;left:calc(100% - 13px);top:15px;width:10px;height:7px;pointer-events:none;color:var(--ink)}
+/* Avkortet tekst ligger ferdig avkortet i HTML (med «…»), uten line-clamp */
+[data-fxc]{display:block!important;-webkit-line-clamp:none!important;-webkit-box-orient:initial!important}
+.fx-m{display:none}
+@media (max-width:600px){.fx-d{display:none}.fx-m{display:inline}}
+/* Forside: toppseksjon uten display:contents */
+.fx-top-d,.fx-top-m{display:none}
+@media (min-width:1181px){
+  .top{display:none!important}
+  .fx-top-d{display:flex;flex-direction:column;gap:var(--gap);margin-top:36px}
+  .fx-top-d .fx-r1,.fx-top-d .fx-r2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.62fr);column-gap:var(--gap);align-items:stretch}
+  .fx-top-d .fx-r1>.hero{grid-column:span 2}
+}
+@media (max-width:820px){
+  .top{display:none!important}
+  .fx-top-m{display:flex;flex-direction:column;gap:40px;margin-top:20px}
+}
