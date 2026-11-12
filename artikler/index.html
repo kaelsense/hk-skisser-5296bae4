@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artikler – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../artikler/index.html" aria-current="page">Artikler</a>
+          <a href="../boker/index.html">Bøker</a>
+          <a href="../kart/index.html">Kart</a>
+          <a href="../markaminner/index.html">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Artikler</span></nav>
+<header class="intro"><div><span class="label">Magasinet</span><h1>Artikler</h1></div><p>Historisk arkiv med tidligere publiserte artikler: portretter, intervjuer, turskildringer og minneord fra Oslomarka.</p></header>
+<nav class="cat-tabs" aria-label="Filtrer artikler etter kategori"><button type="button" aria-pressed="true" data-cat="">Alle</button><button type="button" aria-pressed="false" data-cat="Mennesker">Mennesker</button><button type="button" aria-pressed="false" data-cat="Historie">Historie</button><button type="button" aria-pressed="false" data-cat="Markahistorie">Markahistorie</button><button type="button" aria-pressed="false" data-cat="Natur">Natur</button><button type="button" aria-pressed="false" data-cat="Kulturminner">Kulturminner</button><button type="button" aria-pressed="false" data-cat="Turtips">Turtips</button><button type="button" aria-pressed="false" data-cat="Årstidene">Årstidene</button></nav>
+<p class="cat-empty" hidden>Ingen artikler i denne kategorien ennå.</p>
+<a class="lead" data-cat="Mennesker" href="#"><div class="media"><img src="../assets/img/art-ernst-bjerknes-ingenioren-som-tegnet-ver.jpg" alt="" style="object-position:50% 25%"></div>
+  <div class="lead__body"><span class="label" style="margin-bottom:16px">Siste artikkel · Mennesker</span><h2>Ernst Bjerknes – ingeniøren som tegnet verdens første skikart</h2><p>Ernst Bjerknes var en allsidig og viljesterk mann som satte spor etter seg på mange områder. Gjennom et langt liv satte han spor i Nordmarka, Kristiania og en rekke andre steder i Norge.</p>
+  <div class="lead__foot"><span><strong>Arne Henrik Frogh</strong> · 10. september 2026</span><svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></div></div></a>
+<div class="year" data-year="2026"><h2>2026</h2><span>12 artikler</span></div><section class="grid grid--3 grid--a" data-year="2026"><a class="card acard" data-cat="Markahistorie" href="#"><div class="media"><img src="../assets/img/art-pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Markahistorie</span><h3 class="headline">På vandring i Oslomarka i 1951</h3><p>Tenk å kunne reise tilbake i tid – til Oslomarka for omtrent 75 år siden. Oppleve våren, høre fuglesangen, lytte til fisken som vaker – og ikke minst møte menneskene som levde og arbeidet i marka.</p><div class="meta">NRK Radio, 1951 · 25. juni 2026</div></div></a><a class="card acard" data-cat="Mennesker" href="#"><div class="media"><img src="../assets/img/art-nils-houge-markagrensens-arkitekt-og-adj.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Mennesker</span><h3 class="headline">Nils Houge – Markagrensens arkitekt og adjutant</h3><p>Det er 33 år siden Nils Houge gikk bort. Houge var en visjonær naturverner, en mann med et strategisk og langsiktig perspektiv. Han skrev og publiserte «Oslomarka som naturpark» i 1941.</p><div class="meta">Arne Henrik Frogh · 4. juni 2026</div></div></a><a class="card acard" data-cat="Natur" href="#"><div class="media"><img src="../assets/img/art-nordmarkas-eneste-klosterhage.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Natur</span><h3 class="headline">Nordmarkas eneste klosterhage</h3><p>Allemannsretten er mer enn felleseie. Ofte er den et ensomt forhold mellom enkeltmennesker og små naturperler. Les mer på Heikampen.no</p><div class="meta">Carl-Erik Grimstad · 22. mai 2026</div></div></a><a class="card acard" data-cat="Markahistorie" href="#"><div class="media"><img src="../assets/img/art-familien-pa-katnosa.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Markahistorie</span><h3 class="headline">Familien på Katnosa</h3><p>I boken «Fra Mork i Hakadal og Ask i Gjerdrum til Katnosa» forteller Bjørn Katnosa (1947) om familiens historie gjennom generasjoner – en vandring fra bygdene ved Nordmarka...</p><div class="meta">Bjørn Katnosa · 6. mai 2026</div></div></a><a class="card acard" data-cat="Kulturminner" href="#"><div class="media"><img src="../assets/img/art-solan-gundersen-pa-rustadsaga.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Kulturminner</span><h3 class="headline">Solan Gundersen på Rustadsaga</h3><p>Aukust-figuren Solan Gundersen hadde tittelen sagbruksarbeider. Arbeidsplassen var Rustadsaga. Les historien bak hos Heikampen.no</p><div class="meta">Even Saugstad · 2. april 2026</div></div></a><a class="card acard" data-cat="Historie" href="../artikkel/korpas-olsen/index.html"><div class="media"><img src="../assets/img/art-korpas-olsen-eneboer-og-preparant-i-ostm.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Historie</span><h3 class="headline">Korpås-Olsen: Eneboer og preparant i Østmarka</h3><p>Olaf Olsen (1874-1952) gikk under navnet Korpås-Olsen og hadde sin anonyme tilværelse ikke mange hundre meter fra der mengder av hovedstadens turfolk nå legger sin søndags-tur. Les hans historie på Heikampen.no</p><div class="meta">Even Saugstad · 27. mars 2026</div></div></a><a class="card acard" data-cat="Markahistorie" href="#"><div class="media"><img src="../assets/img/art-mix-klubben.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Markahistorie</span><h3 class="headline">Mix-klubben</h3><p>For hundre år siden ble det sagt at det var lettere å vinne OL-gull på ski, enn å vinne klubbmesterskapet i Mix-klubben. Her kan du lese om Mix og alle de meriterte medlemmene, som hadde sin hoppbakke, løype og klubbhus på Kampen i Lommedalen i herlige Bærumsmarka.</p><div class="meta">Thor Gotaas · 27. februar 2026</div></div></a><a class="card acard" data-cat="Historie" href="#"><div class="media"><img src="../assets/img/art-de-sma-ostmarkbokene.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Historie</span><h3 class="headline">De små Østmarkbøkene</h3><p>I første halvdel av 1900-tallet kom det ut en rekke bøker med stoff hentet fra friluftsliv, jakt og fiske. Mange av forfatterne hadde Østmarka som turarena, og bøkene var gjerne bygd opp med forholdsvis korte, selvopplevde historier.</p><div class="meta">Even Saugstad · 9. februar 2026</div></div></a><a class="card acard" data-cat="Markahistorie" href="#"><div class="media"><img src="../assets/img/art-sju-menn-pa-ski-fra-skumsjoen-til-sognsv.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Markahistorie</span><h3 class="headline">Sju menn på ski frå Skumsjøen til Sognsvann</h3><p>Jan Erik Vold (1939) er lyriker med et enestående forfatterskap. Trygve Åslund (1952) er tidligere forlagssjef med en sterk publisistisk liste. Begge er sportsnostalgikere og makeløse kulturpersonligheter, som på hver sin måte gjør en sterk positiv forskjell – uansett hvor de befinner seg. Også i skiløypa.</p><div class="meta">Trygve Åslund · 23. januar 2026</div></div></a><a class="card acard" data-cat="Mennesker" href="#"><div class="media"><img src="../assets/img/art-minneord-om-trond-burud.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Mennesker</span><h3 class="headline">Minneord om Trond Burud</h3><p>Skogsmannen Trond Burud har gått sin siste tur. Mange kjenner til Tronds to små, men meget innholdsrike, bøker om Rausjø-/Børtervannområdet i Østmarka. «Opplevd og hørt i Rausjø» kom i 1992, «Vandring i Østmarka naturreservat» kom fem år seinere...</p><div class="meta">Even Saugstad · 22. januar 2026</div></div></a><a class="card acard" data-cat="Mennesker" href="#"><div class="media"><img src="../assets/img/art-minneord-om-sverre-grimstad.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Mennesker</span><h3 class="headline">Minneord om Sverre Grimstad</h3><p>Sverre Grimstad (1942 – 2025) må være den mannen som har skrevet flest bøker med tema Nordmarka. Nå har markaentusiasten gått sin siste tur. Sverre døde 29. desember, 83 år gammel. Hele sju store bøker ble forfattet av Sverre Grimstad, i tillegg til en rekke artikler...</p><div class="meta">Helle Sommerfelt · 22. januar 2026</div></div></a><a class="card acard" data-cat="Turtips" href="#"><div class="media"><img src="../assets/img/art-den-fine-runden.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Turtips</span><h3 class="headline">Den fine runden</h3><p>Thor Gotaas (1965) er en energirik nasjonalskatt fra Brumunddal. Han har over 25 deltakelser i Birken, alle med merke og litt bakglatte ski. Artikkelen Den fine runden er fra Nordmarka, og publiseres for første gang her på Heikampen.no.</p><div class="meta">Thor Gotaas · 9. januar 2026</div></div></a></section><div class="year" data-year="2025"><h2>2025</h2><span>2 artikler</span></div><section class="grid grid--3 grid--a" data-year="2025"><a class="card acard" data-cat="Årstidene" href="#"><div class="media"><img src="../assets/img/art-en-julaften-pa-krokskogen.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Årstidene</span><h3 class="headline">En juleaften på Krokskogen</h3><p>Eva Huseby har skrevet en rekke fortellinger og beretninger om livet i Nordmarka. Alle med innsikt, nærhet og varme. En julaften på Krokskogen er en av disse fortellingene, kanskje den aller fineste.</p><div class="meta">Eva Huseby · 17. desember 2025</div></div></a><a class="card acard" data-cat="Mennesker" href="#"><div class="media"><img src="../assets/img/art-intervju-med-bjorn-smith-simonsen.jpg" alt="" loading="lazy"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Mennesker</span><h3 class="headline">Intervju med Bjørn Smith-Simonsen</h3><p>Intervju med Bjørn Smith-Simonsen. &quot;Oslomarka på kryss og tvers.&quot; Tekst og foto: Eva Huseby. Bjørn Smith-Simonsen (1946) elsker kona Tone, Oslomarka, bøker og kart...</p><div class="meta">Eva Huseby · 26. november 2025</div></div></a></section>
+<aside class="also"><h2>Også i arkivet</h2><ul>
+<li><a href="#">Minneord om markaforfattere <span>Samleside</span></a></li>
+<li><a href="#">Artikler og reportasjer ved Nina Didriksen (NRK) <span>Lenkesamling</span></a></li></ul></aside>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

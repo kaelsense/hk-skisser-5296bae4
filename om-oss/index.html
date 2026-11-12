@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Om oss – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../artikler/index.html">Artikler</a>
+          <a href="../boker/index.html">Bøker</a>
+          <a href="../kart/index.html">Kart</a>
+          <a href="../markaminner/index.html">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Om oss</span></nav>
+<header class="about-hero">
+  <div><span class="label" style="margin-bottom:14px">Heikampen.no · Oslomarka mellom to permer</span><h1>Om oss</h1><p>Vi digger Oslomarka, og de mange beskrivelsene av Oslomarka. Da ni av 10 respondenter i mai 2025, sa at en nettside om markalitteratur og markakart var en dårlig ide, besluttet vi – umiddelbart – å realisere prosjektet.</p></div>
+  <figure class="media" style="margin:0"><img src="../forside/img/utsikten.jpg" alt="Utsikt fra Heikampen"></figure>
+</header>
+<div class="about">
+  <nav aria-label="Innhold på siden"><ul class="toc"><li><a href="#heikampen">Heikampen</a></li><li><a href="#heikampen-no">Heikampen.no</a></li><li><a href="#klubbhuset">Klubbhuset</a></li><li><a href="#takk">Takk</a></li></ul></nav>
+  <div>
+    <section id="heikampen"><h2>Heikampen</h2><p>Oslomarka er stor, vakker og mangfoldig, og vi ønsker ikke å fremheve eller rangere noen enkeltområder. Men nettstedet skal ha et navn, et navn som er relevant og som gir positive assosiasjoner. For oss representerer Heikampen mye av det som er så tiltrekkende med Oslomarka.</p><p>Heikampen er et høydedrag i den vestlige delen av Nordmarka. Med sine 566 moh. reiser åsen seg mellom Sørkedalen og Sinnerdalen, og er et populært turmål året rundt.</p><p>Fra toppen er det en vid utsikt. På knausen mot syd ser vi Sørkedalen og helt ut mot Oslofjorden. Før nedstigningen mot Smedmyra ser vi utover Kikutmassivet. Terrenget på Heikampen er åpent med furuskog og lyngrabber, med betagende myrdrag som gjør landskapet variert.</p><p>Sommerstid leder flere stier mot toppen, flere med utgangspunkt i Skansebakken, Pipenhus eller Sørkedalen. Stinettet følger delvis gamle ferdselsveier fra seterdriften.</p><p>Om vinteren er Heikampen et høydepunkt for skiløpere. Løyper er etablert rundt åsen, og det går også en sjarmerende scooterpreparert trasé over selve toppen mellom Smedmyra og Hansemyr. Her kan vi krysse høyden, og få med oss den vakre utsikten fra flere kanter. Vi har lest at også meriterte skiløpere må erkjenne at utforkjøringene fra Heikampen er noe utfordrende.</p><p>Under andre verdenskrig ble deler av Nordmarka brukt av motstandsbevegelsen som skjul og til hemmelige møter. Flere av de gamle stiene i områdene rundt Heikampen fungerte som sikre ferdselsårer i en uoversiktlig og skogkledd topografi.</p><p>I denne perioden ble det satt opp en taubane for ved og tømmer fra høydedragene ved Heikampen og ned i Langlia mot Sørkedalen. Den lille hytta i Langlia, som er tilknyttet anlegget er i dag kjent som <em>Taubanehytta</em> (og <em>Høgkasthytta</em>).</p><p>Heikampen eies av Løvenskiold-Vækerø. På grunn av de særlige friluftskvalitetene er omtrent 390 dekar på og rundt topplatået vernet som et skogbruksområde med spesielle hensyn, slik at natur- og friluftsverdiene ivaretas i skogbehandlingen.</p><p><strong>Kilder:</strong> Christensen, Trygve (1993), Naturverdier i Sørkedalen (2006), Christensen, Trygve (2007), Maridalens Venner (2012), skiforeningen.no, yr.no.</p></section>
+    <section id="heikampen-no"><h2>Heikampen.no</h2><p><em>Heikampen.no</em> er nettstedet for deg som er glad i Oslomarka. Formålet er å dokumentere litteratur og kart om Oslomarka, og gjennom dette dele informasjon, og anerkjenne det enorme arbeidet som er utført av kjente og ukjente forfattere og kartografer.</p><p>I denne sammenheng definerer vi Oslomarka som: Vestmarka, Bærumsmarka, Krokskogen, Nordmarka, Lillomarka, Romeriksåsene, Østmarka og Sørmarka.</p><p>Vi presenterer en rekke kart, og langt flere bøker. Vi ønsker å vise frem helheten, tilgjengeliggjøre det som kan tilgjengeliggjøres av informasjon, og dele omtaler av opphavspersonene.</p><p>Min interesse startet da jeg flyttet inn i Sørkedalen i 2007, og min bransjekollega, Per Christian Opsahl, tok meg med til <em>Galleri Bygdøy Allé</em> og Pål Sagen for vise frem et myteomspunnet salgsobjekt: <em>Kart over Nordmarken og Sörkedalen for Skilöbere og Turister (1890)</em>. Kartet som ble utformet og tegnet av Ernst Bjerknes, og som regnes som verdens første skikart. Ganske så lyrisk argumenterte de begge for at dette kartet ikke bare er vakkert og historisk, men obligatorisk for et hjem i Grøttumsgrenda i Sørkedalen, og jeg grep sjansen – og er evig takknemlig for anbefalingene.</p><p>Interessen ble ytterligere forsterket da Bjørn Smith-Simonsen, under et styremøte i Bokklubben i 2012, overrakte meg en dedisert utgave av <em>Maridalens Venner </em>– <em>Årsskrift 2012</em>, hvor han har skrevet hovedartikkelen: Markalitteraturen<em>. Fra Asbjørnsen til Grimstad</em>. Over 90 sider beskriver han på en elegant, kunnskapsrik og munter måte 49 bokverk som han anser som de mest sentrale for å forstå marka. Videre beskriver han syv sentrale kart over Nordmarka. Dette var det beste styremøtet jeg var med på i Bokklubben.</p><p>Innledningsvis i artikkelen omtaler Bjørn <em>Markabibliografien</em> til Stein Arild Anderberg fra 1982, hvor Anderberg beskriver hele 1 200 artikler, blader, antologier og bøker om Nordmarka. Hans innsats er imponerende, på alle måter. Et pionerarbeid. Uten tilgang til databaser satt Anderberg på biblioteker, i arkiver og hos en boksamler for å samle inn materialet. Deretter systematiserte han det hele, og skrev så bibliografien. Først med blyant og viskelær, deretter med hjelp av en skrivemaskin. Til slutt ble bibliografien trykket på en Kodak-kopimaskin. Det blir ikke finere enn dette.</p><p>Bøkene og kartene om Oslomarka inneholder noe for oss alle. Og antall utgivelser når stadig nye høyder, og temabredden er generøs. Det at så mange organisasjoner og foreninger publiserer årbøker og tidsskrifter om Marka, gjør m<em>arkabiblioteket</em> enda større og interessant.</p><p>Hvor mange bøker og kart det faktisk finnes kan vi ikke tallfeste nøyaktig. Det er svært mange. Det handler også om hvordan vi definerer kriteriene for innlemmelse i biblioteket.</p><p>På denne nettsiden presenterer vi nærmere 70 kart, over 850 tekster i form av bøker, bokverk, årbøker, tidsskrifter og noen få enkeltartikler. Og – som en dessert – viser vi frem noen prospektkort, bilder og andre artige objekter. Et lite minnegalleri.</p><p>For orden skyld, og som nevnt i «Leseguiden». Flertallet av bøkene handler utelukkende om Oslomarka, men vi har også tatt med noen bøker som kun har et eller to avsnitt om marka. Vurderingen har da vært at de er relevante og interessante.</p><p>God lesning!</p><p class="sign">Hilsen Arne Henrik Frogh</p></section>
+    <section id="klubbhuset"><h2>Klubbhuset</h2><h3>Utøverne</h3><ul class="people"><li><b>Kay Telle Hoel (1979)</b><p>er sørlending, med lang fartstid på heia ved Arendal og blant skjæra utenfor Tromøya. Kay ble tidlig interessert i lokalhistorie. De siste årene har det mest handlet om inngående studier av mikrobryggerier i Europa. Etter at han flyttet til Oslo har han bodd flere steder i kommunen, og vært aktiv turgjenger i Østmarka og Lillomarka. Favoritten for far og sønn er å fiske i Skålsjøen. Kay kan sine «bits and bytes», og er gjennom selskapet Digitelle AS ansvarlig for nettløsningen. Med sin interesse for historie, og med mange turer i marka, har Kay de beste forutsetninger for å veve alt innholdet om Oslomarka inn i en WordPressløsning.</p></li><li><b>Pål Løwe (1960)</b><p>vokste opp mellom Østmarka og Lillomarka, med søndagsturer i alle himmelretninger. Han er globetrotter og urbanist, og har reist jorda rundt, flere ganger. Pål har flere maratonløp i belte. I voksen alder ble han markafrelst. På sykkel, til fots og på langrennsski er han på daglige turer i marka. Før snøen legger seg er han å finne et eller annet sted i Nordmarka Syd, gjerne i nærheten av et badevann. Om vinteren oppsøker han Nordmarka Nord. Hvor han går marka på kryss og tvers, gjerne med noen korte vaffelpauser. Utstyrsboden kan forveksles med en godt ryddet butikk i Anton Sport-kjeden.</p></li><li><b>Arne Henrik Frogh (1964)</b><p>ble innmeldt i Skiforeningen i 1966. Etter flere sesonger med skiskole på Skallum gård hadde han en noe motvillig periode med obligatoriske skiturer i Bærumsmarka, Vestmarka og Lillomarka. Selv Kvikk-lunsj og Solo var underordnet det å være hjemme på Ringstabekk med bøker og tegneserier. I ungdomstiden våknet han, og ble en aktiv bruker av Bærumsmarka og Nordmarka. I voksen alder tok det helt av, og med bostedsadresse ved Østmarka og i Sørkedalen, er store deler av Oslomarka utforsket. Han har en forkjærlighet for langrenn, men har også brukbare distansekort på sykkel og til fots.</p></li></ul>
+      <h3>Smøreteamet</h3><ul class="names"><li>Inger Asperud Media ved Inger Asperud</li><li>Smuss Studio ved William Stormdal</li><li>Undhjem Media ved Tom Undhjem</li><li>Sjustua ved Svein Skarheim</li><li>Fuellounge Eric Røkeberg Media ved Eric Røkeberg</li><li>Harald Hodt</li><li>Anders Askevold</li></ul>
+      <h3>Dugnadsgjengen</h3><ul class="names"><li>Even Saugstad</li></ul></section>
+    <section id="takk"><h2>Takk</h2><p>Takk til <em>Maridalens Venner</em> ved Tor Øystein Olsen for tilgang til de fysiske utgavene av Maridalens Venner, <em>Sørkedalens Idrettsforening</em> ved Erling David-Andersen for gaven med flere årganger av Sørkedølen – og historiebøkene om foreningen, antikvariatene for at de stadig fyller på med «godsaker» i katalogene, Nasjonalbiblioteket for Bokhylla – et makeløst prosjekt, og til Bjørn Smith-Simonsen for tålmodigheten.</p></section>
+  </div>
+</div>
+<aside class="cta"><div><h2>Har du en bok, et kart eller et minne vi mangler?</h2><p>Tips oss, eller gi en tilbakemelding på nettstedet.</p></div><a class="btn" href="https://heikampen.no/tilbakemeldinger/">Kontakt oss <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></aside>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

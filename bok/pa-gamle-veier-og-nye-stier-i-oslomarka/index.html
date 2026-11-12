@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>På gamle veier og nye stier i Oslomarka – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../../artikler/index.html">Artikler</a>
+          <a href="../../boker/index.html" aria-current="page">Bøker</a>
+          <a href="../../kart/index.html">Kart</a>
+          <a href="../../markaminner/index.html">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../../forside/index.html">Forside</a><span aria-hidden="true">/</span><a href="../../boker/index.html">Bøker</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">På gamle veier og nye stier i Oslomarka</span></nav>
+<article class="item">
+  <div class="gallery">
+    <div class="gallery__main"><img src="../../assets/img/m3349.jpg" alt="Forside: På gamle veier og nye stier i Oslomarka"></div>
+    <div class="thumbs"><button type="button" aria-pressed="true" data-src="../../assets/img/m3349.jpg" data-alt="Forside" aria-label="Vis forside"><img src="../../assets/img/m3349.jpg" alt=""></button><button type="button" aria-pressed="false" data-src="../../assets/img/m2378.jpg" data-alt="Bakside" aria-label="Vis bilde 2"><img src="../../assets/img/m2378.jpg" alt=""></button></div>
+  </div>
+  <div class="item__body">
+    <span class="label">Bok · Historie</span>
+    <h1>På gamle veier og nye stier i Oslomarka</h1>
+    <div class="byline"><a href="#">H.O. Christophersen</a> · 1956</div>
+    <dl class="facts"><dt>Forfatter</dt><dd><a href="#">Christophersen, H.O.</a></dd><dt>Utgivelsesår</dt><dd>1956</dd><dt>Utgiver</dt><dd><a href="#">Gyldendal Norsk Forlag</a></dd><dt>Område</dt><dd><a href="#">Krokskogen</a></dd><dt>Tema</dt><dd><a href="#">Lillomarka</a>, <a href="#">Maridalen</a>, <a href="#">Vandringer</a></dd><dt>Format</dt><dd>8vo</dd><dt>Kategori</dt><dd><a href="#">Historie</a></dd><dt>Sideantall</dt><dd>231</dd></dl>
+    <div class="actions"><a class="btn" href="https://www.nb.no/items/777f240e590dea6419fb2d2535dd5814?page=0&amp;searchText=p%C3%A5%20gamle%20veier%20og%20nye%20stier">Les boka i Bokhylla <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></div>
+    <section class="bio"><h2>Om forfatteren</h2><p><b>Halfdan Olaus Christophersen (1902-1980)</b> var historiker og sakprosaforfatter. Han tok doktorgraden om John Locke. Christophersen var sentral i hjemmefronten under krigen. Christophersen er kjent for en rekke bøker om både kulturhistorie og ferdselsveier i Nordmarka og Krokskogen. Han var en stor formidler og folkeopplyser. Han var en av initiativtagerne til VG, hvor han også var styreleder. Christophersen ble statsstipendiat i 1966.</p></section>
+  </div>
+</article>
+<nav class="pn" aria-label="Forrige og neste bok"><a href="#"><small>← Forrige bok</small><span>På byens terskel</span></a><a href="#"><small>Neste bok →</small><span>På gamle veier og nye stier i Oslomarka (ny utgave ved: Einar Skage Andersen, etterord: Rune Slagstad)</span></a></nav>
+<div class="section-h"><h2>Flere bøker om Krokskogen</h2><a href="../../boker/index.html">Alle bøker <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></div>
+<section class="grid grid--4" style="margin-top:28px"><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m2853.jpg" alt="Omslag: Ørretklubben ved dens 20 års jubileum" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Ørretklubben ved dens 20 års jubileum</h3><div class="obj__m">Baggerud, Arne (red.) · 1944</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m8843.jpg" alt="Omslag: Kongler på kastet. Et år på Krokskogen" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Kongler på kastet. Et år på Krokskogen</h3><div class="obj__m">Bjørklid, Brynjulf · 2016</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m3379.jpg" alt="Omslag: Kjerraten i Åsa" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Kjerraten i Åsa</h3><div class="obj__m">Bjørnstad, O. Chr. · 1944</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m3157.jpg" alt="Omslag: Norderhov kommune. Det kommunale sjølstyre 1837-1937-1945" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Norderhov kommune. Det kommunale sjølstyre 1837-1937-1945</h3><div class="obj__m">Brænden, Ola (red.) · 1948</div></div></a></section>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../../assets/site.js"></script>
+</body>
+</html>

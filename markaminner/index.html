@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markaminner – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../artikler/index.html">Artikler</a>
+          <a href="../boker/index.html">Bøker</a>
+          <a href="../kart/index.html">Kart</a>
+          <a href="../markaminner/index.html" aria-current="page">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Markaminner</span></nav>
+<header class="intro"><div><span class="label">Markaminner</span><h1>Markaminner</h1></div><p>Prospektkort, bilder og andre artige objekter fra Oslomarka. Et lite minnegalleri med 106 gjenstander, fra fotografier fra 1878 til en flaskebrikke fra 1972.</p></header>
+<div class="arch filters-scope">
+  <div class="sf-bg" data-sf-close></div>
+  <aside class="sf" id="sokfilter" aria-label="Søk og filter">
+    <div class="sf__head"><h2>Søk og filter</h2><button class="sf__close" type="button" data-sf-close aria-label="Lukk søk og filter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg></button></div>
+    <div class="sf__body">
+      <label class="sf-search"><span class="visually-hidden">Søk i markaminnene</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg><input type="search" placeholder="Søk i markaminnene"></label>
+      <label class="sf-sort"><span>Sorter</span><select><option>Eldste først</option><option>Nyeste først</option><option>Tittel A–Å</option></select></label>
+      <div class="sf-groups"><details class="sf-g" open><summary>Type</summary><ul class="checks"><li><label><input type="checkbox" data-v="Billedserie"> Billedserie<span class="c">34</span></label></li><li><label><input type="checkbox" data-v="Program"> Program<span class="c">25</span></label></li><li><label><input type="checkbox" data-v="Prospektkort"> Prospektkort<span class="c">22</span></label></li><li><label><input type="checkbox" data-v="Billedmappe"> Billedmappe<span class="c">11</span></label></li><li><label><input type="checkbox" data-v="Flaskebrikke"> Flaskebrikke<span class="c">5</span></label></li><li><label><input type="checkbox" data-v="Fotografi"> Fotografi<span class="c">4</span></label></li></ul><button type="button" class="f-more">Vis alle 10</button></details><details class="sf-g" open><summary>Sted</summary><ul class="checks"><li><label><input type="checkbox" data-v="Nordmarka"> Nordmarka<span class="c">93</span></label></li><li><label><input type="checkbox" data-v="Skitur i Nordmarken"> Skitur i Nordmarken<span class="c">32</span></label></li><li><label><input type="checkbox" data-v="Aspeskogen"> Aspeskogen<span class="c">27</span></label></li><li><label><input type="checkbox" data-v="Holmenkollen/Frognersæteren"> Holmenkollen/Frognersæteren<span class="c">7</span></label></li><li><label><input type="checkbox" data-v="Holmenkollen"> Holmenkollen<span class="c">7</span></label></li><li><label><input type="checkbox" data-v="Frognersæteren"> Frognersæteren<span class="c">6</span></label></li></ul><button type="button" class="f-more">Vis alle 119</button></details><details class="sf-g"><summary>Utgiver</summary><ul class="checks"><li><label><input type="checkbox" data-v="Abels Kunstforlag | Fotograf S. Gran"> Abels Kunstforlag | Fotograf S. Gran<span class="c">34</span></label></li><li><label><input type="checkbox" data-v="Foreningen til Ski-Idrættens Fremme"> Foreningen til Ski-Idrættens Fremme<span class="c">25</span></label></li><li><label><input type="checkbox" data-v="H. Abels Reproduksjonsanstalt"> H. Abels Reproduksjonsanstalt<span class="c">15</span></label></li><li><label><input type="checkbox" data-v="H. Abels Kunstforlag Chr."> H. Abels Kunstforlag Chr.<span class="c">11</span></label></li><li><label><input type="checkbox" data-v="A/S Ringnes Bryggeri"> A/S Ringnes Bryggeri<span class="c">5</span></label></li><li><label><input type="checkbox" data-v="Fotografiske Atelier. P.A. Thorén"> Fotografiske Atelier. P.A. Thorén<span class="c">4</span></label></li></ul><button type="button" class="f-more">Vis alle 15</button></details></div>
+    </div>
+    <div class="sf__foot"><button class="btn" type="button" data-sf-close>Vis 106 markaminner</button><button class="f-reset" type="button">Nullstill</button></div>
+  </aside>
+  <div class="arch__main">
+    <div class="arch__bar"><button type="button" class="sf-open" aria-controls="sokfilter" aria-expanded="false"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke-linecap="round"/></svg> Søk og filter</button>
+      <div class="f-status"><span><strong>106 markaminner</strong></span><span class="f-active"></span><button type="button" class="f-reset" hidden>Nullstill</button></div></div>
+    <section class="grid grid--3" aria-label="Treff"><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50690.jpg" alt="Fotografi – Frognersæteren" loading="lazy"></div><div class="obj__body"><span class="label">Fotografi · 1878</span><h3 class="obj__t">Frognersæteren</h3><div class="obj__m">Fotografiske Atelier. P.A. Thorén</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50680.jpg" alt="Fotografi – Frognersæteren" loading="lazy"></div><div class="obj__body"><span class="label">Fotografi · 1878</span><h3 class="obj__t">Frognersæteren</h3><div class="obj__m">Fotografiske Atelier. P.A. Thorén</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50670.jpg" alt="Fotografi – Frognersæteren" loading="lazy"></div><div class="obj__body"><span class="label">Fotografi · 1878</span><h3 class="obj__t">Frognersæteren</h3><div class="obj__m">Fotografiske Atelier. P.A. Thorén</div></div></a><a class="obj" href="../markaminne/fotografi-ovre-frognersaeteren/index.html"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50700.jpg" alt="Fotografi – Øvre Frognersæteren" loading="lazy"></div><div class="obj__body"><span class="label">Fotografi · 1878</span><h3 class="obj__t">Øvre Frognersæteren</h3><div class="obj__m">Fotografiske Atelier. P.A. Thorén</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50710.jpg" alt="Program – Præmie-Skirendet" loading="lazy"></div><div class="obj__body"><span class="label">Program · 1883</span><h3 class="obj__t">Præmie-Skirendet</h3><div class="obj__m">Foreningen til Ski-Idrættens Fremme</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50270.jpg" alt="Billedmappe – Besserudtjern med Peisestuen" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Besserudtjern med Peisestuen</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50230.jpg" alt="Billedmappe – Fra Holmenkollen og Frognersæteren (mappen)" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Fra Holmenkollen og Frognersæteren (mappen)</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50260.jpg" alt="Billedmappe – Fra opkjörselen til Holmenkollen" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Fra opkjörselen til Holmenkollen</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50310.jpg" alt="Billedmappe – Frognersæteren" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Frognersæteren</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50280.jpg" alt="Billedmappe – Holmenkollen Hôtel" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Holmenkollen Hôtel</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50300.jpg" alt="Billedmappe – Parti fra Besserudtjern" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Parti fra Besserudtjern</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50320.jpg" alt="Billedmappe – Parti fra Keiser Wilhelms vei" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Parti fra Keiser Wilhelms vei</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50240.jpg" alt="Billedmappe – Udsigt fra Keiser Wilhelms vei" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Udsigt fra Keiser Wilhelms vei</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50290.jpg" alt="Billedmappe – Udsigtstaarnet paa Holmenaasen" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Udsigtstaarnet paa Holmenaasen</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50330.jpg" alt="Billedmappe – Ved Heftys Bautasten" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Ved Heftys Bautasten</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50250.jpg" alt="Billedmappe – Øvre Frognersætertjern" loading="lazy"></div><div class="obj__body"><span class="label">Billedmappe · 1885</span><h3 class="obj__t">Øvre Frognersætertjern</h3><div class="obj__m">H. Abels Kunstforlag Chr.</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50720.jpg" alt="Deltakere – Fortegnelse over Deltagere. Præmie-Skirendet ved Huseby" loading="lazy"></div><div class="obj__body"><span class="label">Deltakere · 1886</span><h3 class="obj__t">Fortegnelse over Deltagere. Præmie-Skirendet ved Huseby</h3><div class="obj__m">Foreningen til Ski-Idrættens Fremme</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50730.jpg" alt="Deltakere – Præmierendende 1888" loading="lazy"></div><div class="obj__body"><span class="label">Deltakere · 1888</span><h3 class="obj__t">Præmierendende 1888</h3><div class="obj__m">Foreningen til Ski-Idrættens Fremme</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50740.jpg" alt="Lover – Love for «Vækkerø Skiklub»" loading="lazy"></div><div class="obj__body"><span class="label">Lover · 1892</span><h3 class="obj__t">Love for «Vækkerø Skiklub»</h3><div class="obj__m">Vækkerøe Skiklub</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50170.jpg" alt="Prospektkort – Ved Heggelivandet" loading="lazy"></div><div class="obj__body"><span class="label">Prospektkort · 1905</span><h3 class="obj__t">Ved Heggelivandet</h3><div class="obj__m">H. Abels Reproduksjonsanstalt</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50050.jpg" alt="Prospektkort – Utsikt fra Holmenkollen" loading="lazy"></div><div class="obj__body"><span class="label">Prospektkort · 1906</span><h3 class="obj__t">Utsikt fra Holmenkollen</h3><div class="obj__m">Norsk Kunst</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50190.jpg" alt="Prospektkort – Fyllingen" loading="lazy"></div><div class="obj__body"><span class="label">Prospektkort · 1907</span><h3 class="obj__t">Fyllingen</h3><div class="obj__m">H. Abels Reproduksjonsanstalt</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50020.jpg" alt="Prospektkort – Grøttum" loading="lazy"></div><div class="obj__body"><span class="label">Prospektkort · 1907</span><h3 class="obj__t">Grøttum</h3><div class="obj__m">Kunstforlaget National</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50110.jpg" alt="Prospektkort – Lörensæteren" loading="lazy"></div><div class="obj__body"><span class="label">Prospektkort · 1907</span><h3 class="obj__t">Lörensæteren</h3><div class="obj__m"></div></div></a></section>
+    <div class="more"><span>Viser 24 av 106</span><button class="btn btn--line" type="button">Vis flere markaminner</button></div>
+  </div>
+</div>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

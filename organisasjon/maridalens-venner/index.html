@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maridalens Venner – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../../artikler/index.html">Artikler</a>
+          <a href="../../boker/index.html">Bøker</a>
+          <a href="../../kart/index.html">Kart</a>
+          <a href="../../markaminner/index.html">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../../forside/index.html">Forside</a><span aria-hidden="true">/</span><a href="../../organisasjoner/index.html">Foreninger og lag</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Maridalens Venner</span></nav>
+<article class="item">
+  <div><div class="org-logo-lg"><img src="../../assets/img/m6788.jpg" alt="Logo: Maridalens Venner" loading="lazy"></div></div>
+  <div class="item__body">
+    <span class="label">Foreninger og lag · Etablert 1970</span>
+    <h1>Maridalens Venner</h1>
+    <p class="lede">Maridalens Venner ble stiftet i 1970 for å hindre at dalens gårder skulle bli revet. På 1980- og 90-tallet var det arbeidet for vern av Maridalen og kampen mot golfbaneanlegg som fikk mest oppmerksomhet. Maridalens Venner var med på å forhindre en kommunal rivningsplan og bidro til at det isteden ble utarbeidet en statlig verneplan. I dag jobber foreningen for vernet av dalen, det å ta vare på et historisk jord- og skogbrukslandskap, og en viktig industrihistorie. Maridalens Venner har utviklet seg fra å bekjempe en rivningsplan på 70-tallet, via å få utarbeidet en verneplan på 90-tallet, til i dag å jobbe for å realisere formålet med verneplanen gjennom å utarbeide konkrete handlingsplaner (Kilde: maridalensvenner.no, wikipedia.no).</p>
+    <dl class="facts"><dt>Etablert</dt><dd>1970</dd><dt>Org.nr.</dt><dd>983 633 609</dd><dt>Nettsted</dt><dd><a href="https://www.maridalensvenner.no">maridalensvenner.no</a></dd><dt>I bokhylla</dt><dd><a href="../../boker/index.html">55 utgivelser</a></dd></dl>
+    <div class="actions"><a class="btn" href="https://www.maridalensvenner.no">Besøk nettstedet <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></div>
+  </div>
+</article>
+<div class="section-h"><h2>Utgivelser fra Maridalens Venner</h2><a href="../../boker/index.html">Alle 55 <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></div>
+<section class="grid grid--4" style="margin-top:28px"><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m3486.jpg" alt="Omslag: Godseiere og tømmerkjørere" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Godseiere og tømmerkjørere</h3><div class="obj__m">Brodin, Dag · 2011</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m2019.jpg" alt="Omslag: Maridalen kultur- og natursti. Byantikvarens skilting av kulturminnerog landskap i Maridalen" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Maridalen kultur- og natursti. Byantikvarens skilting av kulturminnerog landskap i Maridalen</h3><div class="obj__m">Byantikvaren i Oslo · 2013</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m2582.jpg" alt="Omslag: Kirkebyggeren. Ett av tre Maridalsspill" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Kirkebyggeren. Ett av tre Maridalsspill</h3><div class="obj__m">Engelstad, Carl Fredrik · 2005</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../../assets/img/m3526.jpg" alt="Omslag: Kirkesølvet. Ett av tre Maridalsspill" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Kirkesølvet. Ett av tre Maridalsspill</h3><div class="obj__m">Engelstad, Carl Fredrik · 2004</div></div></a></section>
+<nav class="pn" aria-label="Forrige og neste organisasjon"><a href="#"><small>← Forrige</small><span>Lørenskog Historielag</span></a><a href="#"><small>Neste →</small><span>Markas Venner</span></a></nav>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../../assets/site.js"></script>
+</body>
+</html>

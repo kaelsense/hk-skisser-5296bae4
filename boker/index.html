@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bøker – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../artikler/index.html">Artikler</a>
+          <a href="../boker/index.html" aria-current="page">Bøker</a>
+          <a href="../kart/index.html">Kart</a>
+          <a href="../markaminner/index.html">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Bøker</span></nav>
+<header class="intro"><div><span class="label">Bøker</span><h1>Bøkene om Oslomarka</h1></div><p>889 tekster om Oslomarka i form av bøker, bokverk, årbøker og tidsskrifter. Søk i hele samlingen, eller snevre inn etter kategori og område.</p></header>
+<div class="arch filters-scope">
+  <div class="sf-bg" data-sf-close></div>
+  <aside class="sf" id="sokfilter" aria-label="Søk og filter">
+    <div class="sf__head"><h2>Søk og filter</h2><button class="sf__close" type="button" data-sf-close aria-label="Lukk søk og filter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg></button></div>
+    <div class="sf__body">
+      <label class="sf-search"><span class="visually-hidden">Søk i bøkene</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg><input type="search" placeholder="Søk i bøkene"></label>
+      <label class="sf-sort"><span>Sorter</span><select><option>Forfatter A–Å</option><option>Tittel A–Å</option><option>Nyeste utgivelser</option><option>Eldste utgivelser</option></select></label>
+      <div class="sf-groups"><details class="sf-g" open><summary>Kategori</summary><ul class="checks"><li><label><input type="checkbox" data-v="Årbok"> Årbok<span class="c">322</span></label></li><li><label><input type="checkbox" data-v="Historie"> Historie<span class="c">259</span></label></li><li><label><input type="checkbox" data-v="Turguide"> Turguide<span class="c">87</span></label></li><li><label><input type="checkbox" data-v="Saksunderlag"> Saksunderlag<span class="c">62</span></label></li><li><label><input type="checkbox" data-v="Natur"> Natur<span class="c">36</span></label></li><li><label><input type="checkbox" data-v="Fortellinger"> Fortellinger<span class="c">18</span></label></li></ul><button type="button" class="f-more">Vis alle 27</button></details><details class="sf-g" open><summary>Område</summary><ul class="checks"><li><label><input type="checkbox" data-v="Nordmarka"> Nordmarka<span class="c">145</span></label></li><li><label><input type="checkbox" data-v="Maridalen"> Maridalen<span class="c">67</span></label></li><li><label><input type="checkbox" data-v="Østmarka"> Østmarka<span class="c">29</span></label></li><li><label><input type="checkbox" data-v="Krokskogen"> Krokskogen<span class="c">24</span></label></li><li><label><input type="checkbox" data-v="Sørkedalen"> Sørkedalen<span class="c">21</span></label></li><li><label><input type="checkbox" data-v="Oslomarka"> Oslomarka<span class="c">18</span></label></li></ul><button type="button" class="f-more">Vis alle 78</button></details><details class="sf-g"><summary>Tema</summary><ul class="checks"><li><label><input type="checkbox" data-v="Krokskogen"> Krokskogen<span class="c">36</span></label></li><li><label><input type="checkbox" data-v="Historien"> Historien<span class="c">22</span></label></li><li><label><input type="checkbox" data-v="Turer"> Turer<span class="c">20</span></label></li><li><label><input type="checkbox" data-v="Skiklubb"> Skiklubb<span class="c">18</span></label></li><li><label><input type="checkbox" data-v="Nordmarka"> Nordmarka<span class="c">17</span></label></li><li><label><input type="checkbox" data-v="Østmarka"> Østmarka<span class="c">16</span></label></li></ul><button type="button" class="f-more">Vis alle 705</button></details><details class="sf-g"><summary>Format</summary><ul class="checks"><li><label><input type="checkbox" data-v="Innbundet"> Innbundet<span class="c">131</span></label></li><li><label><input type="checkbox" data-v="Heftet"> Heftet<span class="c">130</span></label></li><li><label><input type="checkbox" data-v="Kart"> Kart<span class="c">62</span></label></li></ul></details><details class="sf-g"><summary>Forfatter</summary><ul class="checks"><li><label><input type="checkbox" data-v="Amundsen, K. Vilh."> Amundsen, K. Vilh.<span class="c">28</span></label></li><li><label><input type="checkbox" data-v="Bloch Hansen, R."> Bloch Hansen, R.<span class="c">28</span></label></li><li><label><input type="checkbox" data-v="Widerøe, Wanda"> Widerøe, Wanda<span class="c">26</span></label></li><li><label><input type="checkbox" data-v="Krohn, Kristin Moe"> Krohn, Kristin Moe<span class="c">23</span></label></li><li><label><input type="checkbox" data-v="Vaage, Jakob"> Vaage, Jakob<span class="c">17</span></label></li><li><label><input type="checkbox" data-v="Klingenberg, O.T."> Klingenberg, O.T.<span class="c">16</span></label></li></ul><button type="button" class="f-more">Vis alle 537</button></details><details class="sf-g"><summary>Utgiver</summary><ul class="checks"><li><label><input type="checkbox" data-v="Foreningen til ski-idrettens fremme"> Foreningen til ski-idrettens fremme<span class="c">272</span></label></li><li><label><input type="checkbox" data-v="Maridalens Venner"> Maridalens Venner<span class="c">55</span></label></li><li><label><input type="checkbox" data-v="Gyldendal Norsk Forlag"> Gyldendal Norsk Forlag<span class="c">39</span></label></li><li><label><input type="checkbox" data-v="Grøndahl &amp; Søn - Oslo"> Grøndahl &amp; Søn - Oslo<span class="c">30</span></label></li><li><label><input type="checkbox" data-v="Eget forlag"> Eget forlag<span class="c">19</span></label></li><li><label><input type="checkbox" data-v="H. Aschehoug &amp; Co. (W. Nygaard)"> H. Aschehoug &amp; Co. (W. Nygaard)<span class="c">17</span></label></li></ul><button type="button" class="f-more">Vis alle 273</button></details></div>
+    </div>
+    <div class="sf__foot"><button class="btn" type="button" data-sf-close>Vis 889 bøker</button><button class="f-reset" type="button">Nullstill</button></div>
+  </aside>
+  <div class="arch__main">
+    <div class="arch__bar"><button type="button" class="sf-open" aria-controls="sokfilter" aria-expanded="false"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke-linecap="round"/></svg> Søk og filter</button>
+      <div class="f-status"><span><strong>889 bøker</strong></span><span class="f-active"></span><button type="button" class="f-reset" hidden>Nullstill</button></div></div>
+    <section class="grid grid--3" aria-label="Treff"><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2633.jpg" alt="Omslag: Kristiania, Nordmarken, Ringerike" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Kristiania, Nordmarken, Ringerike</h3><div class="obj__m">Abels Kunstforlag · 1914</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m1967.jpg" alt="Omslag: Ringerike, Nordmarken, Holmenkolrendet" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Ringerike, Nordmarken, Holmenkolrendet</h3><div class="obj__m">Abels Kunstforlag · 1914</div></div></a><a class="obj" href="#"><div class="obj__img"><div class="typecover" aria-hidden="true"><b>Oslos kommuneplan 1980-1990</b><small>Admistrasjonen</small></div></div><div class="obj__body"><h3 class="obj__t">Oslos kommuneplan 1980-1990</h3><div class="obj__m">Admistrasjonen · 1980</div></div></a><a class="obj" href="#"><div class="obj__img"><div class="typecover" aria-hidden="true"><b>Matrikulerede Eiendomme i Akers Herred</b><small>Akers Herredskommisjon</small></div></div><div class="obj__body"><h3 class="obj__t">Matrikulerede Eiendomme i Akers Herred</h3><div class="obj__m">Akers Herredskommisjon · 1869</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m3053.jpg" alt="Omslag: Hadeland Almenning gjennom tidene . Lut og lunnendi i sameie og utmark" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Hadeland Almenning gjennom tidene . Lut og lunnendi i sameie og utmark</h3><div class="obj__m">Alm, Jens M. · 1975</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m9775.jpg" alt="Omslag: Jakten på skiføret. Hvordan sikre skiløyper og skimuligheter i snøløse og snøfattige vintre?" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Jakten på skiføret. Hvordan sikre skiløyper og skimuligheter i snøløse og snøfattige vintre?</h3><div class="obj__m">Almquist, Knut, Mathisen, Arne Fr. m.fl. · 2015</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m8550.jpg" alt="Omslag: På sykkel i marka" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">På sykkel i marka</h3><div class="obj__m">Almquist, Knut (gen.sekr.) · 1990</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2820.jpg" alt="Omslag: Historien – DNT Årbok 2017" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Historien – DNT Årbok 2017</h3><div class="obj__m">Alnæs, Karsten · 2017</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m6372.jpg" alt="Omslag: Thomas J. Heftye" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Thomas J. Heftye</h3><div class="obj__m">Alnæs, Karsten · 2018</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m11117.jpg" alt="Omslag: Skiforeningens – årbok 1911" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1911</h3><div class="obj__m">Amundsen, K. Vilh. · 1911</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2886.jpg" alt="Omslag: Skiforeningens – årbok 1911" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1911</h3><div class="obj__m">Amundsen, K. Vilh. · 1911</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m3009.jpg" alt="Omslag: Skiforeningens – årbok 1912" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1912</h3><div class="obj__m">Amundsen, K. Vilh. · 1912</div></div></a><a class="obj" href="#"><div class="obj__img"><div class="typecover" aria-hidden="true"><b>Skiforeningens – årbok 1912</b><small>Amundsen, K. Vilh.</small></div></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1912</h3><div class="obj__m">Amundsen, K. Vilh. · 1912</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2645.jpg" alt="Omslag: Skiforeningens – årbok 1913" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1913</h3><div class="obj__m">Amundsen, K. Vilh. · 1913</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2160.jpg" alt="Omslag: Skiforeningens – årbok 1913" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1913</h3><div class="obj__m">Amundsen, K. Vilh. · 1913</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2263.jpg" alt="Omslag: Skiforeningens – årbok 1914" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1914</h3><div class="obj__m">Amundsen, K. Vilh. · 1914</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m3503.jpg" alt="Omslag: Skiforeningens – årbok 1914" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1914</h3><div class="obj__m">Amundsen, K. Vilh. · 1914</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m8103.jpg" alt="Omslag: Skiforeningens – årbok 1915" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1915</h3><div class="obj__m">Amundsen, K. Vilh. · 1915</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2783.jpg" alt="Omslag: Skiforeningens – årbok 1915" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1915</h3><div class="obj__m">Amundsen, K. Vilh. · 1915</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2026.jpg" alt="Omslag: Skiforeningens – årbok 1916" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1916</h3><div class="obj__m">Amundsen, K. Vilh. · 1916</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2180.jpg" alt="Omslag: Skiforeningens – årbok 1916" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1916</h3><div class="obj__m">Amundsen, K. Vilh. · 1916</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m3135.jpg" alt="Omslag: Skiforeningens – årbok 1917" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1917</h3><div class="obj__m">Amundsen, K. Vilh. · 1917</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m3577.jpg" alt="Omslag: Skiforeningens – årbok 1917" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1917</h3><div class="obj__m">Amundsen, K. Vilh. · 1917</div></div></a><a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2279.jpg" alt="Omslag: Skiforeningens – årbok 1918" loading="lazy"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1918</h3><div class="obj__m">Amundsen, K. Vilh. · 1918</div></div></a></section>
+    <div class="more"><span>Viser 24 av 889</span><button class="btn btn--line" type="button">Vis flere bøker</button></div>
+  </div>
+</div>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

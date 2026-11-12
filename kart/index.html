@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kart – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__row">
+      <a class="brand" href="../forside/index.html">
+        <div class="brand__name">Heikampen</div>
+        <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      </a>
+      <div class="tools">
+        <nav class="nav" aria-label="Snarveier">
+          <a href="../artikler/index.html">Artikler</a>
+          <a href="../boker/index.html">Bøker</a>
+          <a href="../kart/index.html" aria-current="page">Kart</a>
+          <a href="../markaminner/index.html">Markaminner</a>
+        </nav>
+        <a class="icon-btn" href="https://heikampen.no/sokeresultat/" aria-label="Søk" data-open-search>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="megameny" aria-label="Åpne meny">
+          <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mm-backdrop" data-close></div>
+<div class="mega" id="megameny" role="dialog" aria-modal="true" aria-label="Meny" aria-hidden="true">
+  <div class="wrap mega__inner">
+    <nav class="mm-primary" aria-label="Hovedsider">
+      <ul>
+        <li class="mm-i"><a class="mm-main" href="../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+        <li class="mm-i"><a class="mm-main" href="../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+      </ul>
+    </nav>
+    <div class="mm-visual mm-i" aria-hidden="true">
+        <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../forside/img/pa-vandring-i-oslomarka.jpg" alt="" loading="lazy"></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        <figure class="mm-fig mm-fig--contain" data-i="1"><div class="mm-fig__img"><img src="../forside/img/bok-pa-gamle-veier.jpg" alt="" loading="lazy"></div><figcaption>H.O. Christophersen: På gamle veier og nye stier i Oslomarka, 1956</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="2"><div class="mm-fig__img"><img src="../forside/img/kart-plan-af-egnen-1790.jpg" alt="" loading="lazy"></div><figcaption>Plan af Egnen omkring Christiania, 1790</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="3"><div class="mm-fig__img"><img src="../forside/img/minne-prospektkort-katnosa-1909.jpg" alt="" loading="lazy"></div><figcaption>Prospektkort fra Katnosa, 1909</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="4"><div class="mm-fig__img"><img src="../forside/img/mix-klubben.jpg" alt="" loading="lazy"></div><figcaption>Fra artikkelen om Mix-klubben</figcaption></figure>
+        <figure class="mm-fig mm-fig--cover" data-i="5"><div class="mm-fig__img"><img src="../forside/img/utsikten.jpg" alt="" loading="lazy"></div><figcaption>Markaskilt i Nordmarka</figcaption></figure>
+    </div>
+    <div class="mm-side">
+      <form class="mm-search mm-i" action="https://heikampen.no/" method="get" role="search">
+        <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+        <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <nav aria-label="Nyttig">
+        <span class="mm-label mm-i">Nyttig</span>
+        <ul class="mm-sec">
+          <li class="mm-i"><a href="https://heikampen.no/leseguide/">Leseguide</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/markalitteraturen/">Om markalitteraturen</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/kart-over-oslomarka/">Kart over Oslomarka</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/bildegalleri/">Bildegalleri</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/sosiale-medier/">Sosiale medier</a></li>
+          <li class="mm-i"><a href="https://heikampen.no/tilbakemeldinger/">Kontakt oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+<nav class="crumbs" aria-label="Brødsmuler"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Kart</span></nav>
+<header class="intro"><div><span class="label">Kart</span><h1>Kartene over Oslomarka</h1></div><p>71 kart over Oslomarka, fra «Plan af Egnen omkring Christiania» (1790) til nyere tur- og skikart – med kartografene og utgiverne bak.</p></header>
+<div class="arch filters-scope">
+  <div class="sf-bg" data-sf-close></div>
+  <aside class="sf" id="sokfilter" aria-label="Søk og filter">
+    <div class="sf__head"><h2>Søk og filter</h2><button class="sf__close" type="button" data-sf-close aria-label="Lukk søk og filter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg></button></div>
+    <div class="sf__body">
+      <label class="sf-search"><span class="visually-hidden">Søk i kartene</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg><input type="search" placeholder="Søk i kartene"></label>
+      <label class="sf-sort"><span>Sorter</span><select><option>Kartograf A–Å</option><option>Eldste først</option><option>Nyeste først</option><option>Tittel A–Å</option></select></label>
+      <div class="sf-groups"><details class="sf-g" open><summary>Område</summary><ul class="checks"><li><label><input type="checkbox" data-v="Nordmarka"> Nordmarka<span class="c">37</span></label></li><li><label><input type="checkbox" data-v="Østmarka"> Østmarka<span class="c">13</span></label></li><li><label><input type="checkbox" data-v="Nordmarka (sør)"> Nordmarka (sør)<span class="c">10</span></label></li><li><label><input type="checkbox" data-v="Bærumsmarka"> Bærumsmarka<span class="c">9</span></label></li><li><label><input type="checkbox" data-v="Vestmarka"> Vestmarka<span class="c">8</span></label></li><li><label><input type="checkbox" data-v="Krokskogen"> Krokskogen<span class="c">7</span></label></li></ul><button type="button" class="f-more">Vis alle 20</button></details><details class="sf-g" open><summary>Kartograf</summary><ul class="checks"><li><label><input type="checkbox" data-v="Petersen, Kristian"> Petersen, Kristian<span class="c">11</span></label></li><li><label><input type="checkbox" data-v="NGO"> NGO<span class="c">9</span></label></li><li><label><input type="checkbox" data-v="Qvale, Finn"> Qvale, Finn<span class="c">5</span></label></li><li><label><input type="checkbox" data-v="Huseby, Olaf Herman"> Huseby, Olaf Herman<span class="c">5</span></label></li><li><label><input type="checkbox" data-v="Bj.A."> Bj.A.<span class="c">4</span></label></li><li><label><input type="checkbox" data-v="Onsager, Nils"> Onsager, Nils<span class="c">3</span></label></li></ul><button type="button" class="f-more">Vis alle 33</button></details><details class="sf-g"><summary>Utgiver</summary><ul class="checks"><li><label><input type="checkbox" data-v="NGO"> NGO<span class="c">9</span></label></li><li><label><input type="checkbox" data-v="Olaf Norlis Forlag"> Olaf Norlis Forlag<span class="c">9</span></label></li><li><label><input type="checkbox" data-v="A/S Bærumsbanen"> A/S Bærumsbanen<span class="c">5</span></label></li><li><label><input type="checkbox" data-v="Cammermeyers Boghandel"> Cammermeyers Boghandel<span class="c">4</span></label></li><li><label><input type="checkbox" data-v="A/S Holmenkollbanen og Skiforeningen"> A/S Holmenkollbanen og Skiforeningen<span class="c">4</span></label></li><li><label><input type="checkbox" data-v="Norges Statsbaner"> Norges Statsbaner<span class="c">4</span></label></li></ul><button type="button" class="f-more">Vis alle 30</button></details></div>
+    </div>
+    <div class="sf__foot"><button class="btn" type="button" data-sf-close>Vis 71 kart</button><button class="f-reset" type="button">Nullstill</button></div>
+  </aside>
+  <div class="arch__main">
+    <div class="arch__bar"><button type="button" class="sf-open" aria-controls="sokfilter" aria-expanded="false"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke-linecap="round"/></svg> Søk og filter</button>
+      <div class="f-status"><span><strong>71 kart</strong></span><span class="f-active"></span><button type="button" class="f-reset" hidden>Nullstill</button></div></div>
+    <section class="grid grid--3" aria-label="Treff"><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m3996.jpg" alt="Voksenkolen-Holmenkollen-Slemdal-Vettakollen-Sognsvand" loading="lazy"></div><div class="obj__body"><span class="label">1907</span><h3 class="obj__t">Voksenkolen-Holmenkollen-Slemdal-Vettakollen-Sognsvand</h3><div class="obj__m">Abrahamson, Alfred, Qvale, Finn · Cammermeyers Boghandel</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4111.jpg" alt="Østafor Sol Vestafor Måne (sommerturer, skiturer, 2 kart)" loading="lazy"></div><div class="obj__body"><span class="label">1940</span><h3 class="obj__t">Østafor Sol Vestafor Måne (sommerturer, skiturer, 2 kart)</h3><div class="obj__m">Atelier E.O. (Ovrum) · A/S Bærumsbanen</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m3999.jpg" alt="Nordmarkas sydlige del. Ski og Turistkart" loading="lazy"></div><div class="obj__body"><span class="label">1912</span><h3 class="obj__t">Nordmarkas sydlige del. Ski og Turistkart</h3><div class="obj__m">Bentzen, Louis, Qvale, Finn · Voxenkollen Kurhotel</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4002.jpg" alt="Nordmarkas sydlige del. Ski og Turistkart" loading="lazy"></div><div class="obj__body"><span class="label">1916</span><h3 class="obj__t">Nordmarkas sydlige del. Ski og Turistkart</h3><div class="obj__m">Bentzen, Louis, Qvale, Finn · Voxenkollen Kurhotel</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m3981.jpg" alt="Hønefos 19 B (kart med Nordmarka og Krokskogen)" loading="lazy"></div><div class="obj__body"><span class="label">1872</span><h3 class="obj__t">Hønefos 19 B (kart med Nordmarka og Krokskogen)</h3><div class="obj__m">Bergh, Hans Nielsen, Nordhagen, Johan · NGO</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m3978.jpg" alt="Hønefos 19 B (kart med Nordmarka og Krokskogen)" loading="lazy"></div><div class="obj__body"><span class="label">1872</span><h3 class="obj__t">Hønefos 19 B (kart med Nordmarka og Krokskogen)</h3><div class="obj__m">Bergh, Hans Nielsen, Nordhagen, Johan · NGO</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4128.jpg" alt="Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 1" loading="lazy"></div><div class="obj__body"><span class="label">1956</span><h3 class="obj__t">Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 1</h3><div class="obj__m">Bj.A. · A/S Holmenkollbanen og Skiforeningen</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4129.jpg" alt="Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 2" loading="lazy"></div><div class="obj__body"><span class="label">1956</span><h3 class="obj__t">Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 2</h3><div class="obj__m">Bj.A. · A/S Holmenkollbanen og Skiforeningen</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4130.jpg" alt="Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 3" loading="lazy"></div><div class="obj__body"><span class="label">1956</span><h3 class="obj__t">Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 3</h3><div class="obj__m">Bj.A. · A/S Holmenkollbanen og Skiforeningen</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4131.jpg" alt="Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 4" loading="lazy"></div><div class="obj__body"><span class="label">1956</span><h3 class="obj__t">Fire løypekart over Nordmarka – Bærumsmarka – Krokskogen, side 4</h3><div class="obj__m">Bj.A. · A/S Holmenkollbanen og Skiforeningen</div></div></a><a class="obj" href="../kart/kart-over-nordmarken-og-sorkedalen/index.html"><div class="obj__img obj__img--photo"><img src="../assets/img/m3990.jpg" alt="Kart over Nordmarken og Sörkedalen for skilöbere og turister" loading="lazy"></div><div class="obj__body"><span class="label">1890</span><h3 class="obj__t">Kart over Nordmarken og Sörkedalen for skilöbere og turister</h3><div class="obj__m">Bjerknes, Ernst · Ernst Bjerknes</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4121.jpg" alt="Sørkedalen – bygda i byen (kart med hoppbakker og alpinanlegg)" loading="lazy"></div><div class="obj__body"><span class="label">2003</span><h3 class="obj__t">Sørkedalen – bygda i byen (kart med hoppbakker og alpinanlegg)</h3><div class="obj__m">Christensen, Trygve · Sørkedalen Historielag</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4164.jpg" alt="Turkart Nordmarka. Sommerutgave. Med veiledning i bruk av kart og kompass (baksiden)" loading="lazy"></div><div class="obj__body"><span class="label">1965</span><h3 class="obj__t">Turkart Nordmarka. Sommerutgave. Med veiledning i bruk av kart og kompass (baksiden)</h3><div class="obj__m">Foto-kart, Kongsberg · Norges Orienteringsforbund</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4161.jpg" alt="Turkart Nordmarka. Vinterutgave med skiøyper" loading="lazy"></div><div class="obj__body"><span class="label">1993</span><h3 class="obj__t">Turkart Nordmarka. Vinterutgave med skiøyper</h3><div class="obj__m">Hegna, Trond · Nydalen Skiklubb | OSI</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4045.jpg" alt="Kombinert sommer og vinterkart over Nordmarka" loading="lazy"></div><div class="obj__body"><span class="label">1934</span><h3 class="obj__t">Kombinert sommer og vinterkart over Nordmarka</h3><div class="obj__m">Hertzberg, Hans Knagenhjelm · Emil Mostue A/S - Oslo</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4042.jpg" alt="Kombinert sommer og vinterkart over Nordmarka" loading="lazy"></div><div class="obj__body"><span class="label">1933</span><h3 class="obj__t">Kombinert sommer og vinterkart over Nordmarka</h3><div class="obj__m">Hertzberg, Hans Knagenhjelm · Emil Mostue A/S - Oslo</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4144.jpg" alt="Kart over Tryvannsbanen – Holmenkollbanen, Sognsvannsbanen, Smestad-Röabanen (del av Turbok av Olaf Herman Huseby)" loading="lazy"></div><div class="obj__body"><span class="label">1935</span><h3 class="obj__t">Kart over Tryvannsbanen – Holmenkollbanen, Sognsvannsbanen, Smestad-Röabanen (del av Turbok av Olaf Herman Huseby)</h3><div class="obj__m">Huseby, Olaf Herman · A/S Holmenkolbanen</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4100.jpg" alt="Med Vestbanen til Oslos Vestmark og Drammensmarka" loading="lazy"></div><div class="obj__body"><span class="label">1939</span><h3 class="obj__t">Med Vestbanen til Oslos Vestmark og Drammensmarka</h3><div class="obj__m">Huseby, Olaf Herman · Norges Statsbaner</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4103.jpg" alt="Til Nordmarka med Gjøvikbanen. Skikart over Nordmarka" loading="lazy"></div><div class="obj__body"><span class="label">1936</span><h3 class="obj__t">Til Nordmarka med Gjøvikbanen. Skikart over Nordmarka</h3><div class="obj__m">Huseby, Olaf Herman · Norges Statsbaner</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4096.jpg" alt="Til Vestmarka med Vestbanen" loading="lazy"></div><div class="obj__body"><span class="label">1935</span><h3 class="obj__t">Til Vestmarka med Vestbanen</h3><div class="obj__m">Huseby, Olaf Herman · Norges Statsbaner</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4093.jpg" alt="Til Vestmarka med Vestbanen" loading="lazy"></div><div class="obj__body"><span class="label">1934</span><h3 class="obj__t">Til Vestmarka med Vestbanen</h3><div class="obj__m">Huseby, Olaf Herman · Norges Statsbaner</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4127.jpg" alt="Skikart Til Nordmarka med Kjelsås-Sporveien" loading="lazy"></div><div class="obj__body"><span class="label">1935</span><h3 class="obj__t">Skikart Til Nordmarka med Kjelsås-Sporveien</h3><div class="obj__m">Kjelsås Sporveien/drevet av Holmenkollen · Emil Mostue AS</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4048.jpg" alt="Kart over Bærumsbanen med veiledning for skiløbere" loading="lazy"></div><div class="obj__body"><span class="label">1925</span><h3 class="obj__t">Kart over Bærumsbanen med veiledning for skiløbere</h3><div class="obj__m">NGO, Qvale, Finn · A/S Bærumsbanen</div></div></a><a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4057.jpg" alt="Kart over Bærumsbanen med veiledning i kartets bruk" loading="lazy"></div><div class="obj__body"><span class="label">1931</span><h3 class="obj__t">Kart over Bærumsbanen med veiledning i kartets bruk</h3><div class="obj__m">NGO, Qvale, Finn · A/S Bærumsbanen</div></div></a></section>
+    <div class="more"><span>Viser 24 av 71</span><button class="btn btn--line" type="button">Vis flere kart</button></div>
+  </div>
+</div>
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</main>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
