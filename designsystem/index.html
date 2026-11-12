@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designsystem – Heikampen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* Kun layout for designsystem-siden. Komponentene bruker klassene fra site.css. */
+.ds-page .masthead{position:relative}
+.ds-intro{max-width:62ch;margin:36px 0 0;font-size:17px;line-height:1.6;color:#3d423e}
+.ds-intro p{margin:0 0 1em}
+.ds-section{margin-top:80px;padding-top:8px}
+.ds-section>h2{margin:0 0 28px;padding-bottom:14px;border-bottom:1px solid var(--ink);font:500 36px/1.08 var(--serif);letter-spacing:-.01em}
+.ds-lead{margin:-8px 0 32px;max-width:62ch;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.ds-block{margin-top:56px}
+.ds-block>h2{margin:0 0 22px;font:500 28px/1.12 var(--serif);letter-spacing:-.008em}
+.ds-note{margin:12px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch}
+
+.ds-swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 24px}
+.ds-swatch__chip{height:96px;border:1px solid var(--rule)}
+.ds-swatch__name{margin:12px 0 0;font-weight:600;font-size:15px}
+.ds-swatch__meta{margin:3px 0 0;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ds-swatch__use{margin:6px 0 0;font-size:13.5px;line-height:1.45;color:#3d423e}
+
+.ds-type{display:flex;flex-direction:column;gap:0}
+.ds-type__item{padding:26px 0;border-bottom:1px solid var(--rule)}
+.ds-type__item:first-child{padding-top:0}
+.ds-type__name{margin:0 0 12px;font:600 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ds-type__spec{margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--muted)}
+.ds-type .intro,.ds-type .hero,.ds-type .lead,.ds-type .art-head,.ds-type .item__body,.ds-type .about-hero,.ds-type .section-h,.ds-type .cta,.ds-type .also,.ds-type .sf__head,.ds-type .prose{display:block;margin:0;padding:0;max-width:none;border:0;background:none;position:static;grid:none}
+.ds-type .hero h1,.ds-type .intro h1,.ds-type .art-head h1,.ds-type .item__body h1,.ds-type .about-hero h1{font-size:38px}
+.ds-type .intro h1,.ds-type .about-hero h1{font-size:60px}
+.ds-type .art-head h1{font-size:62px}
+.ds-type .item__body h1{font-size:48px}
+.ds-type .lead__body h2{font-size:40px}
+.ds-type .mm-main__t{font-size:27px}
+.ds-type .nav{display:flex;gap:30px}
+
+.ds-space{display:flex;flex-direction:column;gap:10px;max-width:640px}
+.ds-space__row{display:grid;grid-template-columns:72px 1fr 1fr;align-items:center;gap:16px;font-size:13.5px}
+.ds-space__bar{height:10px;background:var(--ink);justify-self:start}
+.ds-space__name{color:var(--muted);font-variant-numeric:tabular-nums}
+.ds-measures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.ds-measure{padding:18px 20px;border:1px solid var(--rule)}
+.ds-measure strong{display:block;font-size:15px}
+.ds-measure span{display:block;margin-top:4px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.ds-griddemo{margin-top:28px}
+.ds-griddemo .row,.ds-griddemo .grid{margin-top:0}
+.ds-griddemo__label{margin:0 0 12px;font-size:13.5px;color:var(--muted)}
+.ds-ph{background:var(--tint);min-height:72px;border:1px solid var(--rule)}
+
+/* Åpen megameny i dokumentflyt, uten fast posisjon eller skjult tilstand */
+.ds-mega{border:1px solid var(--rule);background:#fff}
+.ds-mega .masthead{position:relative;z-index:2}
+.ds-mega .mega{position:relative;left:auto;right:auto;top:auto;z-index:1;max-height:none;overflow:visible;opacity:1;visibility:visible;transform:none;box-shadow:none}
+.ds-mega .mm-i{opacity:1;transform:none;transition:none}
+.ds-mega .mm-backdrop{display:none}
+
+/* Desktop filterkolonne i dokumentflyt */
+.ds-arch{display:grid;grid-template-columns:250px minmax(0,1fr);gap:56px;align-items:start;border-top:1px solid var(--ink);padding-top:26px}
+.ds-arch .sf{position:relative;top:auto;max-height:none;overflow:visible}
+.ds-arch .sf__foot,.ds-arch .sf__close,.ds-arch .sf-open,.ds-arch .sf-bg{display:none}
+
+/* Mobilfilterpanel vist statisk, uavhengig av skjermbredde */
+.ds-sf-mobile{width:min(400px,100%);background:#fff;border:1px solid var(--rule);box-shadow:24px 0 48px -24px rgba(20,20,20,.25)}
+.ds-sf-mobile .sf{position:relative;top:auto;left:auto;bottom:auto;width:100%;max-height:none;display:flex;flex-direction:column;overflow:hidden;transform:none;visibility:visible;box-shadow:none}
+.ds-sf-mobile .sf__head{margin:0;padding:18px 22px;border-bottom:1px solid var(--rule)}
+.ds-sf-mobile .sf__close{display:grid;place-items:center;width:40px;height:40px;border:0;background:none;border-radius:50%;cursor:pointer}
+.ds-sf-mobile .sf__body{flex:1;overflow:visible;padding:18px 22px}
+.ds-sf-mobile .sf__foot{display:flex;gap:12px;align-items:center;padding:16px 22px;border-top:1px solid var(--rule)}
+
+.ds-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.ds-links{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.ds-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.ds-cards--2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:880px}
+.ds-cards .grid,.ds-cards .row{margin-top:0}
+.ds-cta{max-width:100%}
+.ds-panel{max-width:380px}
+.ds-forms{display:grid;grid-template-columns:minmax(0,320px) minmax(0,280px);gap:40px;align-items:start}
+
+/* Desktop-filteret skal ikke arve sidens faste mobilpanel (translateX -100%). */
+@media (max-width:900px){
+  .ds-swatches,.ds-measures,.ds-cards,.ds-cards--2,.ds-forms,.ds-arch{grid-template-columns:1fr}
+  .ds-section>h2{font-size:30px}
+  .ds-type .intro h1,.ds-type .about-hero h1{font-size:40px}
+  .ds-type .art-head h1{font-size:clamp(38px,8vw,48px)}
+  .ds-type .item__body h1{font-size:34px}
+  .ds-type .hero h1{font-size:31px}
+  .ds-type .lead__body h2{font-size:30px}
+  .ds-type .mm-main__t{font-size:24px}
+  .ds-arch .sf{position:relative!important;top:auto!important;left:auto!important;bottom:auto!important;width:auto!important;max-height:none!important;transform:none!important;visibility:visible!important;display:block!important;overflow:visible!important;box-shadow:none!important}
+  .ds-arch .sf__head{margin:0 0 16px;padding:0;border:0}
+  .ds-arch .sf__close,.ds-arch .sf__foot{display:none!important}
+  .ds-arch .sf__body{padding:0;overflow:visible;flex:none}
+  .ds-sf-mobile .sf{position:relative!important;top:auto!important;left:auto!important;bottom:auto!important;width:100%!important;max-height:none!important;transform:none!important;visibility:visible!important;display:flex!important;overflow:hidden!important;box-shadow:none!important}
+  .ds-type .nav{display:flex!important}
+}
+</style>
+</head>
+<body class="ds-page">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap">
+
+<header class="intro">
+  <div>
+    <span class="label">Heikampen.no</span>
+    <h1>Designsystem</h1>
+  </div>
+  <p>Farger, typografi, avstand og komponenter fra skissene, slik at de kan importeres som stiler og komponenter i Figma.</p>
+</header>
+
+<!-- =========================================================
+     Farger
+     ========================================================= -->
+<section class="ds-section" id="farger">
+  <h2>Farger</h2>
+  <p class="ds-lead">Navngitte token fra :root i site.css, og øvrige farger som faktisk er i bruk. Sidebakgrunnen er hvit. Den varme tonen brukes bare inne i paneler og på objektflater.</p>
+
+  <div class="ds-swatches">
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--ink)"></div>
+      <div class="ds-swatch__name">Ink</div>
+      <div class="ds-swatch__meta">--ink · #1B1F1C</div>
+      <div class="ds-swatch__use">Brødtekst, overskrifter og rammer i toppen og bunnen.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--muted)"></div>
+      <div class="ds-swatch__name">Dempet</div>
+      <div class="ds-swatch__meta">--muted · #5D625E</div>
+      <div class="ds-swatch__use">Metadata, hjelpetekst, bunntekst og sekundære ledetekster.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--rule)"></div>
+      <div class="ds-swatch__name">Linje</div>
+      <div class="ds-swatch__meta">--rule · #D9D6CF</div>
+      <div class="ds-swatch__use">Skillelinjer, kortkanter og rammer på felt og menyer.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--green)"></div>
+      <div class="ds-swatch__name">Grønn</div>
+      <div class="ds-swatch__meta">--green · #326E41</div>
+      <div class="ds-swatch__use">Hovedknapp, etiketter, topplistetall og aktiv avkrysning.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--green-dark)"></div>
+      <div class="ds-swatch__name">Grønn mørk</div>
+      <div class="ds-swatch__meta">--green-dark · #24502F</div>
+      <div class="ds-swatch__use">Hover på knapper, korttitler og lenker.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--red)"></div>
+      <div class="ds-swatch__name">Rød</div>
+      <div class="ds-swatch__meta">--red · #C9231E</div>
+      <div class="ds-swatch__use">Bare i ordmerket Heikampen. Ikke til knapper eller brødtekst.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--tint)"></div>
+      <div class="ds-swatch__name">Tone</div>
+      <div class="ds-swatch__meta">--tint · #F6F3EE</div>
+      <div class="ds-swatch__use">Bare i paneler, teaserflater og bakgrunn for bok- og kartomslag.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:var(--bg)"></div>
+      <div class="ds-swatch__name">Bakgrunn</div>
+      <div class="ds-swatch__meta">--bg · #FFFFFF</div>
+      <div class="ds-swatch__use">Sidebakgrunn. Brukes også på åpne menyer og felt.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#E9E6E0"></div>
+      <div class="ds-swatch__name">Mediaflate</div>
+      <div class="ds-swatch__meta">#E9E6E0</div>
+      <div class="ds-swatch__use">Bakgrunn i bildefelt før bildet er lastet, og i hero.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#ECE9E3"></div>
+      <div class="ds-swatch__name">Menyflate</div>
+      <div class="ds-swatch__meta">#ECE9E3</div>
+      <div class="ds-swatch__use">Bakgrunn bak hoverbildet i megamenyen.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#3D423E"></div>
+      <div class="ds-swatch__name">Ingress</div>
+      <div class="ds-swatch__meta">#3D423E</div>
+      <div class="ds-swatch__use">Ingress, hero-dek og introtekst på undersidene.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#202421"></div>
+      <div class="ds-swatch__name">Artikkeltekst</div>
+      <div class="ds-swatch__meta">#202421</div>
+      <div class="ds-swatch__use">Brødtekst i artikkelkroppen (.prose).</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#4A4F4B"></div>
+      <div class="ds-swatch__name">Korttekst</div>
+      <div class="ds-swatch__meta">#4A4F4B</div>
+      <div class="ds-swatch__use">Ingress i artikkelkort og organisasjonskort.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#2C302D"></div>
+      <div class="ds-swatch__name">Ingress forening</div>
+      <div class="ds-swatch__meta">#2C302D</div>
+      <div class="ds-swatch__use">Lede på siden til en forening (.lede).</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#868A86"></div>
+      <div class="ds-swatch__name">Plassholder</div>
+      <div class="ds-swatch__meta">#868A86</div>
+      <div class="ds-swatch__use">Plassholdertekst i søkefelt. I megamenyen brukes #8D918D.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#8F938F"></div>
+      <div class="ds-swatch__name">Avkrysningsramme</div>
+      <div class="ds-swatch__meta">#8F938F</div>
+      <div class="ds-swatch__use">Ramme på avmerkingsboks før den er huket av.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#A9A69F"></div>
+      <div class="ds-swatch__name">Kant, hover</div>
+      <div class="ds-swatch__meta">#A9A69F</div>
+      <div class="ds-swatch__use">Hoverkant på filterknapper.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#B5B2AB"></div>
+      <div class="ds-swatch__name">Brødsmuleskille</div>
+      <div class="ds-swatch__meta">#B5B2AB</div>
+      <div class="ds-swatch__use">Skråstrek mellom ledd i brødsmulene.</div>
+    </div>
+    <div class="ds-swatch">
+      <div class="ds-swatch__chip" style="background:#C4C1BA"></div>
+      <div class="ds-swatch__name">Inaktiv bokstav</div>
+      <div class="ds-swatch__meta">#C4C1BA</div>
+      <div class="ds-swatch__use">Bokstaver uten treff i A–Å-listen på foreningssiden.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Typografi
+     ========================================================= -->
+<section class="ds-section" id="typografi">
+  <h2>Typografi</h2>
+  <p class="ds-lead">Overskrifter settes i Newsreader 500. Brødtekst, menyer og knapper settes i Plus Jakarta Sans. Prøvene bruker de ekte klassene. Der mobilstørrelsen er en annen, står den etter skråstrek.</p>
+
+  <div class="ds-type">
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Ordmerke</h3>
+      <div class="brand__name">Heikampen</div>
+      <p class="ds-type__spec">Newsreader 500 · 34–54 px / 28 px mobil · linjehøyde 0,95 · bokstavmellomrom 0,035 em · versaler · farge --red</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Slagord under logo</h3>
+      <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+      <p class="ds-type__spec">Plus Jakarta Sans 600 · 11,5 px / 9,5 px mobil · bokstavmellomrom 0,16 em / 0,10 em mobil · versaler · farge --muted</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Overskrift 1 · Underside</h3>
+      <header class="intro"><h1>Bøkene om Oslomarka</h1></header>
+      <p class="ds-type__spec">.intro h1 · Newsreader 500 · 40–60 px / 40 px mobil · linjehøyde 1,02 · bokstavmellomrom −0,015 em. Samme stil på .about-hero h1.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Overskrift 1 · Artikkel</h3>
+      <header class="art-head"><h1>Korpås-Olsen: Eneboer og preparant i Østmarka</h1></header>
+      <p class="ds-type__spec">.art-head h1 · Newsreader 500 · 38–62 px · linjehøyde 1,03 · bokstavmellomrom −0,015 em</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Overskrift 1 · Objektside</h3>
+      <div class="item__body"><h1>På gamle veier og nye stier i Oslomarka</h1></div>
+      <p class="ds-type__spec">.item__body h1 · Newsreader 500 · 34–48 px · linjehøyde 1,06 · bokstavmellomrom −0,012 em</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Overskrift 1 · Hero</h3>
+      <div class="hero"><h1>På vandring i Oslomarka i 1951</h1></div>
+      <p class="ds-type__spec">.hero h1 · Newsreader 500 · 28–38 px / 31 px mobil · linjehøyde 1,10 · bokstavmellomrom −0,012 em</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Overskrift 2</h3>
+      <div class="section-h"><h2>Flere bøker fra samme forfatter</h2></div>
+      <p class="ds-type__spec">.section-h h2 · Newsreader 500 · 28 px / 24 px mobil · linjehøyde 1,10. .prose h2 er 30 px / 26 px mobil. .about h2 er 34 px. .year h2 er 30 px.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Overskrift 3 · Korttittel</h3>
+      <h3 class="headline obj__t">På gamle veier og nye stier i Oslomarka</h3>
+      <p class="ds-type__spec">.obj__t · Newsreader 500 · 19 px / 16,5 px mobil · linjehøyde 1,22. Artikkelkort .acard .headline er 23 px / 1,18. Rad med tre .row--3 .headline er 25 px / 1,16. Rad med fire .row--4 .headline er 21 px / 18 px mobil.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Tittel i megameny</h3>
+      <span class="mm-main__t">Foreninger og lag</span>
+      <p class="ds-type__spec">.mm-main__t · Newsreader 500 · 22–27 px / 24 px mobil · linjehøyde 1,15</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Ingress</h3>
+      <div class="art-head"><p class="dek">Olaf Olsen (1874–1952) gikk under navnet Korpås-Olsen og hadde sin anonyme tilværelse ikke mange hundre meter fra der mengder av hovedstadens turfolk nå legger sin søndagstur.</p></div>
+      <p class="ds-type__spec">.art-head .dek · Plus Jakarta Sans 400 · 20 px / 18 px mobil · linjehøyde 1,55 · farge #3D423E. .intro p er 17 px / 16 px mobil. .hero__dek er 16 px / 15,5 px mobil.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Brødtekst</h3>
+      <div class="prose"><p>Heikampen samler bøker, kart, markaminner og historier fra Oslomarka. Teksten settes i Plus Jakarta Sans, med jevn linjelengde og god linjeavstand slik at lengre artikler er behagelige å lese.</p></div>
+      <p class="ds-type__spec">.prose · Plus Jakarta Sans 400 · 18 px / 17 px mobil · linjehøyde 1,72 · farge #202421. Vanlig brødtekst på siden er 16 px / linjehøyde 1,55 · farge --ink.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Liten tekst / metadata</h3>
+      <div class="meta">Arne Henrik Frogh · 10. september 2026</div>
+      <p class="ds-type__spec">.meta · Plus Jakarta Sans 400 · 13 px · farge --muted. .obj__m er 13,5 px / 12,5 px mobil. .hero__credit og bildetekst er 12–13 px.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Etikett / kicker</h3>
+      <span class="label">Markahistorie</span>
+      <p class="ds-type__spec">.label · Plus Jakarta Sans 700 · 11,5 px / 10,5 px i trange rader · bokstavmellomrom 0,14 em · versaler · farge --green. .panel__title og .mm-label er 11–12 px, 700, bokstavmellomrom 0,16 em.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Menylenker</h3>
+      <nav class="nav" aria-label="Eksempel på snarveier">
+        <a href="../artikler/index.html">Artikler</a>
+        <a href="../boker/index.html">Bøker</a>
+        <a href="../kart/index.html">Kart</a>
+        <a href="../markaminner/index.html">Markaminner</a>
+      </nav>
+      <p class="ds-type__spec">.nav a · Plus Jakarta Sans 600 · 13 px · bokstavmellomrom 0,12 em · versaler. Skjules under 900 px. .menu-btn er samme typografi, 12 px på mobil.</p>
+    </div>
+
+    <div class="ds-type__item">
+      <h3 class="ds-type__name">Knappetekst</h3>
+      <button class="btn" type="button">Vis 889 bøker</button>
+      <p class="ds-type__spec">.btn · Plus Jakarta Sans 600 · 14 px · linjehøyde 1 · bokstavmellomrom 0,02 em · farge hvit på --green. .f-reset er 13 px 600 i --green-dark.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Avstand og grid
+     ========================================================= -->
+<section class="ds-section" id="avstand">
+  <h2>Avstand og grid</h2>
+  <p class="ds-lead">Skalaen er hentet fra de verdiene som faktisk brukes i site.css. Beholderen er 1320 piksler bred, med fleksibel ramme og mellomrom.</p>
+
+  <div class="ds-measures">
+    <div class="ds-measure"><strong>Beholder</strong><span>--wrap · 1320 px</span></div>
+    <div class="ds-measure"><strong>Sidemarg</strong><span>--gutter · 20–40 px (clamp 3 vw)</span></div>
+    <div class="ds-measure"><strong>Kolonnemellomrom</strong><span>--gap · 18–28 px (clamp 2 vw)</span></div>
+    <div class="ds-measure"><strong>Filterkolonne</strong><span>250 px, klebrig under toppen</span></div>
+    <div class="ds-measure"><strong>Rutenett, arkiv</strong><span>.grid--3 og .grid--4</span></div>
+    <div class="ds-measure"><strong>Rader på forsiden</strong><span>.row--3 og .row--4</span></div>
+  </div>
+
+  <div class="ds-block">
+    <h2>Avstandsskala</h2>
+    <div class="ds-space">
+      <div class="ds-space__row"><span class="ds-space__name">8 px</span><span class="ds-space__bar" style="width:8px"></span><span>Etikettmarg, metadata</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">12 px</span><span class="ds-space__bar" style="width:12px"></span><span>Liten indre avstand</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">16 px</span><span class="ds-space__bar" style="width:16px"></span><span>Kortkropp, felt og lister</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">24 px</span><span class="ds-space__bar" style="width:24px"></span><span>Seksjonsinner, handlinger</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">28 px</span><span class="ds-space__bar" style="width:28px"></span><span>Brødsmuler, objektmarg</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">34 px</span><span class="ds-space__bar" style="width:34px"></span><span>Topp i sidetopp og rutenett</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">36 px</span><span class="ds-space__bar" style="width:36px"></span><span>Toppseksjon på forsiden</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">48 px</span><span class="ds-space__bar" style="width:48px"></span><span>Seksjonsstart (min)</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">56 px</span><span class="ds-space__bar" style="width:56px"></span><span>Bunntekst og «vis flere»</span></div>
+      <div class="ds-space__row"><span class="ds-space__name">72 px</span><span class="ds-space__bar" style="width:72px"></span><span>Seksjonsstart (maks)</span></div>
+    </div>
+  </div>
+
+  <div class="ds-block ds-griddemo">
+    <h2>Rutenett, tre kolonner</h2>
+    <p class="ds-griddemo__label">.grid.grid--3 · brukes i bøker, kart og markaminner</p>
+    <div class="grid grid--3">
+      <div class="ds-ph"></div>
+      <div class="ds-ph"></div>
+      <div class="ds-ph"></div>
+    </div>
+  </div>
+  <div class="ds-block ds-griddemo">
+    <h2>Rutenett, fire kolonner</h2>
+    <p class="ds-griddemo__label">.grid.grid--4 · blir tre kolonner under 1100 px og to under 820 px</p>
+    <div class="grid grid--4">
+      <div class="ds-ph"></div>
+      <div class="ds-ph"></div>
+      <div class="ds-ph"></div>
+      <div class="ds-ph"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Komponenter
+     ========================================================= -->
+<section class="ds-section" id="komponenter">
+  <h2>Komponenter</h2>
+  <p class="ds-lead">Markup og klasser er kopiert fra skissene. Interaktive flater som megameny og mobilfilter vises statisk i åpen tilstand, uten at man trenger å klikke.</p>
+</section>
+
+<section class="ds-block" id="toppmeny">
+  <h2>Komponent / Toppmeny</h2>
+  <header class="masthead">
+    <div class="wrap" style="padding-left:0;padding-right:0;max-width:none">
+      <div class="masthead__row">
+        <a class="brand" href="../forside/index.html">
+          <div class="brand__name">Heikampen</div>
+          <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+        </a>
+        <div class="tools">
+          <nav class="nav" aria-label="Snarveier">
+            <a href="../artikler/index.html">Artikler</a>
+            <a href="../boker/index.html">Bøker</a>
+            <a href="../kart/index.html">Kart</a>
+            <a href="../markaminner/index.html">Markaminner</a>
+          </nav>
+          <a class="icon-btn" href="../forside/index.html" aria-label="Søk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+          </a>
+          <button class="menu-btn" type="button" aria-expanded="false" aria-label="Åpne meny">
+            <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+            <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<section class="ds-block" id="ds-megameny">
+  <h2>Komponent / Megameny</h2>
+  <div class="ds-mega menu-open">
+    <header class="masthead">
+      <div class="wrap">
+        <div class="masthead__row">
+          <a class="brand" href="../forside/index.html">
+            <div class="brand__name">Heikampen</div>
+            <div class="brand__tag">Bøker, kart, mennesker og historier fra Oslomarka</div>
+          </a>
+          <div class="tools">
+            <nav class="nav" aria-label="Snarveier i åpen meny">
+              <a href="../artikler/index.html">Artikler</a>
+              <a href="../boker/index.html">Bøker</a>
+              <a href="../kart/index.html">Kart</a>
+              <a href="../markaminner/index.html">Markaminner</a>
+            </nav>
+            <a class="icon-btn" href="../forside/index.html" aria-label="Søk">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg>
+            </a>
+            <button class="menu-btn" type="button" aria-expanded="true" aria-controls="megameny" aria-label="Lukk meny">
+              <span class="menu-btn__label" aria-hidden="true"><span>Meny</span><span>Lukk</span></span>
+              <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="mega" id="megameny" role="region" aria-label="Meny" aria-hidden="false">
+      <div class="wrap mega__inner">
+        <nav class="mm-primary" aria-label="Hovedsider">
+          <ul>
+            <li class="mm-i"><a class="mm-main" href="../artikler/index.html" data-img="0"><span class="mm-main__t">Artikler</span><span class="mm-main__d">Historier, intervjuer og minneord fra marka</span></a></li>
+            <li class="mm-i"><a class="mm-main" href="../boker/index.html" data-img="1"><span class="mm-main__t">Bøker</span><span class="mm-main__d">889 bøker om Oslomarka</span></a></li>
+            <li class="mm-i"><a class="mm-main" href="../kart/index.html" data-img="2"><span class="mm-main__t">Kart</span><span class="mm-main__d">71 historiske kart fra 1790 til i dag</span></a></li>
+            <li class="mm-i"><a class="mm-main" href="../markaminner/index.html" data-img="3"><span class="mm-main__t">Markaminner</span><span class="mm-main__d">106 postkort, programmer og fotografier</span></a></li>
+            <li class="mm-i"><a class="mm-main" href="../organisasjoner/index.html" data-img="4"><span class="mm-main__t">Foreninger og lag</span><span class="mm-main__d">33 foreninger og lag i Oslomarka</span></a></li>
+            <li class="mm-i"><a class="mm-main" href="../om-oss/index.html" data-img="5"><span class="mm-main__t">Om oss</span><span class="mm-main__d">Om nettstedet og menneskene bak</span></a></li>
+          </ul>
+        </nav>
+        <div class="mm-visual mm-i" aria-hidden="true">
+          <figure class="mm-fig is-on mm-fig--cover" data-i="0"><div class="mm-fig__img"><img src="../forside/img/pa-vandring-i-oslomarka.jpg" alt=""></div><figcaption>Fra «På vandring i Oslomarka i 1951»</figcaption></figure>
+        </div>
+        <div class="mm-side">
+          <form class="mm-search mm-i" action="../forside/index.html" method="get" role="search">
+            <label class="visually-hidden" for="mm-q">Søk på Heikampen</label>
+            <input id="mm-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+            <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+          </form>
+          <nav aria-label="Nyttig">
+            <span class="mm-label mm-i">Nyttig</span>
+            <ul class="mm-sec">
+              <li class="mm-i"><a href="#">Leseguide</a></li>
+              <li class="mm-i"><a href="#">Om markalitteraturen</a></li>
+              <li class="mm-i"><a href="#">Kart over Oslomarka</a></li>
+              <li class="mm-i"><a href="#">Bildegalleri</a></li>
+              <li class="mm-i"><a href="#">Sosiale medier</a></li>
+              <li class="mm-i"><a href="#">Kontakt oss</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-block" id="bunntekst">
+  <h2>Komponent / Bunntekst</h2>
+  <footer class="footer" style="margin-top:0">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Bøker · Kart · Markaminner · Foreninger og lag</div>
+  </footer>
+</section>
+
+<section class="ds-block" id="knapper">
+  <h2>Komponent / Knapper</h2>
+  <div class="ds-btns">
+    <button class="btn" type="button">Vis 889 bøker</button>
+    <a class="btn" href="#">Kontakt oss <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a>
+    <button class="btn btn--line" type="button">Vis flere bøker</button>
+    <button class="f-reset" type="button">Nullstill</button>
+    <button type="button" class="sf-open" style="display:inline-flex"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke-linecap="round"/></svg> Søk og filter</button>
+    <button class="chip" type="button">Årbok <i aria-hidden="true">×</i></button>
+  </div>
+</section>
+
+<section class="ds-block" id="lenker">
+  <h2>Komponent / Lenker</h2>
+  <div class="ds-links">
+    <nav class="crumbs" aria-label="Brødsmuler" style="margin-top:0"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><a href="../boker/index.html">Bøker</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">På gamle veier og nye stier i Oslomarka</span></nav>
+    <p class="byline" style="margin-top:0">Av <a href="#">H.O. Christophersen</a></p>
+    <button type="button" class="f-more">Vis alle 27</button>
+    <p class="ds-note" style="margin:0">Vanlige lenker arver tekstfarge og har ingen understrek. I byline og faktaruter markeres lenken med en linje under. «Vis alle» og hover på titler bruker mørk grønn.</p>
+  </div>
+</section>
+
+<section class="ds-block" id="brodsmuler">
+  <h2>Komponent / Brødsmuler</h2>
+  <nav class="crumbs" aria-label="Brødsmuler" style="margin-top:0"><a href="../forside/index.html">Forside</a><span aria-hidden="true">/</span><span aria-current="page" style="margin:0;color:var(--ink)">Bøker</span></nav>
+</section>
+
+<section class="ds-block" id="artikkelkort">
+  <h2>Komponent / Artikkelkort</h2>
+  <div class="ds-cards">
+    <a class="card acard" href="../artikkel/korpas-olsen/index.html"><div class="media"><img src="../assets/img/art-korpas-olsen-eneboer-og-preparant-i-ostm.jpg" alt="Korpås-Olsen i Østmarka"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Historie</span><h3 class="headline">Korpås-Olsen: Eneboer og preparant i Østmarka</h3><p>Olaf Olsen (1874-1952) gikk under navnet Korpås-Olsen og hadde sin anonyme tilværelse ikke mange hundre meter fra der mengder av hovedstadens turfolk nå legger sin søndags-tur.</p><div class="meta">Even Saugstad · 27. mars 2026</div></div></a>
+    <a class="card acard" href="#"><div class="media"><img src="../assets/img/art-mix-klubben.jpg" alt="Thorleif Haug og Johan Grøttumsbråten på ski"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Markahistorie</span><h3 class="headline">Mix-klubben</h3><p>For hundre år siden ble det sagt at det var lettere å vinne OL-gull på ski, enn å vinne klubbmesterskapet i Mix-klubben.</p><div class="meta">Thor Gotaas · 27. februar 2026</div></div></a>
+    <a class="card acard" href="#"><div class="media"><img src="../assets/img/art-nordmarkas-eneste-klosterhage.jpg" alt="Tjern i Nordmarka"></div><div class="card__body" style="display:block"><span class="label" style="margin-bottom:8px">Natur</span><h3 class="headline">Nordmarkas eneste klosterhage</h3><p>Allemannsretten er mer enn felleseie. Ofte er den et ensomt forhold mellom enkeltmennesker og små naturperler.</p><div class="meta">Carl-Erik Grimstad · 22. mai 2026</div></div></a>
+  </div>
+</section>
+
+<section class="ds-block" id="fremhevet-artikkel">
+  <h2>Komponent / Fremhevet artikkel</h2>
+  <a class="lead" href="#"><div class="media"><img src="../assets/img/art-ernst-bjerknes-ingenioren-som-tegnet-ver.jpg" alt="Ernst Bjerknes" style="object-position:50% 25%"></div>
+    <div class="lead__body"><span class="label" style="margin-bottom:16px">Siste artikkel · Mennesker</span><h2>Ernst Bjerknes – ingeniøren som tegnet verdens første skikart</h2><p>Ernst Bjerknes var en allsidig og viljesterk mann som satte spor etter seg på mange områder. Gjennom et langt liv satte han spor i Nordmarka, Kristiania og en rekke andre steder i Norge.</p>
+    <div class="lead__foot"><span><strong>Arne Henrik Frogh</strong> · 10. september 2026</span><svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></div></div></a>
+</section>
+
+<section class="ds-block" id="bokkort">
+  <h2>Komponent / Bokkort</h2>
+  <div class="grid grid--3" style="margin-top:0;max-width:920px">
+    <a class="obj" href="../bok/pa-gamle-veier-og-nye-stier-i-oslomarka/index.html"><div class="obj__img"><img src="../assets/img/m2633.jpg" alt="Omslag: Kristiania, Nordmarken, Ringerike"></div><div class="obj__body"><h3 class="obj__t">Kristiania, Nordmarken, Ringerike</h3><div class="obj__m">Abels Kunstforlag · 1914</div></div></a>
+    <a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2820.jpg" alt="Omslag: Historien – DNT Årbok 2017"></div><div class="obj__body"><h3 class="obj__t">Historien – DNT Årbok 2017</h3><div class="obj__m">Alnæs, Karsten · 2017</div></div></a>
+    <a class="obj" href="#"><div class="obj__img"><div class="typecover" aria-hidden="true"><b>Oslos kommuneplan 1980-1990</b><small>Admistrasjonen</small></div></div><div class="obj__body"><h3 class="obj__t">Oslos kommuneplan 1980-1990</h3><div class="obj__m">Admistrasjonen · 1980</div></div></a>
+  </div>
+</section>
+
+<section class="ds-block" id="kartkort">
+  <h2>Komponent / Kartkort</h2>
+  <div class="grid grid--3" style="margin-top:0;max-width:920px">
+    <a class="obj" href="../kart/kart-over-nordmarken-og-sorkedalen/index.html"><div class="obj__img obj__img--photo"><img src="../assets/img/m3996.jpg" alt="Voksenkolen-Holmenkollen-Slemdal-Vettakollen-Sognsvand"></div><div class="obj__body"><span class="label">1907</span><h3 class="obj__t">Voksenkolen-Holmenkollen-Slemdal-Vettakollen-Sognsvand</h3><div class="obj__m">Abrahamson, Alfred, Qvale, Finn · Cammermeyers Boghandel</div></div></a>
+    <a class="obj" href="#"><div class="obj__img obj__img--photo"><img src="../assets/img/m4111.jpg" alt="Østafor Sol Vestafor Måne (sommerturer, skiturer, 2 kart)"></div><div class="obj__body"><span class="label">1940</span><h3 class="obj__t">Østafor Sol Vestafor Måne (sommerturer, skiturer, 2 kart)</h3><div class="obj__m">Atelier E.O. (Ovrum) · A/S Bærumsbanen</div></div></a>
+  </div>
+</section>
+
+<section class="ds-block" id="markaminnekort">
+  <h2>Komponent / Markaminnekort</h2>
+  <div class="grid grid--3" style="margin-top:0;max-width:920px">
+    <a class="obj" href="../markaminne/fotografi-ovre-frognersaeteren/index.html"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50690.jpg" alt="Fotografi – Frognersæteren"></div><div class="obj__body"><span class="label">Fotografi · 1878</span><h3 class="obj__t">Frognersæteren</h3><div class="obj__m">Fotografiske Atelier. P.A. Thorén</div></div></a>
+    <a class="obj" href="#"><div class="obj__img obj__img--flat"><img src="../assets/img/minne50680.jpg" alt="Fotografi – Frognersæteren"></div><div class="obj__body"><span class="label">Fotografi · 1878</span><h3 class="obj__t">Frognersæteren</h3><div class="obj__m">Fotografiske Atelier. P.A. Thorén</div></div></a>
+  </div>
+</section>
+
+<section class="ds-block" id="organisasjonskort">
+  <h2>Komponent / Organisasjonskort</h2>
+  <ul class="orgs" style="margin-top:0">
+    <li><a class="org" href="../organisasjon/maridalens-venner/index.html"><div class="org__logo"><img src="../assets/img/m6788.jpg" alt=""></div><div><h2>Maridalens Venner</h2><div class="yr">Etablert 1970</div><p>Maridalens Venner ble stiftet i 1970 for å hindre at dalens gårder skulle bli revet. På 1980- og 90-tallet var det arbeidet for vern av Maridalen og kampen mot golfbaneanlegg som fikk mest oppmerksomhet.</p></div><svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></li>
+    <li><a class="org" href="#"><div class="org__logo"><img src="../assets/img/m6767.jpg" alt=""></div><div><h2>Skiforeningen</h2><div class="yr">Etablert 1883</div><p>Skiforeningen (Foreningen til Ski-Idrettens Fremme) ble stiftet i 1883, og er en av Norges eldste friluftsorganisasjoner. Skiforeningen arbeider for å fremme skiidrett og friluftsliv, særlig i Oslomarka.</p></div><svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></li>
+  </ul>
+</section>
+
+<section class="ds-block" id="kategorifaner">
+  <h2>Komponent / Kategorifaner</h2>
+  <nav class="cat-tabs" aria-label="Filtrer artikler etter kategori" style="margin-bottom:0"><button type="button" aria-pressed="true" data-cat="">Alle</button><button type="button" aria-pressed="false" data-cat="Mennesker">Mennesker</button><button type="button" aria-pressed="false" data-cat="Historie">Historie</button><button type="button" aria-pressed="false" data-cat="Markahistorie">Markahistorie</button><button type="button" aria-pressed="false" data-cat="Natur">Natur</button><button type="button" aria-pressed="false" data-cat="Kulturminner">Kulturminner</button><button type="button" aria-pressed="false" data-cat="Turtips">Turtips</button><button type="button" aria-pressed="false" data-cat="Årstidene">Årstidene</button></nav>
+</section>
+
+<section class="ds-block" id="filter">
+  <h2>Komponent / Søk og filter</h2>
+  <p class="ds-note" style="margin-bottom:22px">Venstre kolonne slik den vises på desktop. De to første gruppene er åpne, de øvrige lukket. Ett valg er huket av, så avkrysning med antall vises.</p>
+  <div class="ds-arch filters-scope">
+    <aside class="sf" id="sokfilter" aria-label="Søk og filter">
+      <div class="sf__head"><h2>Søk og filter</h2><button class="sf__close" type="button" aria-label="Lukk søk og filter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg></button></div>
+      <div class="sf__body">
+        <label class="sf-search"><span class="visually-hidden">Søk i bøkene</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg><input type="search" placeholder="Søk i bøkene"></label>
+        <label class="sf-sort"><span>Sorter</span><select><option>Forfatter A–Å</option><option>Tittel A–Å</option><option>Nyeste utgivelser</option><option>Eldste utgivelser</option></select></label>
+        <div class="sf-groups">
+          <details class="sf-g" open><summary>Kategori</summary><ul class="checks"><li><label><input type="checkbox" data-v="Årbok" checked> Årbok<span class="c">322</span></label></li><li><label><input type="checkbox" data-v="Historie"> Historie<span class="c">259</span></label></li><li><label><input type="checkbox" data-v="Turguide"> Turguide<span class="c">87</span></label></li><li><label><input type="checkbox" data-v="Saksunderlag"> Saksunderlag<span class="c">62</span></label></li><li><label><input type="checkbox" data-v="Natur"> Natur<span class="c">36</span></label></li><li><label><input type="checkbox" data-v="Fortellinger"> Fortellinger<span class="c">18</span></label></li></ul><button type="button" class="f-more">Vis alle 27</button></details>
+          <details class="sf-g" open><summary>Område</summary><ul class="checks"><li><label><input type="checkbox" data-v="Nordmarka"> Nordmarka<span class="c">145</span></label></li><li><label><input type="checkbox" data-v="Maridalen"> Maridalen<span class="c">67</span></label></li><li><label><input type="checkbox" data-v="Østmarka"> Østmarka<span class="c">29</span></label></li><li><label><input type="checkbox" data-v="Krokskogen"> Krokskogen<span class="c">24</span></label></li><li><label><input type="checkbox" data-v="Sørkedalen"> Sørkedalen<span class="c">21</span></label></li><li><label><input type="checkbox" data-v="Oslomarka"> Oslomarka<span class="c">18</span></label></li></ul><button type="button" class="f-more">Vis alle 78</button></details>
+          <details class="sf-g"><summary>Tema</summary><ul class="checks"><li><label><input type="checkbox" data-v="Krokskogen"> Krokskogen<span class="c">36</span></label></li><li><label><input type="checkbox" data-v="Historien"> Historien<span class="c">22</span></label></li></ul></details>
+          <details class="sf-g"><summary>Format</summary><ul class="checks"><li><label><input type="checkbox" data-v="Innbundet"> Innbundet<span class="c">131</span></label></li><li><label><input type="checkbox" data-v="Heftet"> Heftet<span class="c">130</span></label></li><li><label><input type="checkbox" data-v="Kart"> Kart<span class="c">62</span></label></li></ul></details>
+          <details class="sf-g"><summary>Forfatter</summary><ul class="checks"><li><label><input type="checkbox" data-v="Amundsen, K. Vilh."> Amundsen, K. Vilh.<span class="c">28</span></label></li></ul></details>
+          <details class="sf-g"><summary>Utgiver</summary><ul class="checks"><li><label><input type="checkbox" data-v="Foreningen til ski-idrettens fremme"> Foreningen til ski-idrettens fremme<span class="c">272</span></label></li></ul></details>
+        </div>
+      </div>
+    </aside>
+    <div>
+      <div class="f-status" style="padding-top:0"><span><strong>322 bøker</strong></span><button class="chip" type="button">Årbok <i aria-hidden="true">×</i></button><button type="button" class="f-reset">Nullstill</button></div>
+      <div class="grid grid--3" style="margin-top:22px">
+        <a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m11117.jpg" alt="Omslag: Skiforeningens – årbok 1911"></div><div class="obj__body"><h3 class="obj__t">Skiforeningens – årbok 1911</h3><div class="obj__m">Amundsen, K. Vilh. · 1911</div></div></a>
+        <a class="obj" href="#"><div class="obj__img"><img src="../assets/img/m2820.jpg" alt="Omslag: Historien – DNT Årbok 2017"></div><div class="obj__body"><h3 class="obj__t">Historien – DNT Årbok 2017</h3><div class="obj__m">Alnæs, Karsten · 2017</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-block" id="filter-mobil">
+  <h2>Komponent / Søk og filter, mobil</h2>
+  <p class="ds-note" style="margin-bottom:22px">Panelet som glir inn fra venstre under 900 px, vist åpent og i dokumentflyt. Fotlinjen med «Vis N bøker» og «Nullstill» er synlig.</p>
+  <div class="ds-sf-mobile">
+    <aside class="sf" id="sokfilter-mobil" aria-label="Søk og filter på mobil">
+      <div class="sf__head"><h2>Søk og filter</h2><button class="sf__close" type="button" aria-label="Lukk søk og filter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg></button></div>
+      <div class="sf__body">
+        <label class="sf-search"><span class="visually-hidden">Søk i bøkene</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg><input type="search" placeholder="Søk i bøkene" id="sf-q-mobil"></label>
+        <label class="sf-sort"><span>Sorter</span><select><option>Forfatter A–Å</option><option>Tittel A–Å</option><option>Nyeste utgivelser</option><option>Eldste utgivelser</option></select></label>
+        <div class="sf-groups">
+          <details class="sf-g" open><summary>Kategori</summary><ul class="checks"><li><label><input type="checkbox" checked> Årbok<span class="c">322</span></label></li><li><label><input type="checkbox"> Historie<span class="c">259</span></label></li><li><label><input type="checkbox"> Turguide<span class="c">87</span></label></li></ul><button type="button" class="f-more">Vis alle 27</button></details>
+          <details class="sf-g" open><summary>Område</summary><ul class="checks"><li><label><input type="checkbox"> Nordmarka<span class="c">145</span></label></li><li><label><input type="checkbox"> Maridalen<span class="c">67</span></label></li></ul><button type="button" class="f-more">Vis alle 78</button></details>
+          <details class="sf-g"><summary>Format</summary><ul class="checks"><li><label><input type="checkbox"> Innbundet<span class="c">131</span></label></li><li><label><input type="checkbox"> Heftet<span class="c">130</span></label></li><li><label><input type="checkbox"> Kart<span class="c">62</span></label></li></ul></details>
+        </div>
+      </div>
+      <div class="sf__foot"><button class="btn" type="button">Vis 889 bøker</button><button class="f-reset" type="button">Nullstill</button></div>
+    </aside>
+  </div>
+</section>
+
+<section class="ds-block" id="vis-flere">
+  <h2>Komponent / Vis flere</h2>
+  <p class="ds-note" style="margin-bottom:22px">Skissene har ikke sidetall. Arkivsidene bruker denne fotlinjen i stedet for paginering.</p>
+  <div class="more" style="margin-top:0"><span>Viser 24 av 889</span><button class="btn btn--line" type="button">Vis flere bøker</button></div>
+</section>
+
+<section class="ds-block" id="mest-lest">
+  <h2>Komponent / Mest lest</h2>
+  <div class="ds-panel">
+    <div class="panel">
+      <h2 class="panel__title">Mest lest</h2>
+      <ol class="toplist">
+        <li><a href="#"><span class="num">1</span><span class="t">Nils Houge – Markagrensens arkitekt og adjutant</span></a></li>
+        <li><a href="#"><span class="num">2</span><span class="t">Nordmarkas eneste klosterhage</span></a></li>
+        <li><a href="#"><span class="num">3</span><span class="t">Solan Gundersen på Rustadsaga</span></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="ds-block" id="handlingsfelt">
+  <h2>Komponent / Handlingsfelt</h2>
+  <aside class="cta ds-cta" style="margin-top:0"><div><h2>Har du en bok, et kart eller et minne vi mangler?</h2><p>Tips oss, eller gi en tilbakemelding på nettstedet.</p></div><a class="btn" href="#">Kontakt oss <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></a></aside>
+</section>
+
+<section class="ds-block" id="skjemafelt">
+  <h2>Komponent / Skjemafelt</h2>
+  <p class="ds-note" style="margin-bottom:22px">Skissene har ikke et kontaktskjema. Feltene under er søk, sortering og avkrysning slik de brukes i meny og filter.</p>
+  <div class="ds-forms">
+    <div>
+      <form class="mm-search" action="../forside/index.html" method="get" role="search">
+        <label class="visually-hidden" for="ds-q">Søk på Heikampen</label>
+        <input id="ds-q" type="search" name="s" placeholder="Søk på Heikampen" autocomplete="off">
+        <button type="submit" aria-label="Søk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg></button>
+      </form>
+      <label class="sf-search" style="margin-top:20px"><span class="visually-hidden">Søk i bøkene</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21" stroke-linecap="round"/></svg><input type="search" placeholder="Søk i bøkene"></label>
+      <label class="sf-sort" style="margin-top:12px"><span>Sorter</span><select><option>Forfatter A–Å</option><option>Tittel A–Å</option></select></label>
+    </div>
+    <ul class="checks">
+      <li><label><input type="checkbox" checked> Årbok<span class="c">322</span></label></li>
+      <li><label><input type="checkbox"> Historie<span class="c">259</span></label></li>
+      <li><label><input type="checkbox"> Turguide<span class="c">87</span></label></li>
+    </ul>
+  </div>
+</section>
+
+  <footer class="footer">
+    <div><strong>Heikampen AS</strong> · Oslomarka mellom to permer</div>
+    <div>Designsystem til skissene</div>
+  </footer>
+</main>
+
+</body>
+</html>
